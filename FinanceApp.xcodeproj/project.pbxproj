@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E192C11AD8300A240D1 /* AppDelegate.swift */; };
 		56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */; };
-		56F50E1E2C11AD8300A240D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E1D2C11AD8300A240D1 /* ViewController.swift */; };
 		56F50E212C11AD8300A240D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E202C11AD8300A240D1 /* Base */; };
 		56F50E242C11AD8300A240D1 /* FinanceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E222C11AD8300A240D1 /* FinanceApp.xcdatamodeld */; };
 		56F50E262C11AD8400A240D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E252C11AD8400A240D1 /* Assets.xcassets */; };
 		56F50E292C11AD8400A240D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E282C11AD8400A240D1 /* Base */; };
+		56F50E442C11B20A00A240D1 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E432C11B1F800A240D1 /* SF-Pro-Text-Bold.otf */; };
+		56F50E492C11BB9000A240D1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E482C11BB9000A240D1 /* MenuViewController.swift */; };
+		56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E4A2C11BC4F00A240D1 /* Appereances.swift */; };
+		56F50E4E2C11C80100A240D1 /* MenuButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E4D2C11C80100A240D1 /* MenuButtonViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		56F50E162C11AD8300A240D1 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F50E192C11AD8300A240D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		56F50E1D2C11AD8300A240D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		56F50E202C11AD8300A240D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56F50E232C11AD8300A240D1 /* FinanceApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinanceApp.xcdatamodel; sourceTree = "<group>"; };
 		56F50E252C11AD8400A240D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56F50E282C11AD8400A240D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56F50E2A2C11AD8400A240D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56F50E432C11B1F800A240D1 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		56F50E482C11BB9000A240D1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		56F50E4A2C11BC4F00A240D1 /* Appereances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appereances.swift; sourceTree = "<group>"; };
+		56F50E4D2C11C80100A240D1 /* MenuButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,43 @@
 		56F50E182C11AD8300A240D1 /* FinanceApp */ = {
 			isa = PBXGroup;
 			children = (
+				56F50E4A2C11BC4F00A240D1 /* Appereances.swift */,
 				56F50E192C11AD8300A240D1 /* AppDelegate.swift */,
 				56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */,
-				56F50E1D2C11AD8300A240D1 /* ViewController.swift */,
+				56F50E4C2C11C7D600A240D1 /* CustomViews */,
+				56F50E472C11BB7D00A240D1 /* Controllers */,
 				56F50E1F2C11AD8300A240D1 /* Main.storyboard */,
 				56F50E252C11AD8400A240D1 /* Assets.xcassets */,
 				56F50E272C11AD8400A240D1 /* LaunchScreen.storyboard */,
 				56F50E2A2C11AD8400A240D1 /* Info.plist */,
 				56F50E222C11AD8300A240D1 /* FinanceApp.xcdatamodeld */,
+				56F50E422C11B1CD00A240D1 /* fonts */,
 			);
 			path = FinanceApp;
+			sourceTree = "<group>";
+		};
+		56F50E422C11B1CD00A240D1 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				56F50E432C11B1F800A240D1 /* SF-Pro-Text-Bold.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		56F50E472C11BB7D00A240D1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56F50E482C11BB9000A240D1 /* MenuViewController.swift */,
+				56F50E4D2C11C80100A240D1 /* MenuButtonViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		56F50E4C2C11C7D600A240D1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +163,7 @@
 			files = (
 				56F50E262C11AD8400A240D1 /* Assets.xcassets in Resources */,
 				56F50E292C11AD8400A240D1 /* Base in Resources */,
+				56F50E442C11B20A00A240D1 /* SF-Pro-Text-Bold.otf in Resources */,
 				56F50E212C11AD8300A240D1 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,9 +176,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				56F50E242C11AD8300A240D1 /* FinanceApp.xcdatamodeld in Sources */,
-				56F50E1E2C11AD8300A240D1 /* ViewController.swift in Sources */,
+				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */,
 				56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */,
+				56F50E492C11BB9000A240D1 /* MenuViewController.swift in Sources */,
+				56F50E4E2C11C80100A240D1 /* MenuButtonViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,11 +335,11 @@
 				DEVELOPMENT_TEAM = C8NSZM8WF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinanceApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,11 +363,11 @@
 				DEVELOPMENT_TEAM = C8NSZM8WF9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinanceApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
