@@ -91,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				56F50E482C11BB9000A240D1 /* MenuViewController.swift */,
-				56F50E4D2C11C80100A240D1 /* MenuButtonViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -99,6 +98,7 @@
 		56F50E4C2C11C7D600A240D1 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				56F50E4D2C11C80100A240D1 /* MenuButtonViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";

@@ -45,7 +45,6 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
          //расширяем collectionView
         
         constraintHeight.constant = cell.frame.size.height * CGFloat(menuButtonsAttributes.count)
-        print(cell.frame.size.height * CGFloat(menuButtonsAttributes.count))
         return cell
     }
     

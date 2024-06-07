@@ -31,6 +31,38 @@
             </objects>
             <point key="canvasLocation" x="-924" y="-68"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="h9b-Sn-Idz">
+            <objects>
+                <viewController id="TKD-BP-76y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ie0-lD-WCh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Wpb-Wj-o4A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6K9-Mq-B1q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6J2-Ak-ZMr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="78"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uHv-Fd-JIk">
+            <objects>
+                <viewController id="Zm5-vg-Dzm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sVE-AT-xs0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bHZ-1v-0fa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nR6-Ya-nfl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yra-MO-NHB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85" y="721"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="jgC-Dd-n2q">
             <objects>
@@ -118,6 +150,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="fJr-oU-abR">
+                        <barButtonItem key="backBarButtonItem" title="меню" id="MXA-Ob-4bQ"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="gr6-jB-9HH">
                             <view key="customView" contentMode="scaleToFill" id="7qE-LM-vCs">
                                 <rect key="frame" x="16" y="5.6666666666666679" width="87" height="33"/>
@@ -144,45 +177,13 @@
                         <outlet property="constraintHeight" destination="AAQ-Ys-OW8" id="2og-O8-AYv"/>
                         <outlet property="menuBackgroundView" destination="UY7-Ty-76s" id="NeC-mA-fm9"/>
                         <outlet property="menuButtonsCollection" destination="czM-cw-NC3" id="rOn-Ax-8e1"/>
-                        <segue destination="xKX-KW-Wrr" kind="show" identifier="operationsSegou" id="I61-E1-UJY"/>
-                        <segue destination="8Sc-0g-mKK" kind="show" identifier="categoriesSegou" id="umP-QW-Ph0"/>
+                        <segue destination="TKD-BP-76y" kind="show" identifier="operationsSegou" id="1DN-pZ-QmH"/>
+                        <segue destination="Zm5-vg-Dzm" kind="show" identifier="categoriesSegou" id="eZt-92-0It"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8n-kF-8Wr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-924.4274809160305" y="634.50704225352115"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="2rI-gg-jiL">
-            <objects>
-                <viewController id="xKX-KW-Wrr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dNn-fC-iLu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Ebq-UW-nce"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="8oW-HG-lNc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PRs-WZ-Ujz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="47" y="442"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="gO8-1X-7aD">
-            <objects>
-                <viewController id="8Sc-0g-mKK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hko-I1-bGu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="7GV-gL-LMk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="meI-oQ-Syh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nae-BI-oKE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="46.564885496183201" y="1084.5070422535211"/>
         </scene>
     </scenes>
     <resources>
