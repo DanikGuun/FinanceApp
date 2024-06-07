@@ -14,4 +14,7 @@ public class Appereances{
         view.layer.borderWidth = 0.33
         view.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     }
+    static func moneyFormat(_ num: Double) -> String{
+        return num.formatted(.currency(code: "rub").locale(Locale(identifier: "ru_RU")).grouping(.automatic))
+    }
 }
