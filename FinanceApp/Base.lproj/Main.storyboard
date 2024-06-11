@@ -180,6 +180,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nR6-Ya-nfl"/>
                     <connections>
+                        <outlet property="menuBackground" destination="5n0-1H-2O7" id="RBq-05-C1B"/>
                         <outlet property="сategoriesTypeSegmented" destination="DDG-6a-4ru" id="4ti-GW-39f"/>
                     </connections>
                 </viewController>

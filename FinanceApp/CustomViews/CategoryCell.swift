@@ -11,8 +11,15 @@ import UIKit
 class CategoryCell: UICollectionViewCell{
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var icon: UIImageView!
+    var category: Category!
     
-    func setup(){
-        
+    func setup(_ category: Category){
+        self.category = category
+        layer.cornerRadius = 14
+        icon.layer.cornerRadius = 9
+        icon.image = UIImage(systemName: category.icon!)
+        icon.backgroundColor = UIColor(cgColor: Model.shared.stringToColor(category.color!))
+        name.adjustsFontSizeToFitWidth = true
+        name.text = category.name!
     }
 }
