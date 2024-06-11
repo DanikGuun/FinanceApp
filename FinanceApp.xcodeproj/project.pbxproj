@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		564BB4042C13282100939974 /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BB4032C13282100939974 /* OperationsViewController.swift */; };
+		565D48612C18C27200E44B0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48602C18C27200E44B0A /* Model.swift */; };
 		567CA9F42C18B37F00C1E4FA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */; };
 		567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */; };
 		567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		564BB4032C13282100939974 /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
+		565D48602C18C27200E44B0A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */,
 				567CAA012C18B5B800C1E4FA /* CoreDataEntities */,
+				565D48602C18C27200E44B0A /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				567CA9FF2C18B58F00C1E4FA /* Category+CoreDataClass.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
+				565D48612C18C27200E44B0A /* Model.swift in Sources */,
 				56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */,
 				56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */,
 				56F50E492C11BB9000A240D1 /* MenuViewController.swift in Sources */,
