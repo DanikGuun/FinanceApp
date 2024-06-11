@@ -51,7 +51,7 @@ class Model{
     
     // MARK: Enums
     ///Тип операций доход/расход
-    enum OperationType: String{
+    public enum OperationType: String{
         case Expence = "Expence"
         case Income = "Income"
     }

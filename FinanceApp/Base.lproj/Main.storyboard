@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="148"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Счёт: 941" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQK-fr-ykM">
-                                        <rect key="frame" x="132.66666666666663" y="104.66666666666667" width="128" height="33.333333333333329"/>
+                                        <rect key="frame" x="132.66666666666666" y="104.66666666666667" width="127.99999999999997" height="33.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -115,48 +115,73 @@
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-0P-d9b">
                                 <rect key="frame" x="10" y="198" width="373" height="620"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L9Q-gH-bzA">
-                                    <size key="itemSize" width="104" height="121"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="L9Q-gH-bzA">
+                                    <size key="itemSize" width="118" height="141"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="categoryCell" id="FoP-hd-yS0" customClass="CategoryCell" customModule="FinanceApp" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="104" height="121"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="FoP-hd-yS0" customClass="CategoryCell" customModule="FinanceApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="118" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vez-Gn-6bY">
-                                            <rect key="frame" x="0.0" y="0.0" width="104" height="121"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miu-bX-uyw">
-                                                    <rect key="frame" x="5" y="94" width="94" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" name="CategoryName"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView verifyAmbiguity="off" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="square.and.arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FnO-Lb-Ows">
-                                                    <rect key="frame" x="15" y="15.333333333333329" width="74" height="72.666666666666671"/>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0l-Nj-nDf">
+                                                    <rect key="frame" x="5" y="5" width="108" height="131"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Знак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miu-bX-uyw">
+                                                            <rect key="frame" x="5" y="98" width="98" height="28"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" name="CategoryName"/>
+                                                            <color key="highlightedColor" name="CategoryName"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wye-cs-rk5">
+                                                            <rect key="frame" x="15" y="15" width="78" height="78"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="35j-im-cwW">
+                                                                    <rect key="frame" x="14" y="11.666666666666671" width="50" height="52"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="35j-im-cwW" firstAttribute="leading" secondItem="wye-cs-rk5" secondAttribute="leading" constant="14" id="8br-Ar-aO1"/>
+                                                                <constraint firstItem="35j-im-cwW" firstAttribute="top" secondItem="wye-cs-rk5" secondAttribute="top" constant="14" id="GOv-iS-oPD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="35j-im-cwW" secondAttribute="trailing" constant="14" id="JMi-AV-bfV"/>
+                                                                <constraint firstAttribute="bottom" secondItem="35j-im-cwW" secondAttribute="bottom" constant="14" id="WSl-LL-NF8"/>
+                                                                <constraint firstAttribute="width" secondItem="wye-cs-rk5" secondAttribute="height" id="k5W-dv-txt"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="FnO-Lb-Ows" secondAttribute="height" multiplier="1:1" id="1fY-Ef-teC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="miu-bX-uyw" secondAttribute="trailing" constant="5" id="5yW-Nc-2lE"/>
+                                                        <constraint firstItem="wye-cs-rk5" firstAttribute="leading" secondItem="K0l-Nj-nDf" secondAttribute="leading" constant="15" id="9Cd-aK-SIN"/>
+                                                        <constraint firstItem="miu-bX-uyw" firstAttribute="top" secondItem="wye-cs-rk5" secondAttribute="bottom" constant="5" id="9VX-0a-Xbf"/>
+                                                        <constraint firstItem="miu-bX-uyw" firstAttribute="leading" secondItem="K0l-Nj-nDf" secondAttribute="leading" constant="5" id="TdG-Mo-ZP1"/>
+                                                        <constraint firstItem="wye-cs-rk5" firstAttribute="top" secondItem="K0l-Nj-nDf" secondAttribute="top" constant="15" id="XYI-Wl-oc0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wye-cs-rk5" secondAttribute="trailing" constant="15" id="eh9-IK-ANq"/>
+                                                        <constraint firstAttribute="bottom" secondItem="miu-bX-uyw" secondAttribute="bottom" constant="5" id="z2O-bY-eI7"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FnO-Lb-Ows" firstAttribute="leading" secondItem="Vez-Gn-6bY" secondAttribute="leading" constant="15" id="Gfm-3z-J4l"/>
-                                                <constraint firstItem="miu-bX-uyw" firstAttribute="top" secondItem="FnO-Lb-Ows" secondAttribute="bottom" constant="5" id="IU3-cJ-nms"/>
-                                                <constraint firstItem="miu-bX-uyw" firstAttribute="leading" secondItem="Vez-Gn-6bY" secondAttribute="leading" constant="5" id="M0V-ee-ZB9"/>
-                                                <constraint firstItem="FnO-Lb-Ows" firstAttribute="top" secondItem="Vez-Gn-6bY" secondAttribute="top" constant="15" id="SEB-po-sIc"/>
-                                                <constraint firstAttribute="trailing" secondItem="miu-bX-uyw" secondAttribute="trailing" constant="5" id="aGV-ak-cql"/>
-                                                <constraint firstAttribute="trailing" secondItem="FnO-Lb-Ows" secondAttribute="trailing" constant="15" id="sxw-rX-fnX"/>
-                                                <constraint firstAttribute="bottom" secondItem="miu-bX-uyw" secondAttribute="bottom" constant="3" id="tbR-aE-f5u"/>
+                                                <constraint firstItem="K0l-Nj-nDf" firstAttribute="leading" secondItem="Vez-Gn-6bY" secondAttribute="leading" constant="5" id="1RH-jv-rds"/>
+                                                <constraint firstAttribute="bottom" secondItem="K0l-Nj-nDf" secondAttribute="bottom" constant="5" id="KfM-sc-DoA"/>
+                                                <constraint firstItem="K0l-Nj-nDf" firstAttribute="top" secondItem="Vez-Gn-6bY" secondAttribute="top" constant="5" id="h9f-Ri-37n"/>
+                                                <constraint firstAttribute="trailing" secondItem="K0l-Nj-nDf" secondAttribute="trailing" constant="5" id="j9J-gJ-8Vy"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <size key="customSize" width="104" height="121"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="118" height="141"/>
                                         <connections>
-                                            <outlet property="icon" destination="FnO-Lb-Ows" id="NLY-YO-eC8"/>
+                                            <outlet property="background" destination="K0l-Nj-nDf" id="PZF-6N-UvO"/>
+                                            <outlet property="icon" destination="35j-im-cwW" id="vC7-SX-XZL"/>
+                                            <outlet property="iconBackground" destination="wye-cs-rk5" id="Fpa-SU-dZm"/>
                                             <outlet property="name" destination="miu-bX-uyw" id="fFD-5M-FfM"/>
                                         </connections>
                                     </collectionViewCell>
@@ -180,6 +205,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nR6-Ya-nfl"/>
                     <connections>
+                        <outlet property="categoriesCollection" destination="XgO-0P-d9b" id="I6V-ug-3SN"/>
                         <outlet property="menuBackground" destination="5n0-1H-2O7" id="RBq-05-C1B"/>
                         <outlet property="сategoriesTypeSegmented" destination="DDG-6a-4ru" id="4ti-GW-39f"/>
                     </connections>
@@ -266,7 +292,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ik2-TQ-wYu"/>
-                        <color key="backgroundColor" name="ControllersBackground"/>
+                        <color key="backgroundColor" name="MenuBackground"/>
                         <constraints>
                             <constraint firstItem="czM-cw-NC3" firstAttribute="top" secondItem="UY7-Ty-76s" secondAttribute="bottom" constant="29" id="8pW-q2-hWG"/>
                             <constraint firstItem="Ik2-TQ-wYu" firstAttribute="top" secondItem="UY7-Ty-76s" secondAttribute="top" constant="155" id="IFD-AX-2Gy"/>
@@ -313,24 +339,24 @@
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up.circle" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <namedColor name="CategoryName">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ControllersBackground">
+            <color red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MenuBackground">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
