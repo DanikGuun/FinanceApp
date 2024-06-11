@@ -17,4 +17,6 @@ class CategoriesViewController: UIViewController{
     
     @IBAction func onChangeType(_ sender: UISegmentedControl) {
     }
+    
+    // MARK: CollectionView
 }

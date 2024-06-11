@@ -41,7 +41,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let needSeparator = indexPath.row != menuButtonsAttributes.endIndex-1 //если последний, то не ставим разделитель
-        let cell = menuButtonsCollection.dequeueReusableCell(withReuseIdentifier: "menuButtonCell", for: indexPath) as! MenuButtonViewCell
+        let cell = menuButtonsCollection.dequeueReusableCell(withReuseIdentifier: "menuButtonCell", for: indexPath) as! MenuButtonCell
         cell.setup(menuButtonsAttributes[indexPath.row], separatorNeed: needSeparator)
          //расширяем collectionView
         
@@ -50,7 +50,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = menuButtonsCollection.cellForItem(at: indexPath) as! MenuButtonViewCell
+        let cell = menuButtonsCollection.cellForItem(at: indexPath) as! MenuButtonCell
         self.performSegue(withIdentifier: cell.segouID, sender: nil)
     }
 }

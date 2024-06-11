@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MenuButtonViewCell: UICollectionViewCell{
+class MenuButtonCell: UICollectionViewCell{
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var separator: UIView!
