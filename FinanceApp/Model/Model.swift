@@ -18,13 +18,20 @@ class Model{
         let _ = Category(id: id, name: name, type: type.rawValue, icon: icon, color: colorToString(color))
         CoreDataManager.shared.saveContext()
     }
-    func getAllCategories() -> [Category]{
+    /**
+        Получение всех категорий
+     - Parameter type: тип нужных категорий, если nil, то возвращаются все
+     */
+    func getAllCategories(type: OperationType?) -> [Category]{
         var categories: [Category] = []
         do{
             let request = NSFetchRequest<NSFetchRequestResult>()
             let result = try CoreDataManager.shared.context.fetch(request)
             for category in categories {
-                categories.append(category)
+                if let type{ //если это нужный нам тип или нет разницы
+                    if type.rawValue == category.type{ categories.append(category) }
+                }
+                else { categories.append(category) }
             }
         }
         catch {print(error); print("Что-то не так")}

@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="148"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Счёт: 941" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQK-fr-ykM">
-                                        <rect key="frame" x="132.66666666666663" y="104.66666666666667" width="128" height="33.333333333333329"/>
+                                        <rect key="frame" x="132.66666666666666" y="104.66666666666667" width="127.99999999999997" height="33.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -100,16 +100,35 @@
                                     <constraint firstItem="6it-0i-AXI" firstAttribute="centerX" secondItem="5n0-1H-2O7" secondAttribute="centerX" id="Rzm-sS-B1j"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DDG-6a-4ru">
+                                <rect key="frame" x="84.666666666666686" y="161" width="224" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="bzE-pq-ZLE"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Расходы"/>
+                                    <segment title="Доходы"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onChangeType:" destination="Zm5-vg-Dzm" eventType="valueChanged" id="Van-3l-DCE"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHZ-1v-0fa"/>
                         <color key="backgroundColor" name="ControllersBackground"/>
                         <constraints>
                             <constraint firstItem="5n0-1H-2O7" firstAttribute="leading" secondItem="sVE-AT-xs0" secondAttribute="leading" id="G9g-qW-yLV"/>
+                            <constraint firstItem="DDG-6a-4ru" firstAttribute="centerX" secondItem="bHZ-1v-0fa" secondAttribute="centerX" id="PmC-H4-Vzl"/>
+                            <constraint firstItem="DDG-6a-4ru" firstAttribute="top" secondItem="5n0-1H-2O7" secondAttribute="bottom" constant="13" id="VcY-iS-ZFc"/>
                             <constraint firstAttribute="trailing" secondItem="5n0-1H-2O7" secondAttribute="trailing" id="Xb1-hD-11c"/>
                             <constraint firstItem="5n0-1H-2O7" firstAttribute="top" secondItem="sVE-AT-xs0" secondAttribute="top" id="ffl-sp-kAv"/>
+                            <constraint firstItem="DDG-6a-4ru" firstAttribute="width" secondItem="sVE-AT-xs0" secondAttribute="width" multiplier="0.569975" id="jUD-vd-Co1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nR6-Ya-nfl"/>
+                    <connections>
+                        <outlet property="сategoriesTypeSegmented" destination="DDG-6a-4ru" id="4ti-GW-39f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yra-MO-NHB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
