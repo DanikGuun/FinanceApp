@@ -12,22 +12,23 @@ import CoreData
 class Model{
     static let shared = Model()
     private init(){}
+    
     // MARK: Catrgories
     ///Добавление категории в persistanceContainer
     func addCategory(id: UUID, name: String, type: OperationType, icon: String, color: CGColor){
         let _ = Category(id: id, name: name, type: type.rawValue, icon: icon, color: colorToString(color))
         CoreDataManager.shared.saveContext()
     }
-    /**
-        Получение всех категорий
-     - Parameter type: тип нужных категорий, если nil, то возвращаются все
+    /** 
+    Получение всех категорий
+    - Parameter type: тип нужных категорий, если nil, то возвращаются все
      */
-    func getAllCategories(type: OperationType?) -> [Category]{
+    func getAllCategories(type: OperationType? = nil) -> [Category]{
         var categories: [Category] = []
         do{
-            let request = NSFetchRequest<NSFetchRequestResult>()
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
             let result = try CoreDataManager.shared.context.fetch(request)
-            for category in categories {
+            for category in result as! [Category] {
                 if let type{ //если это нужный нам тип или нет разницы
                     if type.rawValue == category.type{ categories.append(category) }
                 }
@@ -49,7 +50,6 @@ class Model{
     }
     
     // MARK: Enums
-    
     ///Тип операций доход/расход
     enum OperationType: String{
         case Expence = "Expence"
