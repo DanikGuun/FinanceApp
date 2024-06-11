@@ -7,9 +7,29 @@
 
 import Foundation
 import UIKit
+import CoreData
+
 class Model{
     static let shared = Model()
     private init(){}
+    // MARK: Catrgories
+    ///Добавление категории в persistanceContainer
+    func addCategory(id: UUID, name: String, type: OperationType, icon: String, color: CGColor){
+        let _ = Category(id: id, name: name, type: type.rawValue, icon: icon, color: colorToString(color))
+        CoreDataManager.shared.saveContext()
+    }
+    func getAllCategories() -> [Category]{
+        var categories: [Category] = []
+        do{
+            let request = NSFetchRequest<NSFetchRequestResult>()
+            let result = try CoreDataManager.shared.context.fetch(request)
+            for category in categories {
+                categories.append(category)
+            }
+        }
+        catch {print(error); print("Что-то не так")}
+        return categories
+    }
     
     // MARK: Additions
     func colorToString(_ color: CGColor) -> String{
@@ -22,7 +42,9 @@ class Model{
     }
     
     // MARK: Enums
-    enum OperationTypes: String{
+    
+    ///Тип операций доход/расход
+    enum OperationType: String{
         case Expence = "Expence"
         case Income = "Income"
     }
