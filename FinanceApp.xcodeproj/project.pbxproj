@@ -16,6 +16,7 @@
 		567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */; };
 		567CA9FF2C18B58F00C1E4FA /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FB2C18B58F00C1E4FA /* Category+CoreDataClass.swift */; };
 		567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */; };
+		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E192C11AD8300A240D1 /* AppDelegate.swift */; };
 		56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */; };
 		56F50E212C11AD8300A240D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E202C11AD8300A240D1 /* Base */; };
@@ -38,6 +39,7 @@
 		567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		567CA9FB2C18B58F00C1E4FA /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		56F50E162C11AD8300A240D1 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F50E192C11AD8300A240D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				56F50E482C11BB9000A240D1 /* MenuViewController.swift */,
 				564BB4032C13282100939974 /* OperationsViewController.swift */,
 				565D48622C18D21A00E44B0A /* CategoriesViewController.swift */,
+				567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56F50E242C11AD8300A240D1 /* FinanceApp.xcdatamodeld in Sources */,
+				567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,
 				567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */,
 				567CA9FF2C18B58F00C1E4FA /* Category+CoreDataClass.swift in Sources */,

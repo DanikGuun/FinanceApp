@@ -52,4 +52,13 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "categoryHandler", sender: nil)
+    }
+    
+    // MARK: Segou
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(1)
+    }
 }

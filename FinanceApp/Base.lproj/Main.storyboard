@@ -203,16 +203,91 @@
                             <constraint firstItem="DDG-6a-4ru" firstAttribute="width" secondItem="sVE-AT-xs0" secondAttribute="width" multiplier="0.569975" id="jUD-vd-Co1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nR6-Ya-nfl"/>
+                    <navigationItem key="navigationItem" id="nR6-Ya-nfl">
+                        <barButtonItem key="backBarButtonItem" title="меню" id="mKt-39-7cs"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoriesCollection" destination="XgO-0P-d9b" id="I6V-ug-3SN"/>
                         <outlet property="menuBackground" destination="5n0-1H-2O7" id="RBq-05-C1B"/>
                         <outlet property="сategoriesTypeSegmented" destination="DDG-6a-4ru" id="4ti-GW-39f"/>
+                        <segue destination="pDF-9W-Br9" kind="show" identifier="categoryHandler" id="KN8-NZ-AaA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yra-MO-NHB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="84.732824427480907" y="888.73239436619724"/>
+        </scene>
+        <!--Category Handler View Controller-->
+        <scene sceneID="rAb-Mm-sfD">
+            <objects>
+                <viewController id="pDF-9W-Br9" customClass="CategoryHandlerViewController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NIV-Fu-tpD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeO-V1-JWL">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="148"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категории" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCL-Fz-UKm">
+                                        <rect key="frame" x="126" y="104.66666666666667" width="141" height="33.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="HCL-Fz-UKm" secondAttribute="bottom" constant="10" id="1y1-WF-6ph"/>
+                                    <constraint firstItem="HCL-Fz-UKm" firstAttribute="centerX" secondItem="JeO-V1-JWL" secondAttribute="centerX" id="njM-9I-map"/>
+                                    <constraint firstAttribute="height" constant="148" id="udC-Gh-Xah"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aDN-WE-Xq5">
+                                <rect key="frame" x="84" y="161" width="224" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="8vT-Vn-aT2"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Расходы"/>
+                                    <segment title="Доходы"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onChangeType:" destination="Zm5-vg-Dzm" eventType="valueChanged" id="qd0-lh-fgd"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Название..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bhc-74-4tY">
+                                <rect key="frame" x="16" y="217" width="144" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                            </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zzb-uT-zdI">
+                                <rect key="frame" x="16" y="254" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hPq-V4-t1D"/>
+                        <color key="backgroundColor" name="ControllersBackground"/>
+                        <constraints>
+                            <constraint firstItem="hPq-V4-t1D" firstAttribute="top" secondItem="JeO-V1-JWL" secondAttribute="top" constant="103" id="30r-2y-WkD"/>
+                            <constraint firstItem="aDN-WE-Xq5" firstAttribute="centerX" secondItem="hPq-V4-t1D" secondAttribute="centerX" id="5bH-aO-8cW"/>
+                            <constraint firstItem="JeO-V1-JWL" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" id="7BA-zi-hyZ"/>
+                            <constraint firstItem="aDN-WE-Xq5" firstAttribute="top" secondItem="JeO-V1-JWL" secondAttribute="bottom" constant="13" id="FW8-5v-KlJ"/>
+                            <constraint firstItem="aDN-WE-Xq5" firstAttribute="width" secondItem="NIV-Fu-tpD" secondAttribute="width" multiplier="0.503817" id="qW1-NY-gM3"/>
+                            <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="JeO-V1-JWL" secondAttribute="trailing" id="sTe-9S-uXy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="W6H-8y-bHN">
+                        <barButtonItem key="backBarButtonItem" title="меню" id="hV1-El-hCG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuBackground" destination="JeO-V1-JWL" id="MMM-8A-zIe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHA-xR-FM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965.64885496183206" y="888.73239436619724"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="jgC-Dd-n2q">
@@ -353,10 +428,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
