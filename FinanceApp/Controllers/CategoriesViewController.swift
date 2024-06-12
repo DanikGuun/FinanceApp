@@ -37,13 +37,19 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model.shared.getAllCategories(type: activeType).count
+        return Model.shared.getAllCategories(type: activeType).count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCell
-        let currentCategory = Model.shared.getAllCategories(type: activeType)[indexPath.item]
-        cell.setup(currentCategory)
+        
+        if Model.shared.getAllCategories(type: activeType).count > indexPath.item{
+            let currentCategory = Model.shared.getAllCategories(type: activeType)[indexPath.item]
+            cell.setup(currentCategory)
+        }
+        else{
+            cell.setup(name: "Добавить", icon: UIImage(systemName: "plus.app")!, iconBackroundColor: .clear, iconColor: .systemBlue)
+        }
         return cell
     }
 }
