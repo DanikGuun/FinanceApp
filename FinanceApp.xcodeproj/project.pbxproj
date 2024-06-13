@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5634F2172C1B751600FB52EF /* ColorPickCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5634F2162C1B751600FB52EF /* ColorPickCircle.swift */; };
 		564BB4042C13282100939974 /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BB4032C13282100939974 /* OperationsViewController.swift */; };
 		565D48612C18C27200E44B0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48602C18C27200E44B0A /* Model.swift */; };
 		565D48632C18D21A00E44B0A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48622C18D21A00E44B0A /* CategoriesViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5634F2162C1B751600FB52EF /* ColorPickCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickCircle.swift; sourceTree = "<group>"; };
 		564BB4032C13282100939974 /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
 		565D48602C18C27200E44B0A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		565D48622C18D21A00E44B0A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5634F2152C1B74F400FB52EF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
+				565D48642C18E37100E44B0A /* CategoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		567CA9F22C18B36500C1E4FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +154,8 @@
 		56F50E4C2C11C7D600A240D1 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
-				565D48642C18E37100E44B0A /* CategoryCell.swift */,
+				5634F2152C1B74F400FB52EF /* Cells */,
+				5634F2162C1B751600FB52EF /* ColorPickCircle.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -227,6 +238,7 @@
 				567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */,
 				567CA9FF2C18B58F00C1E4FA /* Category+CoreDataClass.swift in Sources */,
 				565D48652C18E37100E44B0A /* CategoryCell.swift in Sources */,
+				5634F2172C1B751600FB52EF /* ColorPickCircle.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				565D48612C18C27200E44B0A /* Model.swift in Sources */,
