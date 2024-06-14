@@ -38,6 +38,23 @@ class Model{
         catch {print(error); print("Что-то не так")}
         return categories
     }
+    // MARK: Icons
+    /**
+     Получение всех иконок
+     - Parameter type: тип иконок, если nil, то все
+     */
+    func getAllIcons(type: IconManager.IconCategories? = nil) -> [String]{
+        var icons: [String] = []
+        for icon in IconManager.shared.icons{
+            if let type{ //если это нужный нам тип или нет разницы
+                if type == icon.category{
+                    icons.append(icon.name)
+                }
+            }
+            else {icons.append(icon.name)}
+        }
+        return icons
+    }
     
     // MARK: Additions
     func colorToString(_ color: CGColor) -> String{

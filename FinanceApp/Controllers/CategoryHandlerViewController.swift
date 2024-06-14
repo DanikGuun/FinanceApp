@@ -13,6 +13,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var colorPickerStack: UIStackView!
     @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var iconsCollectionView: UICollectionView!
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -39,9 +40,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         more.addGestureRecognizer(recogniser)
         colorPickerStack.addArrangedSubview(more)
     }
-    @objc func moreColorsPressed(_ sender: UIImage){
-        print(3)
-    }
+    
     func colorPicked(color: ColorPickCircle) {
         for item in (colorPickerStack.arrangedSubviews as! [ColorPickCircle]).dropLast(){
             item.layer.borderWidth = 0
@@ -50,12 +49,17 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         color.layer.borderColor = UIColor(named: "ColorPicked")?.cgColor
     }
     
+    @objc func moreColorsPressed(_ sender: UIImage){
+        print(3)
+    }
+    
     // MARK: Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell =
         return UICollectionViewCell()
     }
     
