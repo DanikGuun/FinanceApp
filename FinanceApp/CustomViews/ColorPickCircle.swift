@@ -10,8 +10,10 @@ import UIKit
 
 class ColorPickCircle: UIImageView{
     private let delegate: ColorPickCircleDelegate
+    let color: UIColor
     
     init(color: UIColor, frame: CGRect, delegate: ColorPickCircleDelegate){
+        self.color = color
         self.delegate = delegate
         super.init(frame: frame)
         self.tintColor = color
@@ -22,6 +24,7 @@ class ColorPickCircle: UIImageView{
     
     required init?(coder: NSCoder) {
         self.delegate = CategoryHandlerViewController()
+        self.color = .clear
         super.init(coder: coder)
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

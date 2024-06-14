@@ -21,11 +21,14 @@ class IconManager{
         case Food = "Еда"
         case Clothes = "Одежда"
         case Learning = "обучение"
+        case Sport = "Спорт"
     }
     
     let icons: [Icon] = [
+        Icon(name: "book", category: .Learning),
+        Icon(name: "book.pages", category: .Learning),
         Icon(name: "bus.fill", category: .Vehicle),
         Icon(name: "fork.knife", category: .Food),
         Icon(name: "tshirt", category: .Clothes),
-        Icon(name: "book", category: .Learning)]
+        Icon(name: "volleyball", category: .Sport)]
 }
