@@ -8,23 +8,12 @@
 import Foundation
 import UIKit
 
-class CategoryCell: UICollectionViewCell{
+class CategoryCell: IconCell{
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var background: UIView! //общий фон для ячейки с отступом чтобы сделать тень
-    @IBOutlet weak var iconBackground: UIView!
     var category: Category?
-    
-    private func superSetup(){
-        background.layer.cornerRadius = 14
-        background.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
-        background.layer.shadowOpacity = 1
-        background.layer.shadowOffset = CGSize(width: 0, height: 0)
-        background.layer.shadowRadius = 2
-        
-        iconBackground.layer.cornerRadius = 9
-        icon.tintColor = .white
-        
+
+    internal override func superSetup(){
+        super.superSetup()
         name.adjustsFontSizeToFitWidth = true
     }
     
