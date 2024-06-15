@@ -16,9 +16,10 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     @IBOutlet weak var iconsCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
     
-    var activeColor: UIColor = .clear
-    var icons: [String] = [] //иконки, чтобы при смене цвета их брать оттуда же
-    var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
+    private var activeColor: UIColor = .clear
+    private var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
+    var currentCategory: Category? //категория, если создаем, а не редачим, то nil
+    private var icons: [String] = [] //иконки, чтобы при смене цвета их брать оттуда же
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -32,7 +33,12 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     // MARK: color pickers
     func addColors(){
         let height = colorPickerStack.frame.height
-        let colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemRed, .systemMint]
+        var colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemRed, .systemMint]
+        
+        if let currentCategory{ //если редачим, вставляем первый цвет
+            colors.insert(UIColor(cgColor: Model.shared.stringToColor(currentCategory.color!)), at: 0)
+        }
+        
         for c in colors{
             let colorPick = ColorPickCircle(color: c, frame: CGRect(x: 0, y: 0, width: height, height: height), delegate: self)
             colorPickerStack.addArrangedSubview(colorPick)
@@ -70,6 +76,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     // MARK: Collection View
     func setupIconsCollection(){
+        activeIcon = currentCategory?.icon
         iconsCollectionView.delegate = self
         iconsCollectionView.dataSource = self
     }
@@ -95,20 +102,28 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selected = collectionView.cellForItem(at: indexPath) as! IconCell
-        let background = getSubviewWithTag(viewToFind: selected, tag: "iconBackground")
-        background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
-        background[0].layer.borderWidth = 2
-        background[0].backgroundColor = UIColor(named: "IconPickedBackground")
-        //открашиваем остальные
-        for cell in collectionView.visibleCells{
-            if cell != selected{
-                let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
-                background[0].layer.borderColor = UIColor.clear.cgColor
-                background[0].layer.borderWidth = 0
-                background[0].backgroundColor = UIColor(named: "CellBackround")
+        if indexPath.item != 5{
+            let selected = collectionView.cellForItem(at: indexPath) as! IconCell
+            let background = getSubviewWithTag(viewToFind: selected, tag: "iconBackground")
+            background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
+            background[0].layer.borderWidth = 2
+            background[0].backgroundColor = UIColor(named: "IconPickedBackground")
+            //открашиваем остальные
+            for cell in collectionView.visibleCells{
+                if cell != selected{
+                    let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+                    background[0].layer.borderColor = UIColor.clear.cgColor
+                    background[0].layer.borderWidth = 0
+                    background[0].backgroundColor = UIColor(named: "CellBackround")
+                }
             }
+            let selectedImage = (getSubviewWithTag(viewToFind: selected, tag: "icon")[0] as! UIImageView).image
+            activeIcon = getSFName(of: selectedImage!)
         }
+    }
+    
+    func selecIcon(icon: UICollectionViewCell){
+        
     }
     
     // MARK: Additions
@@ -128,7 +143,34 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         
     }
     
-    ///подвью с id
+    /**
+     получить имя иконки с UIImage, ибо встроенного нет, по сути из описания вытаскиваем
+     
+        Если попалась строка "symbol(system:  ", то запоминаем, что началось имя символа
+            После идем до закрывающей скобки, которая означает, что имя закончилось и возвращаем это имя
+     */
+    func getSFName(of image: UIImage) -> String{
+        let str = image.debugDescription
+        var isNameStarted = false
+        var nameStartIndex = str.startIndex
+        
+        for (index, symbol) in str.enumerated(){
+            
+            let start = str.index(str.startIndex, offsetBy: index)
+            let end = str.index(start, offsetBy: 14)
+            
+            if str[start...end] == "symbol(system: "{
+                isNameStarted = true
+                nameStartIndex = str.index(after: end)
+            }
+            if isNameStarted && symbol == ")"{
+                return String(str[nameStartIndex...str.index(before: start)])
+            }
+        }
+        return ""
+    }
+    
+    ///подвью с нужным тегом
     func getSubviewWithTag(viewToFind: UIView, tag: String) -> [UIView]{
         var arr: [UIView] = []
         for elem in viewToFind.subviews{

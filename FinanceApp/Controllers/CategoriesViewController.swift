@@ -22,6 +22,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
         categoriesCollection.delegate = self
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        categoriesCollection.reloadData()
+    }
     
     @IBAction func onChangeType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -54,11 +57,15 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "categoryHandler", sender: nil)
+        let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
+        self.performSegue(withIdentifier: "categoryHandler", sender: selected.category)
     }
     
     // MARK: Segou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(1)
+        if let category = sender as! Category?{
+            let handler = segue.destination as! CategoryHandlerViewController //менюшка с направлением
+            handler.currentCategory = category
+        }
     }
 }
