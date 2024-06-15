@@ -349,12 +349,15 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00v-af-GtP">
-                                <rect key="frame" x="115" y="776" width="162" height="42"/>
+                                <rect key="frame" x="102" y="774" width="189" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="0fx-BD-Q6g"/>
+                                    <constraint firstAttribute="height" constant="44" id="0fx-BD-Q6g"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="applyButtonPressed:" destination="pDF-9W-Br9" eventType="touchUpInside" id="EWx-BW-gVK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hPq-V4-t1D"/>
@@ -373,9 +376,9 @@
                             <constraint firstItem="Qmz-UJ-oCH" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="10" id="Qry-mA-gRF"/>
                             <constraint firstItem="fCQ-F6-l2b" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="25" id="WtM-xX-9LP"/>
                             <constraint firstItem="mww-18-KvY" firstAttribute="top" secondItem="Qmz-UJ-oCH" secondAttribute="bottom" constant="8.3333333333333712" id="ZTq-4o-vQD"/>
-                            <constraint firstItem="00v-af-GtP" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="115" id="Zdz-hJ-hZg"/>
+                            <constraint firstItem="00v-af-GtP" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="102" id="Zdz-hJ-hZg"/>
                             <constraint firstItem="F9M-ca-ve7" firstAttribute="top" secondItem="mww-18-KvY" secondAttribute="bottom" constant="13" id="fLS-qS-TLJ"/>
-                            <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="00v-af-GtP" secondAttribute="trailing" constant="116" id="ggX-oR-ner"/>
+                            <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="00v-af-GtP" secondAttribute="trailing" constant="102" id="ggX-oR-ner"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.0219092" id="h0Y-GO-5HP"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="top" secondItem="aDN-WE-Xq5" secondAttribute="bottom" constant="25" id="h82-JJ-tPw"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="16" id="hZi-aV-cGL"/>
@@ -394,9 +397,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="applyButton" destination="00v-af-GtP" id="qMO-vT-fVI"/>
+                        <outlet property="categoryTypeSegmentedConrol" destination="aDN-WE-Xq5" id="GEl-5i-UPV"/>
                         <outlet property="colorPickerStack" destination="mww-18-KvY" id="bTQ-uJ-oJ2"/>
                         <outlet property="iconsCollectionView" destination="fCQ-F6-l2b" id="esN-lH-3xq"/>
                         <outlet property="menuBackground" destination="JeO-V1-JWL" id="MMM-8A-zIe"/>
+                        <outlet property="nameTextField" destination="Bhc-74-4tY" id="Dui-0u-F0p"/>
                         <outlet property="stackWidthConstraint" destination="T0e-sn-kvW" id="KZg-9S-Qra"/>
                     </connections>
                 </viewController>

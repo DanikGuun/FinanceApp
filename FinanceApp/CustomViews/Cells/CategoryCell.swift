@@ -25,6 +25,7 @@ class CategoryCell: IconCell{
         iconBackground.backgroundColor = UIColor(cgColor: Model.shared.stringToColor(category.color!))
     }
     func setup(name: String, icon: UIImage, iconBackroundColor: UIColor, iconColor: UIColor = .white){
+        category = nil
         superSetup()
         self.name.text = name
         self.icon.image = icon

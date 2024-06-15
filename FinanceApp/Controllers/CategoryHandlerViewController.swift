@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate{
 
+    @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var colorPickerStack: UIStackView!
     @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
@@ -23,11 +25,20 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        nameTextField.text = currentCategory?.name ?? ""
         Appereances.applyMenuBorder(&menuBackground)
         addColors()
         icons = getRandomIcons()
         setupIconsCollection()
         setupApplyButton()
+        setupTextField()
+        
+        if let currentCategory{
+            if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
+            else {categoryTypeSegmentedConrol.selectedSegmentIndex = 1}
+        }
+        
+    
     }
     
     // MARK: color pickers
@@ -91,6 +102,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             case 0:
             if let activeIcon{
                 cell.setup(icon: UIImage(systemName: activeIcon)!, iconBackroundColor: activeColor)
+                selectCell(cell: cell, collection: collectionView)
             }
             else{ cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor) } //default
             case 5:
@@ -102,28 +114,29 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        view.endEditing(true)
         if indexPath.item != 5{
             let selected = collectionView.cellForItem(at: indexPath) as! IconCell
-            let background = getSubviewWithTag(viewToFind: selected, tag: "iconBackground")
-            background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
-            background[0].layer.borderWidth = 2
-            background[0].backgroundColor = UIColor(named: "IconPickedBackground")
-            //открашиваем остальные
-            for cell in collectionView.visibleCells{
-                if cell != selected{
-                    let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
-                    background[0].layer.borderColor = UIColor.clear.cgColor
-                    background[0].layer.borderWidth = 0
-                    background[0].backgroundColor = UIColor(named: "CellBackround")
-                }
-            }
-            let selectedImage = (getSubviewWithTag(viewToFind: selected, tag: "icon")[0] as! UIImageView).image
-            activeIcon = getSFName(of: selectedImage!)
+            selectCell(cell: selected, collection: collectionView)
         }
     }
     
-    func selecIcon(icon: UICollectionViewCell){
-        
+    func selectCell(cell: UICollectionViewCell, collection: UICollectionView){
+        let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+        background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
+        background[0].layer.borderWidth = 2
+        background[0].backgroundColor = UIColor(named: "IconPickedBackground")
+        //открашиваем остальные
+        for otherCell in collection.visibleCells{
+            if otherCell != cell{
+                let background = getSubviewWithTag(viewToFind: otherCell, tag: "iconBackground")
+                background[0].layer.borderColor = UIColor.clear.cgColor
+                background[0].layer.borderWidth = 0
+                background[0].backgroundColor = UIColor(named: "CellBackround")
+            }
+        }
+        let selectedImage = (getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
+        activeIcon = getSFName(of: selectedImage!)
     }
     
     // MARK: Additions
@@ -140,7 +153,43 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     }
     ///настраиваем кнопку
     func setupApplyButton(){
-        
+        applyButton.layer.cornerRadius = 25
+        var conf = applyButton.configuration
+        if let currentCategory{
+            conf?.image = UIImage(systemName: "pencil.line")
+            conf?.title = "Применить"
+        }
+        else{
+            conf?.image = UIImage(systemName: "plus.square")
+            conf?.title = "Добавить"
+        }
+        applyButton.configuration = conf
+    }
+    @IBAction func applyButtonPressed(_ sender: UIButton) {
+        let name = nameTextField.text!
+        let color = Model.shared.colorToString(activeColor.cgColor)
+        let categoryType: String
+        if categoryTypeSegmentedConrol.selectedSegmentIndex == 0{categoryType = Model.OperationType.Expence.rawValue}
+        else {categoryType = Model.OperationType.Income.rawValue}
+        if let currentCategory{
+            currentCategory.color = color
+            currentCategory.name = name
+            currentCategory.icon = activeIcon
+            currentCategory.type = categoryType
+        }
+        else {Model.shared.addCategory(id: UUID(), name: name, type: categoryType, icon: activeIcon!, color: color)}
+        CoreDataManager.shared.saveContext()
+        navigationController?.popViewController(animated: true) //закрытие страницы
+    }
+    
+    //TextField
+    func setupTextField(){
+        nameTextField.returnKeyType = .done
+        nameTextField.delegate = self
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     /**
@@ -180,5 +229,10 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             arr += getSubviewWithTag(viewToFind: elem, tag: tag)
         }
         return arr
+    }
+    
+    ///Чтобы при повторном нажатии убиралась клавиатура
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

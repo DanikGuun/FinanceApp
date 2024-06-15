@@ -14,13 +14,13 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var categoriesCollection: UICollectionView!
     @IBOutlet weak var сategoriesTypeSegmented: UISegmentedControl!
     private var activeType: Model.OperationType = .Expence
+    var patternCell: CategoryCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Appereances.applyMenuBorder(&menuBackground)
         categoriesCollection.dataSource = self
         categoriesCollection.delegate = self
-
     }
     override func viewWillAppear(_ animated: Bool) {
         categoriesCollection.reloadData()
@@ -45,7 +45,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCell
-        
         if Model.shared.getAllCategories(type: activeType).count > indexPath.item{
             let currentCategory = Model.shared.getAllCategories(type: activeType)[indexPath.item]
             cell.setup(currentCategory)

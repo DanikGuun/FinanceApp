@@ -19,7 +19,11 @@ class Model{
         let _ = Category(id: id, name: name, type: type.rawValue, icon: icon, color: colorToString(color))
         CoreDataManager.shared.saveContext()
     }
-    /** 
+    func addCategory(id: UUID, name: String, type: String, icon: String, color: String){
+        let _ = Category(id: id, name: name, type: type, icon: icon, color: color)
+        CoreDataManager.shared.saveContext()
+    }
+    /**
     Получение всех категорий
     - Parameter type: тип нужных категорий, если nil, то возвращаются все
      */
