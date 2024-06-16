@@ -21,6 +21,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
         Appereances.applyMenuBorder(&menuBackground)
         categoriesCollection.dataSource = self
         categoriesCollection.delegate = self
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         categoriesCollection.reloadData()

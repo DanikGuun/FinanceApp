@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate{
+class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate, IconpickerParent{
 
     @IBOutlet weak var viewControllerTitle: UILabel!
     @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
@@ -141,6 +141,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             selectCell(cell: selected, collection: collectionView)
             unSelectCells(otherwise: selected)
         }
+        else{ performSegue(withIdentifier: "iconSegue", sender: nil)}//нажато на меню иконок
     }
     
     func selectCell(cell: UICollectionViewCell, collection: UICollectionView){
@@ -150,7 +151,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         background[0].backgroundColor = UIColor(named: "IconPickedBackground")
         
         let selectedImage = (getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
-        activeIcon = getSFName(of: selectedImage!)
+        activeIcon = Model.shared.getSFName(of: selectedImage!)
     }
     
     func unSelectCells(otherwise selectedCell: UICollectionViewCell? = nil){
@@ -162,6 +163,13 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
                 background[0].backgroundColor = UIColor(named: "CellBackround")
             }
         }
+    }
+    
+    // MARK: Icons
+    func pickIconFromMenu(icon: String) {
+        activeIcon = icon
+        unSelectCells()
+        iconsCollectionView.reloadData()
     }
     
     // MARK: Additions
@@ -224,33 +232,6 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         return true
     }
     
-    /**
-     получить имя иконки с UIImage, ибо встроенного нет, по сути из описания вытаскиваем
-     
-        Если попалась строка "symbol(system:  ", то запоминаем, что началось имя символа
-            После идем до закрывающей скобки, которая означает, что имя закончилось и возвращаем это имя
-     */
-    func getSFName(of image: UIImage) -> String{
-        let str = image.debugDescription
-        var isNameStarted = false
-        var nameStartIndex = str.startIndex
-        
-        for (index, symbol) in str.enumerated(){
-            
-            let start = str.index(str.startIndex, offsetBy: index)
-            let end = str.index(start, offsetBy: 14)
-            
-            if str[start...end] == "symbol(system: "{
-                isNameStarted = true
-                nameStartIndex = str.index(after: end)
-            }
-            if isNameStarted && symbol == ")"{
-                return String(str[nameStartIndex...str.index(before: start)])
-            }
-        }
-        return ""
-    }
-    
     ///подвью с нужным тегом
     func getSubviewWithTag(viewToFind: UIView, tag: String) -> [UIView]{
         var arr: [UIView] = []
@@ -274,6 +255,10 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         case "colorpickerSegue":
             let controller = segue.destination as! MultiColorpickerViewController
             controller.parentController = self
+        case "iconSegue":
+            let controller = segue.destination as! IconpickerViewController
+            controller.parentView = self
+            controller.iconBackgroundColor = activeColor
         default: break
         }
     }

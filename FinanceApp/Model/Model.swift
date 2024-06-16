@@ -94,6 +94,32 @@ class Model{
         }
         return icons
     }
+    /**
+     получить имя иконки с UIImage, ибо встроенного нет, по сути из описания вытаскиваем
+     
+        Если попалась строка "symbol(system:  ", то запоминаем, что началось имя символа
+            После идем до закрывающей скобки, которая означает, что имя закончилось и возвращаем это имя
+     */
+    func getSFName(of image: UIImage) -> String{
+        let str = image.debugDescription
+        var isNameStarted = false
+        var nameStartIndex = str.startIndex
+        
+        for (index, symbol) in str.enumerated(){
+            
+            let start = str.index(str.startIndex, offsetBy: index)
+            let end = str.index(start, offsetBy: 14)
+            
+            if str[start...end] == "symbol(system: "{
+                isNameStarted = true
+                nameStartIndex = str.index(after: end)
+            }
+            if isNameStarted && symbol == ")"{
+                return String(str[nameStartIndex...str.index(before: start)])
+            }
+        }
+        return ""
+    }
     
     ///Получаем случайные count иконок
     func getRandomIcons(count: Int, otherwise: String? = nil) -> [String]{
@@ -109,6 +135,26 @@ class Model{
         }
             
         return icons
+    }
+    
+    func getIconCategoriesCount() -> Int{return IconManager.IconCategories.allCases.count}
+    
+    ///Словарь типа категория-иконки
+    func getIconsDictionary() -> Dictionary<IconManager.IconCategories, [String]>{
+        let categories = IconManager.IconCategories.allCases
+        let icons = IconManager.shared.icons
+        var iconDictionary: Dictionary<IconManager.IconCategories, [String]> = [:]
+        
+        for icon in icons{
+            if let _ = iconDictionary[icon.category]{
+                iconDictionary[icon.category]!.append(icon.name)
+            }
+            else {
+                iconDictionary[icon.category] = [icon.name]
+            }
+        }
+        
+        return iconDictionary
     }
     
     // MARK: Additions

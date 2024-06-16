@@ -19,6 +19,7 @@
 		567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */; };
 		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
+		56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* IconsHeaderView.swift */; };
 		56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */; };
 		56CBFA172C1F3A2400CA617E /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA162C1F3A2400CA617E /* ColorManager.swift */; };
 		56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */; };
@@ -49,6 +50,7 @@
 		567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
+		56A334A62C1F973000909B35 /* IconsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHeaderView.swift; sourceTree = "<group>"; };
 		56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerViewController.swift; sourceTree = "<group>"; };
 		56CBFA162C1F3A2400CA617E /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerCell.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				565D48642C18E37100E44B0A /* CategoryCell.swift */,
 				56D3031B2C1C573D00E5DA37 /* IconCell.swift */,
 				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
+				56A334A62C1F973000909B35 /* IconsHeaderView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -116,7 +119,6 @@
 		56CBFA182C1F3F5500CA617E /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				564BB4032C13282100939974 /* OperationsViewController.swift */,
 				565D48622C18D21A00E44B0A /* CategoriesViewController.swift */,
 				567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */,
 				56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */,
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				56F50E482C11BB9000A240D1 /* MenuViewController.swift */,
+				564BB4032C13282100939974 /* OperationsViewController.swift */,
 				56CBFA182C1F3F5500CA617E /* Category */,
 			);
 			path = Controllers;
@@ -274,6 +277,7 @@
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				565D48612C18C27200E44B0A /* Model.swift in Sources */,
+				56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */,
 				56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */,
 				56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */,
 				56F50E492C11BB9000A240D1 /* MenuViewController.swift in Sources */,

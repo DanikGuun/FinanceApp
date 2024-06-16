@@ -16,7 +16,7 @@ class IconManager{
         let name: String //SysteName
         let category: IconCategories
     }
-    enum IconCategories: String{
+    enum IconCategories: String, CaseIterable{
         case Vehicle = "Транспорт"
         case Food = "Еда"
         case Clothes = "Одежда"

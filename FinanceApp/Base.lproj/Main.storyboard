@@ -498,18 +498,123 @@
         <!--Иконка-->
         <scene sceneID="HjQ-SG-8ec">
             <objects>
-                <viewController id="891-HS-zbe" sceneMemberID="viewController">
+                <viewController id="891-HS-zbe" customClass="IconpickerViewController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X5I-Dc-iqk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2y-lU-zgJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="iev-fm-91w"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ihS-zs-rBK">
+                                <rect key="frame" x="0.0" y="108" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="scrollIndicatorInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="Pf9-fe-tLu">
+                                    <size key="itemSize" width="85" height="85"/>
+                                    <size key="headerReferenceSize" width="50" height="30"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="iconCell" id="fUt-LA-vpu" customClass="IconCell" customModule="FinanceApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="40" width="85" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" restorationIdentifier="iconBackground" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-nz-ev9">
+                                                    <rect key="frame" x="3" y="3" width="79" height="79"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qt3-bF-3Kt">
+                                                            <rect key="frame" x="13" y="13" width="53" height="53"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="icon" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="X50-S9-Wr4">
+                                                                    <rect key="frame" x="12" y="9.6666666666666679" width="29" height="31.000000000000004"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="X50-S9-Wr4" secondAttribute="bottom" constant="12" id="2YS-dz-RFK"/>
+                                                                <constraint firstItem="X50-S9-Wr4" firstAttribute="leading" secondItem="Qt3-bF-3Kt" secondAttribute="leading" constant="12" id="HCd-bR-t5k"/>
+                                                                <constraint firstItem="X50-S9-Wr4" firstAttribute="top" secondItem="Qt3-bF-3Kt" secondAttribute="top" constant="12" id="hoR-si-Cyf"/>
+                                                                <constraint firstAttribute="trailing" secondItem="X50-S9-Wr4" secondAttribute="trailing" constant="12" id="rCN-17-oNO"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="CellBackround"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Qt3-bF-3Kt" secondAttribute="bottom" constant="13" id="Iki-Vi-ri0"/>
+                                                        <constraint firstItem="Qt3-bF-3Kt" firstAttribute="top" secondItem="9fc-nz-ev9" secondAttribute="top" constant="13" id="cMb-de-0so"/>
+                                                        <constraint firstItem="Qt3-bF-3Kt" firstAttribute="leading" secondItem="9fc-nz-ev9" secondAttribute="leading" constant="13" id="jek-kM-A37"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Qt3-bF-3Kt" secondAttribute="trailing" constant="13" id="qrW-7d-UhB"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9fc-nz-ev9" secondAttribute="trailing" constant="3" id="BuB-R5-l12"/>
+                                            <constraint firstItem="9fc-nz-ev9" firstAttribute="leading" secondItem="fUt-LA-vpu" secondAttribute="leading" constant="3" id="c6a-H7-fkT"/>
+                                            <constraint firstAttribute="bottom" secondItem="9fc-nz-ev9" secondAttribute="bottom" constant="3" id="cBq-ei-Mzi"/>
+                                            <constraint firstItem="9fc-nz-ev9" firstAttribute="top" secondItem="fUt-LA-vpu" secondAttribute="top" constant="3" id="g3y-ZG-P27"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="background" destination="9fc-nz-ev9" id="xbJ-OK-Gpw"/>
+                                            <outlet property="icon" destination="X50-S9-Wr4" id="0c9-83-dkh"/>
+                                            <outlet property="iconBackground" destination="Qt3-bF-3Kt" id="uJR-RS-JzQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="iconType" id="2X2-Ql-Afc" customClass="IconsHeaderView" customModule="FinanceApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEl-7e-jFB">
+                                            <rect key="frame" x="10" y="0.0" width="383" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="fEl-7e-jFB" firstAttribute="top" secondItem="2X2-Ql-Afc" secondAttribute="top" id="6vv-Cv-O7Y"/>
+                                        <constraint firstAttribute="bottom" secondItem="fEl-7e-jFB" secondAttribute="bottom" id="SmQ-8d-03r"/>
+                                        <constraint firstAttribute="trailing" secondItem="fEl-7e-jFB" secondAttribute="trailing" id="pkL-iq-fm3"/>
+                                        <constraint firstItem="fEl-7e-jFB" firstAttribute="leading" secondItem="2X2-Ql-Afc" secondAttribute="leading" constant="10" id="u2a-gP-gFD"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionNameLabel" destination="fEl-7e-jFB" id="5AC-ne-NWN"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="C3Y-og-9ku"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="ControllersBackground"/>
+                        <constraints>
+                            <constraint firstItem="h2y-lU-zgJ" firstAttribute="top" secondItem="X5I-Dc-iqk" secondAttribute="top" id="1jh-I7-xfn"/>
+                            <constraint firstItem="h2y-lU-zgJ" firstAttribute="leading" secondItem="C3Y-og-9ku" secondAttribute="leading" id="3wz-J8-6Fy"/>
+                            <constraint firstItem="ihS-zs-rBK" firstAttribute="leading" secondItem="C3Y-og-9ku" secondAttribute="leading" id="5On-af-Nql"/>
+                            <constraint firstItem="C3Y-og-9ku" firstAttribute="trailing" secondItem="ihS-zs-rBK" secondAttribute="trailing" id="MJY-Q4-5S0"/>
+                            <constraint firstItem="ihS-zs-rBK" firstAttribute="top" secondItem="C3Y-og-9ku" secondAttribute="top" constant="5" id="RH0-if-fk0"/>
+                            <constraint firstItem="C3Y-og-9ku" firstAttribute="bottom" secondItem="ihS-zs-rBK" secondAttribute="bottom" id="a8X-80-H0B"/>
+                            <constraint firstAttribute="trailing" secondItem="h2y-lU-zgJ" secondAttribute="trailing" id="wFJ-Ot-pDv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Иконка" id="GqP-Hm-mrZ"/>
+                    <connections>
+                        <outlet property="iconsCollectionView" destination="ihS-zs-rBK" id="ljl-Sk-s9e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4v-7e-ZTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2289" y="1623"/>
+            <point key="canvasLocation" x="2287.7862595419847" y="1622.5352112676057"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="jgC-Dd-n2q">
