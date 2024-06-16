@@ -17,6 +17,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconsCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var deleteCategoryButton: UIButton!
     
     private var activeColor: UIColor = .clear
     private var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
@@ -39,6 +40,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             else {categoryTypeSegmentedConrol.selectedSegmentIndex = 1}
         }
         else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
+        setupDeleteCateforyButton()
     }
     
     // MARK: color pickers
@@ -151,11 +153,11 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         }
         return icons
     }
-    ///настраиваем кнопку
+    ///настраиваем кнопку добавления
     func setupApplyButton(){
         applyButton.layer.cornerRadius = 25
         var conf = applyButton.configuration
-        if let currentCategory{
+        if currentCategory != nil{
             conf?.image = UIImage(systemName: "pencil.line")
             conf?.title = "Применить"
         }
@@ -180,6 +182,18 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         else {Model.shared.addCategory(id: UUID(), name: name, type: categoryType, icon: activeIcon!, color: color)}
         CoreDataManager.shared.saveContext()
         navigationController?.popViewController(animated: true) //закрытие страницы
+    }
+    
+    //настраиваем кнопку удаления
+    func setupDeleteCateforyButton(){
+        if currentCategory != nil {deleteCategoryButton.isHidden = false}
+        else {deleteCategoryButton.isHidden = true}
+    }
+    @IBAction func removeButtonPressed() {
+        if let currentCategory{
+            Model.shared.deleteCategory(category: currentCategory)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
     //TextField

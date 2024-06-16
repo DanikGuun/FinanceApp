@@ -23,6 +23,10 @@ class Model{
         let _ = Category(id: id, name: name, type: type, icon: icon, color: color)
         CoreDataManager.shared.saveContext()
     }
+    func deleteCategory(category: Category){
+        CoreDataManager.shared.context.delete(category)
+        CoreDataManager.shared.saveContext()
+    }
     /**
     Получение всех категорий
     - Parameter type: тип нужных категорий, если nil, то возвращаются все

@@ -234,6 +234,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRm-FU-AiF">
+                                        <rect key="frame" x="303" y="104" width="89" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Удалить"/>
+                                        <connections>
+                                            <action selector="removeButtonPressed" destination="pDF-9W-Br9" eventType="touchUpInside" id="MlL-zr-N9D"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -399,6 +409,7 @@
                         <outlet property="applyButton" destination="00v-af-GtP" id="qMO-vT-fVI"/>
                         <outlet property="categoryTypeSegmentedConrol" destination="aDN-WE-Xq5" id="GEl-5i-UPV"/>
                         <outlet property="colorPickerStack" destination="mww-18-KvY" id="bTQ-uJ-oJ2"/>
+                        <outlet property="deleteCategoryButton" destination="mRm-FU-AiF" id="hqa-N7-gPh"/>
                         <outlet property="iconsCollectionView" destination="fCQ-F6-l2b" id="esN-lH-3xq"/>
                         <outlet property="menuBackground" destination="JeO-V1-JWL" id="MMM-8A-zIe"/>
                         <outlet property="nameTextField" destination="Bhc-74-4tY" id="Dui-0u-F0p"/>
@@ -552,10 +563,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
