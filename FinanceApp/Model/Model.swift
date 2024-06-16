@@ -95,6 +95,22 @@ class Model{
         return icons
     }
     
+    ///Получаем случайные count иконок
+    func getRandomIcons(count: Int, otherwise: String? = nil) -> [String]{
+        var icons = getAllIcons()
+        
+        if let otherwise {icons.removeAll {$0 == otherwise}} //если у нас есть иконка, удалеяем чтобы не повторялась
+        
+        guard count > 0 && icons.count > count else {return []}
+        
+        while icons.count > count{
+            let id = Int.random(in: 0 ..< icons.count)
+            icons.remove(at: id)
+        }
+            
+        return icons
+    }
+    
     // MARK: Additions
     func colorToString(_ color: CGColor) -> String{
         guard let components = color.components else{return "Жопа"}

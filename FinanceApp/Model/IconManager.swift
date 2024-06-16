@@ -30,5 +30,6 @@ class IconManager{
         Icon(name: "bus.fill", category: .Vehicle),
         Icon(name: "fork.knife", category: .Food),
         Icon(name: "tshirt", category: .Clothes),
-        Icon(name: "volleyball", category: .Sport)]
+        Icon(name: "volleyball", category: .Sport),
+        Icon(name: "frying.pan", category: .Food)]
 }

@@ -38,7 +38,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
         
         Appereances.applyMenuBorder(&menuBackground)
-        icons = getRandomIcons()
+        icons = Model.shared.getRandomIcons(count: 5, otherwise: activeIcon)
         
         viewControllerTitle.text = currentCategory?.name ?? "Новая категория"
         viewControllerTitle.adjustsFontSizeToFitWidth = true
@@ -165,17 +165,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     }
     
     // MARK: Additions
-    ///Получаем случайные 6 иконок
-    func getRandomIcons() -> [String]{
-        var allIcons = Model.shared.getAllIcons()
-        var icons: [String] = []
-        for _ in 0..<6{
-            let element = allIcons.randomElement()
-            icons.append(element!)
-            allIcons.removeAll(where: {$0 == element})
-        }
-        return icons
-    }
+
     ///настраиваем кнопку добавления
     func setupApplyButton(){
         applyButton.layer.cornerRadius = 25
