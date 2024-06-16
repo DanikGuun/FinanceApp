@@ -32,7 +32,14 @@ class Model{
     func getAvailableColors() -> [UIColor]{
         let mainColors = ColorManager.shared.getAvailableColors()
         var colors: [UIColor] = []
-        
+        for color in mainColors {
+            let comp = color.cgColor.components!
+            guard comp.count == 4 else {print(color); continue} //если чет не так с цветом
+            for alpha in 0...6{
+                let cg = CGColor(red: comp[0], green: comp[1], blue: comp[2], alpha: comp[3]-CGFloat(0.12*Double(alpha)))
+                colors.append(UIColor(cgColor: cg))
+            }
+        }
         return colors
     }
     /**
@@ -41,7 +48,7 @@ class Model{
      - Берет все возможные цвета и удаляет случайные из них, пока массив не уменьшится до нужного размера
      */
     func getRandomColors(count: Int) -> [UIColor]{
-        var colors = getAvailableColors()
+        var colors = ColorManager.shared.getAvailableColors()
         guard count >= 0 && count <= colors.count else{return []}
         while colors.count > count{
             let id = Int.random(in: 0..<colors.count)

@@ -17,7 +17,7 @@ class ColorManager{
     }
     private let colors: [UIColor] = [
         .systemBlue, .systemRed, .systemGreen, .systemOrange, .systemYellow,
-        .systemPink, .systemTeal, .systemCyan, .systemBrown, .systemGray,
-        .systemIndigo, .systemPurple
+        .systemPink, .systemTeal, .systemCyan, .systemBrown, .systemIndigo, .systemPurple,
+        UIColor(red: 0, green: 0, blue: 0, alpha: 1) //black
     ]
 }
