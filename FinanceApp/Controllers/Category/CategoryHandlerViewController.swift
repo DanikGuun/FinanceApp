@@ -56,7 +56,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         for item in colorPickerStack.arrangedSubviews {colorPickerStack.removeArrangedSubview(item)} //почистить цвета
         
         let height = colorPickerStack.frame.height
-        var colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemRed, .systemMint]
+        var colors: [UIColor] = Model.shared.getRandomColors(count: 5)
         
         if let activeColor{ //если редачим, вставляем первый цвет
             colors.insert(activeColor, at: 0)

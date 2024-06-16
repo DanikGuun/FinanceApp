@@ -30,7 +30,24 @@ class Model{
     
     // MARK: Colors
     func getAvailableColors() -> [UIColor]{
-        return ColorManager.shared.getAvailableColors()
+        let mainColors = ColorManager.shared.getAvailableColors()
+        var colors: [UIColor] = []
+        
+        return colors
+    }
+    /**
+     Массив из случайных count цветов
+     - Parameter count: Количество необходимых цветов
+     - Берет все возможные цвета и удаляет случайные из них, пока массив не уменьшится до нужного размера
+     */
+    func getRandomColors(count: Int) -> [UIColor]{
+        var colors = getAvailableColors()
+        guard count >= 0 && count <= colors.count else{return []}
+        while colors.count > count{
+            let id = Int.random(in: 0..<colors.count)
+            colors.remove(at: id)
+        }
+        return colors
     }
     
     /**
@@ -52,6 +69,7 @@ class Model{
         catch {print(error); print("Что-то не так")}
         return categories
     }
+    
     // MARK: Icons
     /**
      Получение всех иконок
