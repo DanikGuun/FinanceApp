@@ -30,4 +30,11 @@ class IconCell: UICollectionViewCell{
         self.icon.tintColor = iconColor
         iconBackground.backgroundColor = iconBackroundColor
     }
+    
+    func setIconBackgroundColor(_ color: UIColor){
+        iconBackground.backgroundColor = color
+    }
+    func setIconTintColor(_ color: UIColor){
+        icon.tintColor = color
+    }
 }

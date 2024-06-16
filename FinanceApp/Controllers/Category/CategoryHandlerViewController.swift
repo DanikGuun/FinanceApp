@@ -88,11 +88,18 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         color.layer.borderColor = UIColor(named: "ColorPicked")?.cgColor
         activeColor = color.color
         
-        iconsCollectionView.reloadData()
+        for (index, iconCell) in iconsCollectionView.visibleCells.enumerated(){
+            let cell = iconCell as! IconCell
+            if index != 5{ //если эта не иконка "больше" красим задний фон, иначе - саму иконку
+                cell.setIconBackgroundColor(color.color)
+            }
+            else {cell.setIconTintColor(color.color)}
+        }
     }
     
     func colorPickedFromMultiMenu(color: UIColor) {
-        print(color.description)
+        activeColor = color
+        addColors()
     }
     
     @objc func moreColorsPressed(_ sender: UIImage){
@@ -132,6 +139,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         if indexPath.item != 5{
             let selected = collectionView.cellForItem(at: indexPath) as! IconCell
             selectCell(cell: selected, collection: collectionView)
+            unSelectCells(otherwise: selected)
         }
     }
     
@@ -140,17 +148,20 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
         background[0].layer.borderWidth = 2
         background[0].backgroundColor = UIColor(named: "IconPickedBackground")
-        //открашиваем остальные
-        for otherCell in collection.visibleCells{
-            if otherCell != cell{
-                let background = getSubviewWithTag(viewToFind: otherCell, tag: "iconBackground")
+        
+        let selectedImage = (getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
+        activeIcon = getSFName(of: selectedImage!)
+    }
+    
+    func unSelectCells(otherwise selectedCell: UICollectionViewCell? = nil){
+        for cell in iconsCollectionView.visibleCells{
+            if cell != selectedCell{
+                let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
                 background[0].layer.borderColor = UIColor.clear.cgColor
                 background[0].layer.borderWidth = 0
                 background[0].backgroundColor = UIColor(named: "CellBackround")
             }
         }
-        let selectedImage = (getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
-        activeIcon = getSFName(of: selectedImage!)
     }
     
     // MARK: Additions

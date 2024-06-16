@@ -27,6 +27,12 @@ class Model{
         CoreDataManager.shared.context.delete(category)
         CoreDataManager.shared.saveContext()
     }
+    
+    // MARK: Colors
+    func getAvailableColors() -> [UIColor]{
+        return ColorManager.shared.getAvailableColors()
+    }
+    
     /**
     Получение всех категорий
     - Parameter type: тип нужных категорий, если nil, то возвращаются все

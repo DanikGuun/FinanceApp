@@ -20,6 +20,7 @@
 		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */; };
 		56CBFA172C1F3A2400CA617E /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA162C1F3A2400CA617E /* ColorManager.swift */; };
+		56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */; };
 		56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3031B2C1C573D00E5DA37 /* IconCell.swift */; };
 		56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3031D2C1C59B800E5DA37 /* IconManager.swift */; };
 		56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E192C11AD8300A240D1 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerViewController.swift; sourceTree = "<group>"; };
 		56CBFA162C1F3A2400CA617E /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerCell.swift; sourceTree = "<group>"; };
 		56D3031B2C1C573D00E5DA37 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		56D3031D2C1C59B800E5DA37 /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 		56F50E162C11AD8300A240D1 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
 				565D48642C18E37100E44B0A /* CategoryCell.swift */,
 				56D3031B2C1C573D00E5DA37 /* IconCell.swift */,
+				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -106,6 +109,17 @@
 				567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */,
 			);
 			path = CoreDataEntities;
+			sourceTree = "<group>";
+		};
+		56CBFA182C1F3F5500CA617E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				564BB4032C13282100939974 /* OperationsViewController.swift */,
+				565D48622C18D21A00E44B0A /* CategoriesViewController.swift */,
+				567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */,
+				56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		56F50E0D2C11AD8300A240D1 = {
@@ -155,10 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				56F50E482C11BB9000A240D1 /* MenuViewController.swift */,
-				564BB4032C13282100939974 /* OperationsViewController.swift */,
-				565D48622C18D21A00E44B0A /* CategoriesViewController.swift */,
-				567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */,
-				56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */,
+				56CBFA182C1F3F5500CA617E /* Category */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +266,7 @@
 				565D48652C18E37100E44B0A /* CategoryCell.swift in Sources */,
 				5634F2172C1B751600FB52EF /* ColorPickCircle.swift in Sources */,
 				56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */,
+				56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				565D48612C18C27200E44B0A /* Model.swift in Sources */,
