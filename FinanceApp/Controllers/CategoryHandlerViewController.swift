@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate{
+class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate{
 
     @IBOutlet weak var viewControllerTitle: UILabel!
     @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
@@ -28,7 +28,6 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
         if let currentCategory{
             //значение для сегмента
             if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
@@ -92,8 +91,12 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         iconsCollectionView.reloadData()
     }
     
+    func colorPickedFromMultiMenu(color: UIColor) {
+        print(color.description)
+    }
+    
     @objc func moreColorsPressed(_ sender: UIImage){
-        print(3)
+        performSegue(withIdentifier: "colorpickerSegue", sender: nil)
     }
     
     // MARK: Collection View
@@ -262,5 +265,15 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     ///Чтобы при повторном нажатии убиралась клавиатура
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    // MARK: Segue preaparing
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+        case "colorpickerSegue":
+            let controller = segue.destination as! MultiColorpickerViewController
+            controller.parentController = self
+        default: break
+        }
     }
 }

@@ -13,6 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9rF-5l-k82">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L4d-y8-kk3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="69c-zA-for" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pUr-lm-ZiN">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -27,7 +28,6 @@
                         <segue destination="cPv-JH-GoI" kind="relationship" relationship="rootViewController" id="qTM-ue-7ql"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L4d-y8-kk3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-924" y="-68"/>
         </scene>
@@ -204,7 +204,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nR6-Ya-nfl">
-                        <barButtonItem key="backBarButtonItem" title="меню" id="mKt-39-7cs"/>
+                        <barButtonItem key="backBarButtonItem" title="назад" id="mKt-39-7cs"/>
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesCollection" destination="XgO-0P-d9b" id="I6V-ug-3SN"/>
@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yra-MO-NHB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84.732824427480907" y="888.73239436619724"/>
+            <point key="canvasLocation" x="85" y="1231"/>
         </scene>
         <!--Category Handler View Controller-->
         <scene sceneID="rAb-Mm-sfD">
@@ -403,7 +403,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W6H-8y-bHN">
-                        <barButtonItem key="backBarButtonItem" title="меню" id="hV1-El-hCG"/>
+                        <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="applyButton" destination="00v-af-GtP" id="qMO-vT-fVI"/>
@@ -415,11 +415,47 @@
                         <outlet property="nameTextField" destination="Bhc-74-4tY" id="Dui-0u-F0p"/>
                         <outlet property="stackWidthConstraint" destination="T0e-sn-kvW" id="KZg-9S-Qra"/>
                         <outlet property="viewControllerTitle" destination="HCL-Fz-UKm" id="kiT-8L-2Pe"/>
+                        <segue destination="LZf-sk-PpS" kind="show" identifier="colorpickerSegue" id="MzA-I0-PTM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHA-xR-FM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965.64885496183206" y="888.73239436619724"/>
+            <point key="canvasLocation" x="966" y="1231"/>
+        </scene>
+        <!--Multi Colorpicker View Controller-->
+        <scene sceneID="xuy-rx-Q0E">
+            <objects>
+                <collectionViewController id="LZf-sk-PpS" customClass="MultiColorpickerViewController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kJG-wT-AeT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uKl-gI-pmS">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aZD-KZ-nTx">
+                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4R5-Dw-sYj">
+                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="LZf-sk-PpS" id="KVu-X4-CTV"/>
+                            <outlet property="delegate" destination="LZf-sk-PpS" id="6Vg-rx-Pw9"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ave-W7-VXb"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iaK-je-oSr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2193" y="1121"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="jgC-Dd-n2q">
