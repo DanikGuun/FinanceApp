@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate{
+class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate{
 
+    @IBOutlet weak var viewControllerTitle: UILabel!
     @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var menuBackground: UIView!
@@ -27,10 +28,13 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        nameTextField.text = currentCategory?.name ?? ""
         Appereances.applyMenuBorder(&menuBackground)
-        addColors()
         icons = getRandomIcons()
+        
+        viewControllerTitle.text = currentCategory?.name ?? "Новая категория"
+        viewControllerTitle.adjustsFontSizeToFitWidth = true
+        nameTextField.text = currentCategory?.name ?? ""
+        addColors()
         setupIconsCollection()
         setupApplyButton()
         setupTextField()
@@ -190,10 +194,15 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         else {deleteCategoryButton.isHidden = true}
     }
     @IBAction func removeButtonPressed() {
+        //бахаем алерт
         if let currentCategory{
-            Model.shared.deleteCategory(category: currentCategory)
+            let alert = UIAlertController(title: "Удаляем категорию?", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Нет", style: .default))
+            alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { alert in
+                Model.shared.deleteCategory(category: currentCategory)
+                self.navigationController?.popViewController(animated: true)}))
+            self.present(alert, animated: true)
         }
-        navigationController?.popViewController(animated: true)
     }
     
     //TextField

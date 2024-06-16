@@ -414,6 +414,7 @@
                         <outlet property="menuBackground" destination="JeO-V1-JWL" id="MMM-8A-zIe"/>
                         <outlet property="nameTextField" destination="Bhc-74-4tY" id="Dui-0u-F0p"/>
                         <outlet property="stackWidthConstraint" destination="T0e-sn-kvW" id="KZg-9S-Qra"/>
+                        <outlet property="viewControllerTitle" destination="HCL-Fz-UKm" id="kiT-8L-2Pe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHA-xR-FM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
