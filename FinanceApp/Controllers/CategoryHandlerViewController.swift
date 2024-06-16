@@ -20,7 +20,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var deleteCategoryButton: UIButton!
     
-    private var activeColor: UIColor = .clear
+    private var activeColor: UIColor?
     private var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
     private var icons: [String] = [] //иконки, чтобы при смене цвета их брать оттуда же
     var currentCategory: Category? //категория, если создаем, а не редачим, то nil
@@ -28,6 +28,16 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        if let currentCategory{
+            //значение для сегмента
+            if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
+            else {categoryTypeSegmentedConrol.selectedSegmentIndex = 1}
+            activeColor = UIColor(cgColor: Model.shared.stringToColor(currentCategory.color!))
+            activeIcon = currentCategory.icon
+        }
+        else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
+        
         Appereances.applyMenuBorder(&menuBackground)
         icons = getRandomIcons()
         
@@ -38,32 +48,27 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         setupIconsCollection()
         setupApplyButton()
         setupTextField()
-        
-        if let currentCategory{
-            if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
-            else {categoryTypeSegmentedConrol.selectedSegmentIndex = 1}
-        }
-        else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
         setupDeleteCateforyButton()
     }
     
     // MARK: color pickers
     func addColors(){
+        
+        for item in colorPickerStack.arrangedSubviews {colorPickerStack.removeArrangedSubview(item)} //почистить цвета
+        
         let height = colorPickerStack.frame.height
         var colors: [UIColor] = [.systemBlue, .systemGreen, .systemOrange, .systemRed, .systemMint]
         
-        if let currentCategory{ //если редачим, вставляем первый цвет
-            colors.insert(UIColor(cgColor: Model.shared.stringToColor(currentCategory.color!)), at: 0)
+        if let activeColor{ //если редачим, вставляем первый цвет
+            colors.insert(activeColor, at: 0)
         }
         
         for c in colors{
             let colorPick = ColorPickCircle(color: c, frame: CGRect(x: 0, y: 0, width: height, height: height), delegate: self)
             colorPickerStack.addArrangedSubview(colorPick)
         }
-        if activeColor == UIColor.clear{
-            //выбираем первый цвет, если переход был от категории, то цвет не меняем, ибо он будет поставленный
-            colorPicked(color: colorPickerStack.arrangedSubviews[0] as! ColorPickCircle)
-        }
+        //выбираем первый цвет, если переход был от категории, то цвет не меняем, ибо он будет поставленный
+        colorPicked(color: colorPickerStack.arrangedSubviews[0] as! ColorPickCircle)
         stackWidthConstraint.constant = CGFloat(colors.count + 1)*(height)
         
         //MoreButton
@@ -107,14 +112,14 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         switch indexPath.item{//свитч чтобы при необходимости взять нужную первую иконку и последнюю поменять
             case 0:
             if let activeIcon{
-                cell.setup(icon: UIImage(systemName: activeIcon)!, iconBackroundColor: activeColor)
+                cell.setup(icon: UIImage(systemName: activeIcon)!, iconBackroundColor: activeColor!)
                 selectCell(cell: cell, collection: collectionView)
             }
-            else{ cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor) } //default
+            else{ cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor!) } //default
             case 5:
-                cell.setup(icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .clear, iconColor: activeColor)
+            cell.setup(icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .clear, iconColor: activeColor!)
             default:
-                cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor)
+            cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor!)
         }
         return cell
     }
@@ -173,7 +178,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     }
     @IBAction func applyButtonPressed(_ sender: UIButton) {
         let name = nameTextField.text!
-        let color = Model.shared.colorToString(activeColor.cgColor)
+        let color = Model.shared.colorToString(activeColor!.cgColor)
         let categoryType: String
         if categoryTypeSegmentedConrol.selectedSegmentIndex == 0{categoryType = Model.OperationType.Expence.rawValue}
         else {categoryType = Model.OperationType.Income.rawValue}
