@@ -20,8 +20,9 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     private var activeColor: UIColor = .clear
     private var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
-    var currentCategory: Category? //категория, если создаем, а не редачим, то nil
     private var icons: [String] = [] //иконки, чтобы при смене цвета их брать оттуда же
+    var currentCategory: Category? //категория, если создаем, а не редачим, то nil
+    var currentSegmentedIndex: Int = 0 //для Указания изначальной категории
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -37,8 +38,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
             else {categoryTypeSegmentedConrol.selectedSegmentIndex = 1}
         }
-        
-    
+        else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
     }
     
     // MARK: color pickers

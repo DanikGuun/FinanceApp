@@ -62,9 +62,10 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: Segou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let category = sender as! Category?{
-            let handler = segue.destination as! CategoryHandlerViewController //менюшка с направлением
+        let handler = segue.destination as! CategoryHandlerViewController //менюшка с направлением
+        if let category = sender as! Category?{ //если переход от категории
             handler.currentCategory = category
         }
+        else {handler.currentSegmentedIndex = сategoriesTypeSegmented.selectedSegmentIndex}
     }
 }
