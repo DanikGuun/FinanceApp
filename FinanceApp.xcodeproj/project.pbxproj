@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5634F2172C1B751600FB52EF /* ColorPickCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5634F2162C1B751600FB52EF /* ColorPickCircle.swift */; };
 		564BB4042C13282100939974 /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BB4032C13282100939974 /* OperationsViewController.swift */; };
 		565D48612C18C27200E44B0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48602C18C27200E44B0A /* Model.swift */; };
 		565D48632C18D21A00E44B0A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48622C18D21A00E44B0A /* CategoriesViewController.swift */; };
@@ -21,6 +20,8 @@
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
 		56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* IconsHeaderView.swift */; };
 		56C291852C20964B0006B629 /* IconWithoutBackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */; };
+		56C291872C20A44C0006B629 /* ColorpickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C291862C20A44C0006B629 /* ColorpickCell.swift */; };
+		56C291892C20B0E10006B629 /* ColorPickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C291882C20B0E10006B629 /* ColorPickerCollectionView.swift */; };
 		56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */; };
 		56CBFA172C1F3A2400CA617E /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA162C1F3A2400CA617E /* ColorManager.swift */; };
 		56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */; };
@@ -39,7 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5634F2162C1B751600FB52EF /* ColorPickCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickCircle.swift; sourceTree = "<group>"; };
 		564BB4032C13282100939974 /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
 		565D48602C18C27200E44B0A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		565D48622C18D21A00E44B0A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
 		56A334A62C1F973000909B35 /* IconsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHeaderView.swift; sourceTree = "<group>"; };
 		56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithoutBackgroundCell.swift; sourceTree = "<group>"; };
+		56C291862C20A44C0006B629 /* ColorpickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorpickCell.swift; sourceTree = "<group>"; };
+		56C291882C20B0E10006B629 /* ColorPickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionView.swift; sourceTree = "<group>"; };
 		56CBFA142C1F38FC00CA617E /* MultiColorpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerViewController.swift; sourceTree = "<group>"; };
 		56CBFA162C1F3A2400CA617E /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerCell.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
 				56A334A62C1F973000909B35 /* IconsHeaderView.swift */,
 				56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */,
+				56C291862C20A44C0006B629 /* ColorpickCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				5634F2152C1B74F400FB52EF /* Cells */,
-				5634F2162C1B751600FB52EF /* ColorPickCircle.swift */,
+				56C291882C20B0E10006B629 /* ColorPickerCollectionView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C291872C20A44C0006B629 /* ColorpickCell.swift in Sources */,
 				56CBFA172C1F3A2400CA617E /* ColorManager.swift in Sources */,
 				56F50E242C11AD8300A240D1 /* FinanceApp.xcdatamodeld in Sources */,
 				567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */,
@@ -271,10 +275,10 @@
 				56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */,
 				56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,
+				56C291892C20B0E10006B629 /* ColorPickerCollectionView.swift in Sources */,
 				567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */,
 				567CA9FF2C18B58F00C1E4FA /* Category+CoreDataClass.swift in Sources */,
 				565D48652C18E37100E44B0A /* CategoryCell.swift in Sources */,
-				5634F2172C1B751600FB52EF /* ColorPickCircle.swift in Sources */,
 				56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */,
 				56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,

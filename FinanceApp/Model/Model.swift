@@ -13,6 +13,8 @@ class Model{
     static let shared = Model()
     private init(){}
     
+    var activeColor: UIColor? //для переноса между view
+    
     // MARK: Catrgories
     ///Добавление категории в persistanceContainer
     func addCategory(id: UUID, name: String, type: OperationType, icon: String, color: CGColor){

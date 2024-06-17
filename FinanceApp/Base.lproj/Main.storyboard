@@ -234,16 +234,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRm-FU-AiF">
-                                        <rect key="frame" x="340" y="104" width="89" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Удалить"/>
-                                        <connections>
-                                            <action selector="removeButtonPressed" destination="pDF-9W-Br9" eventType="touchUpInside" id="MlL-zr-N9D"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -287,9 +277,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mww-18-KvY">
-                                <rect key="frame" x="10" y="308.66666666666669" width="352" height="47"/>
-                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fCQ-F6-l2b">
                                 <rect key="frame" x="25" y="400.66666666666674" width="380" height="310"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -365,26 +352,70 @@
                                     <action selector="applyButtonPressed:" destination="pDF-9W-Br9" eventType="touchUpInside" id="EWx-BW-gVK"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wPe-Pl-eX9" customClass="ColorpickerCollectionView" customModule="FinanceApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="307.33333333333331" width="410" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ebw-xs-F1R">
+                                    <size key="itemSize" width="40" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorpickCell" id="T70-UK-yGv" customClass="ColorpickCell" customModule="FinanceApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M6Y-Ng-FUa">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0jc-6Q-KiB">
+                                                    <rect key="frame" x="0.0" y="1" width="40" height="38.666666666666671"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-1A-k4Z">
+                                                    <rect key="frame" x="0.0" y="1" width="40" height="38.666666666666671"/>
+                                                    <color key="tintColor" name="ColorPicked"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="QZH-1A-k4Z" secondAttribute="trailing" id="0dv-W0-RZO"/>
+                                                <constraint firstItem="QZH-1A-k4Z" firstAttribute="top" secondItem="M6Y-Ng-FUa" secondAttribute="top" id="60I-EP-Vp6"/>
+                                                <constraint firstItem="QZH-1A-k4Z" firstAttribute="leading" secondItem="M6Y-Ng-FUa" secondAttribute="leading" id="QqD-Zi-UDN"/>
+                                                <constraint firstAttribute="bottom" secondItem="0jc-6Q-KiB" secondAttribute="bottom" id="U3O-Aq-abt"/>
+                                                <constraint firstAttribute="trailing" secondItem="0jc-6Q-KiB" secondAttribute="trailing" id="Wc2-h9-epY"/>
+                                                <constraint firstItem="0jc-6Q-KiB" firstAttribute="leading" secondItem="M6Y-Ng-FUa" secondAttribute="leading" id="f3n-LD-6Mc"/>
+                                                <constraint firstAttribute="bottom" secondItem="QZH-1A-k4Z" secondAttribute="bottom" id="p3B-73-h39"/>
+                                                <constraint firstItem="0jc-6Q-KiB" firstAttribute="top" secondItem="M6Y-Ng-FUa" secondAttribute="top" id="wc1-bu-pHp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="colorCircleImageView" destination="0jc-6Q-KiB" id="ZNj-tx-bBy"/>
+                                            <outlet property="colorPickStroke" destination="QZH-1A-k4Z" id="3TD-k2-ZPL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hPq-V4-t1D"/>
                         <color key="backgroundColor" name="ControllersBackground"/>
                         <constraints>
                             <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="fCQ-F6-l2b" secondAttribute="trailing" constant="25" id="26T-MT-RzR"/>
                             <constraint firstItem="JeO-V1-JWL" firstAttribute="top" secondItem="NIV-Fu-tpD" secondAttribute="top" id="3ww-Vr-1Oh"/>
-                            <constraint firstItem="mww-18-KvY" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.0469484" constant="3" id="5HS-oR-db0"/>
                             <constraint firstItem="aDN-WE-Xq5" firstAttribute="centerX" secondItem="hPq-V4-t1D" secondAttribute="centerX" id="5bH-aO-8cW"/>
                             <constraint firstItem="WU5-1L-TI4" firstAttribute="trailing" secondItem="Bhc-74-4tY" secondAttribute="trailing" constant="15" id="6E1-6B-YXZ"/>
                             <constraint firstItem="JeO-V1-JWL" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" id="7BA-zi-hyZ"/>
+                            <constraint firstItem="wPe-Pl-eX9" firstAttribute="top" secondItem="Qmz-UJ-oCH" secondAttribute="bottom" constant="7" id="CFk-qd-idF"/>
                             <constraint firstItem="aDN-WE-Xq5" firstAttribute="top" secondItem="JeO-V1-JWL" secondAttribute="bottom" constant="13" id="FW8-5v-KlJ"/>
                             <constraint firstItem="WU5-1L-TI4" firstAttribute="top" secondItem="Bhc-74-4tY" secondAttribute="bottom" constant="-0.66666666666665719" id="IJg-YL-Xjm"/>
                             <constraint firstItem="WU5-1L-TI4" firstAttribute="leading" secondItem="Bhc-74-4tY" secondAttribute="leading" constant="-6" id="JWY-YG-VeZ"/>
+                            <constraint firstItem="wPe-Pl-eX9" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="10" id="Lg6-9E-7fO"/>
                             <constraint firstItem="Qmz-UJ-oCH" firstAttribute="top" secondItem="Bhc-74-4tY" secondAttribute="bottom" constant="16.333333333333343" id="PdH-Qf-2PU"/>
                             <constraint firstItem="Qmz-UJ-oCH" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="10" id="Qry-mA-gRF"/>
                             <constraint firstItem="JeO-V1-JWL" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.173709" id="VPa-mW-ywr"/>
+                            <constraint firstItem="wPe-Pl-eX9" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.0515021" id="VQn-eZ-3tt"/>
                             <constraint firstItem="fCQ-F6-l2b" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="25" id="WtM-xX-9LP"/>
-                            <constraint firstItem="mww-18-KvY" firstAttribute="top" secondItem="Qmz-UJ-oCH" secondAttribute="bottom" constant="8.3333333333333712" id="ZTq-4o-vQD"/>
                             <constraint firstItem="00v-af-GtP" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="102" id="Zdz-hJ-hZg"/>
-                            <constraint firstItem="F9M-ca-ve7" firstAttribute="top" secondItem="mww-18-KvY" secondAttribute="bottom" constant="13" id="fLS-qS-TLJ"/>
+                            <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="wPe-Pl-eX9" secondAttribute="trailing" constant="10" id="bSw-hS-3Y9"/>
                             <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="00v-af-GtP" secondAttribute="trailing" constant="102" id="ggX-oR-ner"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.0219092" id="h0Y-GO-5HP"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="top" secondItem="aDN-WE-Xq5" secondAttribute="bottom" constant="25" id="h82-JJ-tPw"/>
@@ -392,21 +423,32 @@
                             <constraint firstItem="Qmz-UJ-oCH" firstAttribute="height" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="0.0324726" id="hmT-Zn-MDx"/>
                             <constraint firstItem="Bhc-74-4tY" firstAttribute="width" secondItem="NIV-Fu-tpD" secondAttribute="width" multiplier="0.207803" priority="750" constant="51" id="jf8-jc-cID"/>
                             <constraint firstItem="F9M-ca-ve7" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="10" id="kLT-IY-co0"/>
-                            <constraint firstItem="mww-18-KvY" firstAttribute="leading" secondItem="hPq-V4-t1D" secondAttribute="leading" constant="10" id="kbc-RD-Iha"/>
                             <constraint firstItem="00v-af-GtP" firstAttribute="bottom" secondItem="hPq-V4-t1D" secondAttribute="bottom" id="lGc-5F-gRV"/>
-                            <constraint firstItem="mww-18-KvY" firstAttribute="width" secondItem="NIV-Fu-tpD" secondAttribute="height" multiplier="88:233" id="pgq-FH-h2J"/>
                             <constraint firstItem="aDN-WE-Xq5" firstAttribute="width" secondItem="NIV-Fu-tpD" secondAttribute="width" multiplier="0.503817" constant="26.000000000000028" id="qW1-NY-gM3"/>
                             <constraint firstItem="fCQ-F6-l2b" firstAttribute="top" secondItem="F9M-ca-ve7" secondAttribute="bottom" constant="8" symbolic="YES" id="s12-zV-gtz"/>
                             <constraint firstItem="hPq-V4-t1D" firstAttribute="trailing" secondItem="JeO-V1-JWL" secondAttribute="trailing" id="sTe-9S-uXy"/>
+                            <constraint firstItem="F9M-ca-ve7" firstAttribute="top" secondItem="wPe-Pl-eX9" secondAttribute="bottom" constant="13.333333333333371" id="yY0-qg-k1b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W6H-8y-bHN">
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nHL-b5-RFf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
+                                <rect key="frame" x="340" y="104" width="89" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Удалить"/>
+                                <connections>
+                                    <action selector="removeButtonPressed" destination="pDF-9W-Br9" eventType="touchUpInside" id="MlL-zr-N9D"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="applyButton" destination="00v-af-GtP" id="qMO-vT-fVI"/>
                         <outlet property="categoryTypeSegmentedConrol" destination="aDN-WE-Xq5" id="GEl-5i-UPV"/>
-                        <outlet property="colorPickerStack" destination="mww-18-KvY" id="bTQ-uJ-oJ2"/>
+                        <outlet property="colorPickerCollectionView" destination="wPe-Pl-eX9" id="gzX-GY-7VV"/>
                         <outlet property="deleteCategoryButton" destination="mRm-FU-AiF" id="hqa-N7-gPh"/>
                         <outlet property="iconsCollectionView" destination="fCQ-F6-l2b" id="esN-lH-3xq"/>
                         <outlet property="menuBackground" destination="JeO-V1-JWL" id="MMM-8A-zIe"/>
@@ -673,7 +715,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuButtonCell" id="c0l-Oh-3xM" customClass="MenuButtonCell" customModule="FinanceApp" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="0.0" width="361" height="44"/>
+                                        <rect key="frame" x="19" y="0.0" width="361" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
@@ -771,6 +813,7 @@
     </scenes>
     <resources>
         <image name="UnderLine" width="153" height="2"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <namedColor name="CategoryName">
@@ -778,6 +821,9 @@
         </namedColor>
         <namedColor name="CellBackround">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorPicked">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ControllersBackground">
             <color red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

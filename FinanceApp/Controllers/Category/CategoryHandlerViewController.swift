@@ -8,17 +8,16 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate, IconpickerParent, UICollectionViewDelegateFlowLayout{
+class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate, IconpickerParent, UICollectionViewDelegateFlowLayout, ColorpickerDelegate{
 
-    @IBOutlet weak var viewControllerTitle: UILabel!
-    @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var menuBackground: UIView!
-    @IBOutlet weak var colorPickerStack: UIStackView!
-   // @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var iconsCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
+    @IBOutlet weak var colorPickerCollectionView: ColorpickerCollectionView!
     @IBOutlet weak var deleteCategoryButton: UIButton!
+    @IBOutlet weak var iconsCollectionView: UICollectionView!
+    @IBOutlet weak var menuBackground: UIView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var viewControllerTitle: UILabel!
     
     private var activeColor: UIColor?
     private var activeIcon: String? //название иконки, если редачим категорию, чтобы она первая была
@@ -28,6 +27,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     override func viewDidLoad(){
         super.viewDidLoad()
+       
         if let currentCategory{
             //значение для сегмента
             if currentCategory.type == Model.OperationType.Expence.rawValue{categoryTypeSegmentedConrol.selectedSegmentIndex = 0}
@@ -43,67 +43,12 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
         viewControllerTitle.text = currentCategory?.name ?? "Новая категория"
         viewControllerTitle.adjustsFontSizeToFitWidth = true
         nameTextField.text = currentCategory?.name ?? ""
-        addColors()
         setupIconsCollection()
         setupApplyButton()
         setupTextField()
         setupDeleteCateforyButton()
-    }
-    
-    // MARK: color pickers
-    func addColors(){
-        for item in colorPickerStack.arrangedSubviews {item.removeFromSuperview()} //почистить цвета
+        colorPickerCollectionView.parentView = self
         
-        let height = colorPickerStack.frame.height
-        var colors: [UIColor] = Model.shared.getRandomColors(count: 5)
-        
-        if let activeColor{ //если редачим, вставляем первый цвет
-            colors.insert(activeColor, at: 0)
-        }
-        
-        for c in colors{
-            let colorPick = ColorPickCircle(color: c, frame: CGRect(x: 0, y: 0, width: height, height: height), delegate: self)
-            colorPickerStack.addArrangedSubview(colorPick)
-        }
-        let plus = activeColor != nil ? 1 : 0 //если есть ранее заданные цвет, то немного расширить stack
-        //выбираем первый цвет, если переход был от категории, то цвет не меняем, ибо он будет поставленный
-        colorPicked(color: colorPickerStack.arrangedSubviews[0] as! ColorPickCircle)
-        //stackWidthConstraint.constant = CGFloat(colors.count + plus)*(height)
-        
-        //MoreButton
-        let more = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
-        more.image = UIImage(systemName: "ellipsis.circle.fill")
-        more.tintColor = UIColor(cgColor: CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1))
-        more.isUserInteractionEnabled = true
-        let recogniser = UITapGestureRecognizer(target: self, action: #selector(moreColorsPressed(_:)))
-        more.addGestureRecognizer(recogniser)
-        colorPickerStack.addArrangedSubview(more)
-    }
-    
-    func colorPicked(color: ColorPickCircle) {
-        for item in (colorPickerStack.arrangedSubviews as! [ColorPickCircle]).dropLast(){
-            item.layer.borderWidth = 0
-        }
-        color.layer.borderWidth = 3
-        color.layer.borderColor = UIColor(named: "ColorPicked")?.cgColor
-        activeColor = color.color
-        
-        for (index, iconCell) in iconsCollectionView.visibleCells.enumerated(){
-            let cell = iconCell as! IconCell
-            if index != 5{ //если эта не иконка "больше" красим задний фон, иначе - саму иконку
-                cell.setIconBackgroundColor(color.color)
-            }
-            else {cell.setIconTintColor(color.color)}
-        }
-    }
-    
-    func colorPickedFromMultiMenu(color: UIColor) {
-        activeColor = color
-        addColors()
-    }
-    
-    @objc func moreColorsPressed(_ sender: UIImage){
-        performSegue(withIdentifier: "colorpickerSegue", sender: nil)
     }
     
     // MARK: Collection View
@@ -267,5 +212,26 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             controller.iconBackgroundColor = activeColor
         default: break
         }
+    }
+    // MARK: ColorPicker Collection
+
+    func colorPick(_ color: UIColor) {
+        activeColor = color
+        
+        for (index, icon) in iconsCollectionView.visibleCells.enumerated(){
+            let cell = icon as! IconCell
+            //если не ласт иконка
+            if index != iconsCollectionView.visibleCells.count-1 {cell.setIconBackgroundColor(color)}
+            else {cell.setIconTintColor(color)}
+        }
+    }
+    
+    func colorPickedFromMultiMenu(color: UIColor) {
+        activeColor = color
+        colorPick(color)
+        colorPickerCollectionView.inserColor(color)
+    }
+    func moreColorsPressed(){
+        performSegue(withIdentifier: "colorpickerSegue", sender: nil)
     }
 }

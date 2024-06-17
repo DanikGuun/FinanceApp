@@ -72,7 +72,11 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
         let handler = segue.destination as! CategoryHandlerViewController //менюшка с направлением
         if let category = sender as! Category?{ //если переход от категории
             handler.currentCategory = category
+            Model.shared.activeColor = UIColor( cgColor: Model.shared.stringToColor(category.color!))
         }
-        else {handler.currentSegmentedIndex = сategoriesTypeSegmented.selectedSegmentIndex}
+        else {
+            handler.currentSegmentedIndex = сategoriesTypeSegmented.selectedSegmentIndex
+            Model.shared.activeColor = nil
+        }
     }
 }
