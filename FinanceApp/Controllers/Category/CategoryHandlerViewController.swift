@@ -52,8 +52,7 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
     
     // MARK: color pickers
     func addColors(){
-        
-        for item in colorPickerStack.arrangedSubviews {colorPickerStack.removeArrangedSubview(item)} //почистить цвета
+        for item in colorPickerStack.arrangedSubviews {item.removeFromSuperview()} //почистить цвета
         
         let height = colorPickerStack.frame.height
         var colors: [UIColor] = Model.shared.getRandomColors(count: 5)

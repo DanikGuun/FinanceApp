@@ -20,7 +20,7 @@ class IconManager{
         case Vehicle = "Транспорт"
         case Food = "Еда"
         case Clothes = "Одежда"
-        case Learning = "обучение"
+        case Learning = "Обучение"
         case Sport = "Спорт"
     }
     
