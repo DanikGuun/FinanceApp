@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MultiColorpickerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class MultiColorpickerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var colorsCollection: UICollectionView!
     @IBOutlet weak var menuBackground: UIView!
@@ -34,6 +34,14 @@ class MultiColorpickerViewController: UIViewController, UICollectionViewDelegate
         let cell = collectionView.cellForItem(at: indexPath) as! MultiColorpickerCell
         parentController.colorPickedFromMultiMenu(color: cell.color)
         navigationController?.popViewController(animated: true)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout{
+            let width = (collectionView.frame.width - layout.minimumInteritemSpacing * 7) / 7
+            let height = width
+            return CGSize(width: width, height: height)
+        }
+        else {return CGSize.zero}
     }
 }
 

@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate, IconpickerParent{
+class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, MultiColorpickerParent, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UIAlertViewDelegate, IconpickerParent, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var viewControllerTitle: UILabel!
     @IBOutlet weak var categoryTypeSegmentedConrol: UISegmentedControl!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var colorPickerStack: UIStackView!
-    @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
+   // @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconsCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var deleteCategoryButton: UIButton!
@@ -65,12 +65,13 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             let colorPick = ColorPickCircle(color: c, frame: CGRect(x: 0, y: 0, width: height, height: height), delegate: self)
             colorPickerStack.addArrangedSubview(colorPick)
         }
+        let plus = activeColor != nil ? 1 : 0 //если есть ранее заданные цвет, то немного расширить stack
         //выбираем первый цвет, если переход был от категории, то цвет не меняем, ибо он будет поставленный
         colorPicked(color: colorPickerStack.arrangedSubviews[0] as! ColorPickCircle)
-        stackWidthConstraint.constant = CGFloat(colors.count + 1)*(height)
+        //stackWidthConstraint.constant = CGFloat(colors.count + plus)*(height)
         
         //MoreButton
-        let more = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: 100))
+        let more = UIImageView(frame: CGRect(x: 0, y: 0, width: height, height: height))
         more.image = UIImage(systemName: "ellipsis.circle.fill")
         more.tintColor = UIColor(cgColor: CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1))
         more.isUserInteractionEnabled = true
@@ -141,6 +142,12 @@ class CategoryHandlerViewController: UIViewController, ColorPickCircleDelegate, 
             unSelectCells(otherwise: selected)
         }
         else{ performSegue(withIdentifier: "iconSegue", sender: nil)}//нажато на меню иконок
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 3
+        let height = width
+        return CGSize(width: width, height: height)
     }
     
     func selectCell(cell: UICollectionViewCell, collection: UICollectionView){

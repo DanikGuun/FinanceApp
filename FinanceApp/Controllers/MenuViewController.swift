@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     
     @IBOutlet weak var menuBackgroundView: UIView!
@@ -32,7 +32,6 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         menuButtonsCollection.layer.cornerRadius = 10
         menuButtonsCollection.delegate = self
         menuButtonsCollection.dataSource = self
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -52,5 +51,10 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = menuButtonsCollection.cellForItem(at: indexPath) as! MenuButtonCell
         self.performSegue(withIdentifier: cell.segouID, sender: nil)
+    }
+    
+    //размер ячейки
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 44)
     }
 }

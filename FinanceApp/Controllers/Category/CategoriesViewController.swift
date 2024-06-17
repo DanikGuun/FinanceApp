@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var categoriesCollection: UICollectionView!
@@ -59,6 +59,12 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
         self.performSegue(withIdentifier: "categoryHandler", sender: selected.category)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.width / 3)*0.95
+        let height = width * (141/118)
+        return CGSize(width: width, height: height)
     }
     
     // MARK: Segou
