@@ -11,7 +11,7 @@ import UIKit
 public class Appereances{
     
     ///Делает небольшое подчеркивание снизу меню
-    static func applyMenuBorder( _ view: inout UIView){
+    static func applyMenuBorder( _ view: UIView){
         view.layer.borderWidth = 0.33
         view.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     }
@@ -24,7 +24,7 @@ public class Appereances{
     }
     
     ///тень для объектов из меню с операциями, или не только
-    static func applyShadow(_ view: inout UIView){
+    static func applyShadow(_ view: UIView){
         view.layer.shadowColor = CGColor(red: 145/255, green: 143/255, blue: 143/255, alpha: 0.25)
         view.layer.shadowOpacity = 1
         view.layer.shadowOffset = CGSize(width: 0, height: 0)

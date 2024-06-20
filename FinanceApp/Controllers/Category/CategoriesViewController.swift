@@ -18,7 +18,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Appereances.applyMenuBorder(&menuBackground)
+        Appereances.applyMenuBorder(menuBackground)
         categoriesCollection.dataSource = self
         categoriesCollection.delegate = self
         

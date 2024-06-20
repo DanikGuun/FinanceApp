@@ -22,7 +22,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Appereances.applyMenuBorder(&menuBackgroundView)
+        Appereances.applyMenuBorder(menuBackgroundView)
         menuButtonsColectionSetup()
     }
     

@@ -20,7 +20,7 @@ class MultiColorpickerViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         colorsCollection.dataSource = self
         colorsCollection.delegate = self
-        Appereances.applyMenuBorder(&menuBackground)
+        Appereances.applyMenuBorder(menuBackground)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count

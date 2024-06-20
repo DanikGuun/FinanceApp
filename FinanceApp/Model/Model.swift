@@ -13,7 +13,7 @@ class Model{
     static let shared = Model()
     private init(){}
     
-    var activeColor: UIColor? //для переноса между view
+    var activeColor: UIColor? //для переноса между view при выборе из многих цветов
     
     // MARK: Catrgories
     ///Добавление категории в persistanceContainer
@@ -28,6 +28,42 @@ class Model{
     func deleteCategory(category: Category){
         CoreDataManager.shared.context.delete(category)
         CoreDataManager.shared.saveContext()
+    }
+    /**
+     Получение всех категорий
+     - Parameter type: тип нужных категорий, если nil, то возвращаются все
+     */
+    func getAllCategories(type: OperationType? = nil) -> [Category]{
+        var categories: [Category] = []
+        do{
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+            let result = try CoreDataManager.shared.context.fetch(request)
+            for category in result as! [Category] {
+                if let type{ //если это нужный нам тип или нет разницы
+                    if type.rawValue == category.type{ categories.append(category) }
+                }
+                else { categories.append(category) }
+            }
+        }
+        catch {print(error); print("Что-то не так")}
+        return categories
+    }
+    
+    func getRandomCategories(count: Int, type: OperationType) -> [Category]{
+        var categories = getAllCategories(type: type)
+        while categories.count > count{
+            let id = Int.random(in: 0..<categories.count)
+            categories.remove(at: id)
+        }
+        return categories
+    }
+    
+    func getCategoryByUUID(_ id: UUID) -> Category?{
+        for category in getAllCategories(){
+            if category.id == id {return category}
+        }
+        print("Ошибка нахождения категории")
+        return nil
     }
     
     // MARK: Colors
@@ -57,26 +93,6 @@ class Model{
             colors.remove(at: id)
         }
         return colors
-    }
-    
-    /**
-    Получение всех категорий
-    - Parameter type: тип нужных категорий, если nil, то возвращаются все
-     */
-    func getAllCategories(type: OperationType? = nil) -> [Category]{
-        var categories: [Category] = []
-        do{
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
-            let result = try CoreDataManager.shared.context.fetch(request)
-            for category in result as! [Category] {
-                if let type{ //если это нужный нам тип или нет разницы
-                    if type.rawValue == category.type{ categories.append(category) }
-                }
-                else { categories.append(category) }
-            }
-        }
-        catch {print(error); print("Что-то не так")}
-        return categories
     }
     
     // MARK: Icons
@@ -143,7 +159,6 @@ class Model{
     
     ///Словарь типа категория-иконки
     func getIconsDictionary() -> Dictionary<IconManager.IconCategories, [String]>{
-        let categories = IconManager.IconCategories.allCases
         let icons = IconManager.shared.icons
         var iconDictionary: Dictionary<IconManager.IconCategories, [String]> = [:]
         

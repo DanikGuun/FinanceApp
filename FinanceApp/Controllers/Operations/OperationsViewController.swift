@@ -14,10 +14,10 @@ class OperationsViewController: UIViewController{
     @IBOutlet weak var chartBackgroundView: UIView!
     
     override func viewDidLoad() {
-        Appereances.applyMenuBorder(&menuBackgroundView)
+        Appereances.applyMenuBorder(menuBackgroundView)
         moneyLabel.text = "Счёт: \(Appereances.moneyFormat(16583))"
         
-        Appereances.applyShadow(&chartBackgroundView)
+        Appereances.applyShadow(chartBackgroundView)
         chartBackgroundView.layer.cornerRadius = 10
     }
 }

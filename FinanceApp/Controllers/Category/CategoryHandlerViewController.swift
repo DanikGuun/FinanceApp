@@ -37,7 +37,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         }
         else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
         
-        Appereances.applyMenuBorder(&menuBackground)
+        Appereances.applyMenuBorder(menuBackground)
         icons = Model.shared.getRandomIcons(count: 5, otherwise: activeIcon)
         
         viewControllerTitle.text = currentCategory?.name ?? "Новая категория"
