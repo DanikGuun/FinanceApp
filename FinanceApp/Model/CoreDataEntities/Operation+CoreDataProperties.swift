@@ -18,13 +18,12 @@ extension Operation {
 
     @NSManaged public var id: UUID?
     @NSManaged public var categoryID: UUID?
-    @NSManaged public var type: String?
-    @NSManaged public var amount: Int32
+    @NSManaged public var amount: Double
     @NSManaged public var date: Date?
     @NSManaged public var notes: String?
-
+    
 }
 
 extension Operation : Identifiable {
-
+    
 }
