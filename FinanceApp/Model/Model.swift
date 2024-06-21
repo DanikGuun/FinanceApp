@@ -66,6 +66,9 @@ class Model{
         return nil
     }
     
+    // MARK: Operations
+    
+    
     // MARK: Colors
     func getAvailableColors() -> [UIColor]{
         let mainColors = ColorManager.shared.getAvailableColors()

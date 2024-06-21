@@ -8,12 +8,18 @@
 import Foundation
 import UIKit
 
-class OperationHandlerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class OperationHandlerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate{
 
-    @IBOutlet var menuBackgroundView: UIView!
-    @IBOutlet var operationTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var operationTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var menuBackgroundView: UIView!
+    @IBOutlet weak var opertaionDatePicker: UIDatePicker!
+    
+    var notesToDateConstraint: NSLayoutConstraint!
+    var notesToKeyboardConstraint: NSLayoutConstraint!
     
     var currentOperation: Operation?
     var categories: [Category] = []
@@ -39,6 +45,10 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
+        notesTextField.delegate = self
+        notesToDateConstraint = notesTextField.topAnchor.constraint(equalTo: opertaionDatePicker.bottomAnchor, constant: 18)
+        notesToKeyboardConstraint = notesTextField.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -30)
+        notesToDateConstraint.isActive = true
     }
     
     // MARK: Collection view
@@ -49,8 +59,14 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "operationCategoryCell", for: indexPath) as! CategoryCell
+        
         if indexPath.row == 0 && categories.count != 0{
             cell.setup(categories[0])
+            if let operation = currentOperation{
+                if activeOperationType == operation.type{
+                    selectCell(cell: cell)
+                }
+            }
         }
         else if indexPath.row == categories.count || categories.count == 0{
             cell.setup(name: "Больше", icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .white, iconColor: .systemBlue)
@@ -62,6 +78,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        view.endEditing(true)
         unSelectCells()
         let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
         selectCell(cell: selected)
@@ -75,12 +92,10 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     func unSelectCells(otherwise selectedCell: UICollectionViewCell? = nil){
         for cell in categoriesCollectionView.visibleCells{
-            if cell != selectedCell{
-                let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
-                background[0].layer.borderColor = UIColor.clear.cgColor
-                background[0].layer.borderWidth = 0
-                background[0].backgroundColor = UIColor(named: "CellBackround")
-            }
+            let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+            background[0].layer.borderColor = UIColor.clear.cgColor
+            background[0].layer.borderWidth = 0
+            background[0].backgroundColor = UIColor(named: "CellBackround")
         }
     }
     
@@ -96,6 +111,33 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         
     }
 
+    // MARK: SegmentedControl
+    
+    @IBAction func operationTypeChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            activeOperationType = .Expence
+        }
+        else {activeOperationType = .Income}
+        activeCategory = nil
+        setupCategories()
+        unSelectCells()
+        categoriesCollectionView.reloadData()
+    }
+    
+    // MARK: Notes TextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        notesToDateConstraint.isActive = true
+        notesToKeyboardConstraint.isActive = false
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        notesToDateConstraint.isActive = false
+        notesToKeyboardConstraint.isActive = true
+        return true
+    }
     
     // MARK: Additions
     ///настраиваем кнопку добавления
@@ -115,11 +157,14 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     func setupOperationType(){
         if let operation = currentOperation{
-            let category = Model.shared.getCategoryByUUID(operation.categoryID!)
-            activeOperationType = Model.OperationType(rawValue: category!.type!)!
+            activeOperationType = operation.type
         }
         activeOperationType = .Expence
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     /**
      Настраиваем первичный список категорий
       - Parameter count: Количество категорий
@@ -127,8 +172,11 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
      */
     func setupCategories(){
         categories = Model.shared.getRandomCategories(count: 5, type: activeOperationType)
+        //добавляем имеющуюся, только если тип операций совпадает
         if let operation = currentOperation{
-            categories[0] = Model.shared.getCategoryByUUID(operation.id!)!
+            if operation.type == activeOperationType{
+                categories[0] = Model.shared.getCategoryByUUID(operation.id!)!
+            }
         }
     }
 }
