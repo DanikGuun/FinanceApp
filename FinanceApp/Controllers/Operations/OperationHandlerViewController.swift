@@ -13,6 +13,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet var menuBackgroundView: UIView!
     @IBOutlet var operationTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var applyButton: UIButton!
     
     var currentOperation: Operation?
     var categories: [Category] = []
@@ -34,6 +35,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         Appereances.applyMenuBorder(menuBackgroundView)
         setupOperationType() //задание начального типа
         setupCategories() //стартовая генерация категорий
+        setupApplyButton()
         
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
@@ -58,15 +60,59 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        unSelectCells()
+        let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
+        selectCell(cell: selected)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 3
         let height = width * (141/118)
         return CGSize(width: width, height: height)
+    }
+    
+    func unSelectCells(otherwise selectedCell: UICollectionViewCell? = nil){
+        for cell in categoriesCollectionView.visibleCells{
+            if cell != selectedCell{
+                let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+                background[0].layer.borderColor = UIColor.clear.cgColor
+                background[0].layer.borderWidth = 0
+                background[0].backgroundColor = UIColor(named: "CellBackround")
+            }
+        }
+    }
+    
+    func selectCell(cell: CategoryCell){
+        //если это не кнопка больше
+        if cell.category != nil{
+            let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+            background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
+            background[0].layer.borderWidth = 2
+            background[0].backgroundColor = UIColor(named: "IconPickedBackground")
+            activeCategory = cell.category
+        }
         
     }
 
     
     // MARK: Additions
+    ///настраиваем кнопку добавления
+    func setupApplyButton(){
+        applyButton.layer.cornerRadius = 25
+        var conf = applyButton.configuration
+        if currentOperation != nil{
+            conf?.image = UIImage(systemName: "pencil.line")
+            conf?.title = "Применить"
+        }
+        else{
+            conf?.image = UIImage(systemName: "plus.square")
+            conf?.title = "Добавить"
+        }
+        applyButton.configuration = conf
+    }
+    
     func setupOperationType(){
         if let operation = currentOperation{
             let category = Model.shared.getCategoryByUUID(operation.categoryID!)

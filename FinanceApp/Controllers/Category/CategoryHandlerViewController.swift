@@ -70,7 +70,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
                     cell.setup(icon: UIImage(systemName: activeIcon)!, iconBackroundColor: activeColor!)
                 }
                 else{ cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor!) } //default
-                selectCell(cell: cell, collection: collectionView)
+                selectCell(cell: cell)
             case 5:
                 cell.setup(icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .clear, iconColor: activeColor!)
             default:
@@ -83,7 +83,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         view.endEditing(true)
         if indexPath.item != 5{
             let selected = collectionView.cellForItem(at: indexPath) as! IconCell
-            selectCell(cell: selected, collection: collectionView)
+            selectCell(cell: selected)
             unSelectCells(otherwise: selected)
         }
         else{ performSegue(withIdentifier: "iconSegue", sender: nil)}//нажато на меню иконок
@@ -95,20 +95,20 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         return CGSize(width: width, height: height)
     }
     
-    func selectCell(cell: UICollectionViewCell, collection: UICollectionView){
-        let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+    func selectCell(cell: UICollectionViewCell){
+        let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
         background[0].layer.borderColor = UIColor(named: "IconPickedBorder")?.cgColor
         background[0].layer.borderWidth = 2
         background[0].backgroundColor = UIColor(named: "IconPickedBackground")
         
-        let selectedImage = (getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
+        let selectedImage = (Model.shared.getSubviewWithTag(viewToFind: cell, tag: "icon")[0] as! UIImageView).image
         activeIcon = Model.shared.getSFName(of: selectedImage!)
     }
     
     func unSelectCells(otherwise selectedCell: UICollectionViewCell? = nil){
         for cell in iconsCollectionView.visibleCells{
             if cell != selectedCell{
-                let background = getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
+                let background = Model.shared.getSubviewWithTag(viewToFind: cell, tag: "iconBackground")
                 background[0].layer.borderColor = UIColor.clear.cgColor
                 background[0].layer.borderWidth = 0
                 background[0].backgroundColor = UIColor(named: "CellBackround")
@@ -181,18 +181,6 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    ///подвью с нужным тегом
-    func getSubviewWithTag(viewToFind: UIView, tag: String) -> [UIView]{
-        var arr: [UIView] = []
-        for elem in viewToFind.subviews{
-            if elem.restorationIdentifier == tag{
-                arr.append(elem)
-            }
-            arr += getSubviewWithTag(viewToFind: elem, tag: tag)
-        }
-        return arr
     }
     
     ///Чтобы при повторном нажатии убиралась клавиатура

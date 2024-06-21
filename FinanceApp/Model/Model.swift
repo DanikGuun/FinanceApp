@@ -175,6 +175,17 @@ class Model{
     }
     
     // MARK: Additions
+    ///подвью с нужным тегом
+    func getSubviewWithTag(viewToFind: UIView, tag: String) -> [UIView]{
+        var arr: [UIView] = []
+        for elem in viewToFind.subviews{
+            if elem.restorationIdentifier == tag{
+                arr.append(elem)
+            }
+            arr += getSubviewWithTag(viewToFind: elem, tag: tag)
+        }
+        return arr
+    }
     func colorToString(_ color: CGColor) -> String{
         guard let components = color.components else{return "Жопа"}
         return "\(components[0]) \(components[1]) \(components[2]) \(components[3])"
