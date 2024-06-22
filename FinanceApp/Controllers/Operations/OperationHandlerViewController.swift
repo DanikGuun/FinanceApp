@@ -190,8 +190,12 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }
     
     func categoryPick(_ category: Category) {
+        //если выбранная категория есть в списке, то не дропаем последнюю, а только удаляем первую
+        if categories.contains(category) == false{
+            categories = categories.dropLast()
+        }
+        categories.removeAll(where: {$0 == category})
         categories.insert(category, at: 0)
-        categories = categories.dropLast()
         needSelectFirstCategory = true
         categoriesCollectionView.reloadData()
     }
