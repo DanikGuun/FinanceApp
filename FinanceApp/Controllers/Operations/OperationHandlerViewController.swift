@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class OperationHandlerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate{
+class OperationHandlerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, CategoriesPickParent{
 
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var operationTypeSegmentedControl: UISegmentedControl!
@@ -23,7 +23,6 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     var currentOperation: Operation?
     var categories: [Category] = []
-
     var activeOperationType: Model.OperationType{
         get{
             if operationTypeSegmentedControl.selectedSegmentIndex == 0 {return .Expence}
@@ -35,6 +34,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         }
     }//активная категория через segmentedControl
     var activeCategory: Category?
+    var needSelectFirstCategory = false //чтобы выделять первую категорию, если выбираем из меню
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "operationCategoryCell", for: indexPath) as! CategoryCell
         
+        //если это первая ячейка и в категориях есть хоть одна
         if indexPath.row == 0 && categories.count != 0{
             cell.setup(categories[0])
             if let operation = currentOperation{
@@ -67,7 +68,12 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
                     selectCell(cell: cell)
                 }
             }
+            else if needSelectFirstCategory{
+                selectCell(cell: cell)
+                needSelectFirstCategory = false
+            }
         }
+        //если это последняя
         else if indexPath.row == categories.count || categories.count == 0{
             cell.setup(name: "Больше", icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .white, iconColor: .systemBlue)
         }
@@ -81,7 +87,10 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         view.endEditing(true)
         unSelectCells()
         let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
-        selectCell(cell: selected)
+        if Model.shared.getSFName(of: selected.icon.image!) == "ellipsis.circle"{
+            performSegue(withIdentifier: "pickCategorySegue", sender: nil)
+        }
+        else {selectCell(cell: selected)}
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -177,6 +186,20 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
             if operation.type == activeOperationType{
                 categories[0] = Model.shared.getCategoryByUUID(operation.id!)!
             }
+        }
+    }
+    
+    func categoryPick(_ category: Category) {
+        categories.insert(category, at: 0)
+        categories = categories.dropLast()
+        needSelectFirstCategory = true
+        categoriesCollectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? CategoryPickViewController{
+            destination.categoryType = activeOperationType
+            destination.parentOperationController = self
         }
     }
 }
