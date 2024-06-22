@@ -14,9 +14,9 @@
             filePath = "FinanceApp/Model/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "getRandomColors(count:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getRandomColors(count:otherwise:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "FinanceApp/Model/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "getRandomColors(count:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "getRandomColors(count:otherwise:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

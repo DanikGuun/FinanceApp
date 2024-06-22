@@ -66,6 +66,14 @@ class ColorpickerCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     ///используется для обновления списка цветов, например при выборе цвета из меню
     func inserColor(_ color: UIColor){
         activeColor = color
+        
+        //если что заменяем повтор
+        for (index, c) in colors.enumerated(){
+            if c == color {
+                colors[index] = Model.shared.getRandomColors(count: 1)[0]
+            }
+        }
+        
         colors.insert(color, at: 0)
         colors = colors.dropLast()
         self.reloadData()

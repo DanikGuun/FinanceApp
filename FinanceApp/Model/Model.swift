@@ -85,11 +85,16 @@ class Model{
     /**
      Массив из случайных count цветов
      - Parameter count: Количество необходимых цветов
+     - Parameter otherwise: массив цветов, которых быть не должно
      - Берет все возможные цвета и удаляет случайные из них, пока массив не уменьшится до нужного размера
      */
-    func getRandomColors(count: Int) -> [UIColor]{
+    func getRandomColors(count: Int, otherwise: [UIColor]? = nil) -> [UIColor]{
         var colors = ColorManager.shared.getAvailableColors()
         guard count >= 0 && count <= colors.count else{return []}
+        
+        //убираем повторы
+        colors.removeAll(where: {otherwise?.contains($0) ?? false})
+        
         while colors.count > count{
             let id = Int.random(in: 0..<colors.count)
             colors.remove(at: id)

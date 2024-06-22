@@ -226,6 +226,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         colorPick(color)
         colorPickerCollectionView.inserColor(color)
     }
+    
     func moreColorsPressed(){
         performSegue(withIdentifier: "colorpickerSegue", sender: nil)
     }
