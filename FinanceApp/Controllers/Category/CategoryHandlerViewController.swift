@@ -38,7 +38,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         else{categoryTypeSegmentedConrol.selectedSegmentIndex = currentSegmentedIndex}
         
         Appereances.applyMenuBorder(menuBackground)
-        icons = Model.shared.getRandomIcons(count: 5, otherwise: activeIcon)
+        icons = Model.shared.getRandomIcons(count: 5, otherwise: [activeIcon ?? ""])
         
         viewControllerTitle.text = currentCategory?.name ?? "Новая категория"
         viewControllerTitle.adjustsFontSizeToFitWidth = true
@@ -119,6 +119,13 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
     // MARK: Icons
     func pickIconFromMenu(icon: String) {
         activeIcon = icon
+        //убираем повторяющиеся иконки
+        for (index, ic) in icons.enumerated(){
+            if ic == activeIcon{
+                icons[index] = Model.shared.getRandomIcons(count: 1, otherwise: icons)[0]
+            }
+        }
+        
         unSelectCells()
         iconsCollectionView.reloadData()
     }

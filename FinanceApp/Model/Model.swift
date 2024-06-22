@@ -143,10 +143,10 @@ class Model{
     }
     
     ///Получаем случайные count иконок
-    func getRandomIcons(count: Int, otherwise: String? = nil) -> [String]{
+    func getRandomIcons(count: Int, otherwise: [String]? = nil) -> [String]{
         var icons = getAllIcons()
         
-        if let otherwise {icons.removeAll {$0 == otherwise}} //если у нас есть иконка, удалеяем чтобы не повторялась
+        if let otherwise {icons.removeAll {otherwise.contains($0)}} //если у нас есть иконка, удалеяем чтобы не повторялась
         
         guard count > 0 && icons.count > count else {return []}
         
