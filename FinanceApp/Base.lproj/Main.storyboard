@@ -351,7 +351,9 @@
                             <constraint firstItem="wDP-0G-33W" firstAttribute="height" secondItem="mTF-sF-VBM" secondAttribute="height" multiplier="0.173709" id="zU6-D5-fQf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NuB-L5-R3r"/>
+                    <navigationItem key="navigationItem" id="NuB-L5-R3r">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="iny-R1-whq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="04L-fs-8wL" id="jNL-Ad-UHr"/>
                         <outlet property="applyButton" destination="4M4-6G-Uz9" id="6nJ-EO-Ug0"/>
@@ -360,11 +362,40 @@
                         <outlet property="notesTextField" destination="dtq-9z-pj1" id="H3J-mI-Brc"/>
                         <outlet property="operationTypeSegmentedControl" destination="mTK-vz-WRh" id="jPD-Ug-dKT"/>
                         <outlet property="opertaionDatePicker" destination="BOV-TF-udx" id="EB8-Ea-tee"/>
+                        <segue destination="RV2-mn-RwB" kind="show" identifier="selectCategorySegue" id="CLm-Nc-3Qm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9M-jg-hU6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.2748091603053" y="-176.05633802816902"/>
+        </scene>
+        <!--Выбор категории-->
+        <scene sceneID="mni-IV-nA8">
+            <objects>
+                <viewController id="RV2-mn-RwB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mQ7-qj-hdX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnf-Wv-whd">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tE4-sv-Pa6"/>
+                        <color key="backgroundColor" name="ControllersBackground"/>
+                        <constraints>
+                            <constraint firstItem="nnf-Wv-whd" firstAttribute="leading" secondItem="tE4-sv-Pa6" secondAttribute="leading" id="DB9-3u-6V0"/>
+                            <constraint firstItem="nnf-Wv-whd" firstAttribute="height" secondItem="mQ7-qj-hdX" secondAttribute="height" multiplier="0.173709" constant="-48" id="KbF-Lc-7QR"/>
+                            <constraint firstItem="nnf-Wv-whd" firstAttribute="trailing" secondItem="tE4-sv-Pa6" secondAttribute="trailing" id="Vcj-Di-DU8"/>
+                            <constraint firstItem="nnf-Wv-whd" firstAttribute="top" secondItem="mQ7-qj-hdX" secondAttribute="top" id="e22-y2-gmD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Выбор категории" id="PFv-ut-bX7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-iA-unC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2032.824427480916" y="-176.05633802816902"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="uHv-Fd-JIk">
@@ -725,7 +756,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="5" width="89" height="35"/>
+                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1130,13 +1161,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

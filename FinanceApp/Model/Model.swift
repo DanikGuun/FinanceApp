@@ -15,6 +15,7 @@ class Model{
     
     var activeColor: UIColor? //для переноса между view при выборе из многих цветов
     
+    
     // MARK: Catrgories
     ///Добавление категории в persistanceContainer
     func addCategory(id: UUID, name: String, type: OperationType, icon: String, color: CGColor){
@@ -66,8 +67,6 @@ class Model{
         return nil
     }
     
-    // MARK: Operations
-    
     
     // MARK: Colors
     func getAvailableColors() -> [UIColor]{
@@ -97,6 +96,7 @@ class Model{
         }
         return colors
     }
+    
     
     // MARK: Icons
     /**
@@ -177,6 +177,7 @@ class Model{
         return iconDictionary
     }
     
+    
     // MARK: Additions
     ///подвью с нужным тегом
     func getSubviewWithTag(viewToFind: UIView, tag: String) -> [UIView]{
@@ -197,6 +198,7 @@ class Model{
         let components = str.split(separator: " ").map{ CGFloat(Double($0) ?? 0.0)}
         return CGColor(red: components[0], green: components[1], blue: components[2], alpha: components[3])
     }
+    
     
     // MARK: Enums
     ///Тип операций доход/расход

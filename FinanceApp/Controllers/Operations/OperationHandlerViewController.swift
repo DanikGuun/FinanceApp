@@ -140,6 +140,9 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }
     
     // MARK: Additions
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     ///настраиваем кнопку добавления
     func setupApplyButton(){
         applyButton.layer.cornerRadius = 25
@@ -160,9 +163,6 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
             activeOperationType = operation.type
         }
         activeOperationType = .Expence
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
     /**
