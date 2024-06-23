@@ -10,13 +10,15 @@ import UIKit
 
 class OperationHandlerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, CategoriesPickParent{
 
-    @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var operationTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var emptyAmountWarning: UIView!
+    @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var emptyCategoryWarning: UIView!
+    @IBOutlet weak var opertaionDatePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var applyButton: UIButton!
-    @IBOutlet weak var menuBackgroundView: UIView!
-    @IBOutlet weak var opertaionDatePicker: UIDatePicker!
     
     var notesToDateConstraint: NSLayoutConstraint!
     var notesToKeyboardConstraint: NSLayoutConstraint!
@@ -46,9 +48,16 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         notesTextField.delegate = self
+        
+        //чтобы переносить поле для заметок под клавиатуру
         notesToDateConstraint = notesTextField.topAnchor.constraint(equalTo: opertaionDatePicker.bottomAnchor, constant: 18)
         notesToKeyboardConstraint = notesTextField.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -30)
         notesToDateConstraint.isActive = true
+        
+        opertaionDatePicker.maximumDate = Date()
+        
+        emptyAmountWarning.layer.cornerRadius = 5
+        emptyCategoryWarning.layer.cornerRadius = 5
     }
     
     // MARK: Collection view
@@ -151,10 +160,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         return true
     }
     
-    // MARK: Additions
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
+    // MARK: Apply Button
     ///настраиваем кнопку добавления
     func setupApplyButton(){
         applyButton.layer.cornerRadius = 25
@@ -168,6 +174,26 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
             conf?.title = "Добавить"
         }
         applyButton.configuration = conf
+    }
+    
+    @IBAction func applyButton(_ sender: UIButton) {
+        func animateEmptyField(_ emptyView: UIView){
+            emptyView.backgroundColor = UIColor(named: "EmptyField")
+            UIView.animate(withDuration: 0.8, animations: {
+                emptyView.backgroundColor = UIColor.clear
+            })
+        }
+        var isFull = true //Если все поля заполнены
+        
+        //если не заполнена сумма, то заполняем и то же с категориями
+        if amountTextField.text?.isEmpty ?? true {animateEmptyField(emptyAmountWarning); isFull = false}
+        if activeCategory == nil {animateEmptyField(emptyCategoryWarning); isFull = false}
+        
+    }
+    
+    // MARK: Additions
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     func setupOperationType(){
