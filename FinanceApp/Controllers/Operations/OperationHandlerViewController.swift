@@ -85,12 +85,15 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         view.endEditing(true)
-        unSelectCells()
         let selected = collectionView.cellForItem(at: indexPath) as! CategoryCell
+        
         if Model.shared.getSFName(of: selected.icon.image!) == "ellipsis.circle"{
             performSegue(withIdentifier: "pickCategorySegue", sender: nil)
         }
-        else {selectCell(cell: selected)}
+        else {
+            unSelectCells()
+            selectCell(cell: selected)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -191,6 +194,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     
     func categoryPick(_ category: Category) {
         //если выбранная категория есть в списке, то не дропаем последнюю, а только удаляем первую
+        unSelectCells()
         if categories.contains(category) == false{
             categories = categories.dropLast()
         }
