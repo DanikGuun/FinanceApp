@@ -70,7 +70,7 @@ class ColorpickerCollectionView: UICollectionView, UICollectionViewDelegate, UIC
         //если что заменяем повтор
         for (index, c) in colors.enumerated(){
             if c == color {
-                colors[index] = Model.shared.getRandomColors(count: 1)[0]
+                colors[index] = Model.shared.getRandomColors(count: 1, otherwise: colors)[0]
             }
         }
         
