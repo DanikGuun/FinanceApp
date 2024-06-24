@@ -17,11 +17,7 @@ class Model{
     
     
     // MARK: Catrgories
-    ///Добавление категории в persistanceContainer
-    func addCategory(id: UUID, name: String, type: OperationType, icon: String, color: CGColor){
-        let _ = Category(id: id, name: name, type: type.rawValue, icon: icon, color: colorToString(color))
-        CoreDataManager.shared.saveContext()
-    }
+    ///Добавление категории в persistanceContainerф
     func addCategory(id: UUID, name: String, type: String, icon: String, color: String){
         let _ = Category(id: id, name: name, type: type, icon: icon, color: color)
         CoreDataManager.shared.saveContext()
@@ -67,6 +63,11 @@ class Model{
         return nil
     }
     
+    // MARK: Operations
+    func addOperation(categoryID: UUID, amount: Double, date: Date, notes: String){
+        let _ = Operation(id: UUID(), categoryID: categoryID, amount: amount, date: date, notes: notes)
+        CoreDataManager.shared.saveContext()
+    }
     
     // MARK: Colors
     func getAvailableColors() -> [UIColor]{

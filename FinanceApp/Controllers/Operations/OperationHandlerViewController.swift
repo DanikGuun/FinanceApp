@@ -58,6 +58,10 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         
         emptyAmountWarning.layer.cornerRadius = 5
         emptyCategoryWarning.layer.cornerRadius = 5
+        
+        amountTextField.text = currentOperation?.amount.formatted(.number) ?? ""
+        opertaionDatePicker.date = currentOperation?.date ?? Date()
+        notesTextField.text = currentOperation?.notes
     }
     
     // MARK: Collection view
@@ -189,6 +193,20 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         if amountTextField.text?.isEmpty ?? true {animateEmptyField(emptyAmountWarning); isFull = false}
         if activeCategory == nil {animateEmptyField(emptyCategoryWarning); isFull = false}
         
+        if isFull{
+            let amount = Double(amountTextField.text!) ?? 0.0
+            let date = opertaionDatePicker.date
+            let notes = notesTextField.text ?? ""
+            
+            if let currentOperation{
+                currentOperation.categoryID = activeCategory!.id
+                currentOperation.amount = amount
+                currentOperation.date = date
+                currentOperation.notes = notes
+            }
+            else {Model.shared.addOperation(categoryID: activeCategory!.id!, amount: amount, date: date, notes: notes)}
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     // MARK: Additions

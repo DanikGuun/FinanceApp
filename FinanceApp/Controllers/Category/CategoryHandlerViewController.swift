@@ -152,6 +152,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         let categoryType: String
         if categoryTypeSegmentedConrol.selectedSegmentIndex == 0{categoryType = Model.OperationType.Expence.rawValue}
         else {categoryType = Model.OperationType.Income.rawValue}
+        
         if let currentCategory{
             currentCategory.color = color
             currentCategory.name = name
@@ -159,7 +160,6 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
             currentCategory.type = categoryType
         }
         else {Model.shared.addCategory(id: UUID(), name: name, type: categoryType, icon: activeIcon!, color: color)}
-        CoreDataManager.shared.saveContext()
         navigationController?.popViewController(animated: true) //закрытие страницы
     }
     
