@@ -27,6 +27,13 @@ class OperationsViewController: UIViewController{
     
     // MARK: Dates
     
+    @IBAction func minusDate(_ sender: UIButton) {
+        dateUpdate(direction: .past)
+    }
+    @IBAction func plusDate(_ sender: UIButton) {
+        dateUpdate(direction: .future)
+    }
+    
     @IBAction func changePeriod(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
             case 0: activePeriod = .day

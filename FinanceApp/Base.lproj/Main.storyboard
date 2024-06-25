@@ -81,6 +81,9 @@
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                        <connections>
+                                            <action selector="plusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="3Eq-VK-pob"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-MD-9E4">
                                         <rect key="frame" x="8" y="47" width="22" height="33"/>
@@ -90,6 +93,9 @@
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="minusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="tzz-5g-aPF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
                                         <rect key="frame" x="226" y="193" width="112" height="34"/>
