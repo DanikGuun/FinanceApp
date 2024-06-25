@@ -109,19 +109,29 @@
                                             <segue destination="bch-z0-xIC" kind="show" id="Lhi-MP-c7B"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHk-Pe-fK6">
+                                        <rect key="frame" x="30" y="56.666666666666686" width="278" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hbJ-Yt-96c" secondAttribute="trailing" id="5MS-Fl-bGj"/>
                                     <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" id="7PO-T7-DzF"/>
                                     <constraint firstAttribute="trailing" secondItem="RmY-PQ-RyI" secondAttribute="trailing" constant="12" id="8yJ-j0-ljE"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="height" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="0.424242" id="DR7-e1-Bjh"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="leading" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="8" id="Hd1-DT-Zrw"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="Jw4-94-RRO"/>
                                     <constraint firstItem="Xyq-BP-jKG" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="STW-GX-igm"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="height" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="0.145374" id="Sd5-Cr-J3y"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="top" secondItem="RmY-PQ-RyI" secondAttribute="bottom" constant="8" symbolic="YES" id="VJm-FL-iN2"/>
                                     <constraint firstAttribute="bottom" secondItem="hbJ-Yt-96c" secondAttribute="bottom" id="bg5-HI-fH6"/>
                                     <constraint firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="trailing" constant="8" id="gHB-Wn-DHM"/>
                                     <constraint firstItem="RmY-PQ-RyI" firstAttribute="leading" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="12" id="hoD-Xh-GHY"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="leading" secondItem="lbT-MD-9E4" secondAttribute="trailing" id="kpS-NR-Brb"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="leading" id="wes-9H-mI3"/>
                                     <constraint firstItem="RmY-PQ-RyI" firstAttribute="top" secondItem="oSP-fu-CI7" secondAttribute="top" constant="8" id="zsy-jn-sIZ"/>
                                 </constraints>
                             </view>
@@ -153,6 +163,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="chartBackgroundView" destination="oSP-fu-CI7" id="CHY-EJ-iOz"/>
+                        <outlet property="dateLabel" destination="zHk-Pe-fK6" id="41G-yU-E8G"/>
                         <outlet property="menuBackgroundView" destination="Ogw-ng-awv" id="0Zd-Do-Nck"/>
                         <outlet property="minusDateButton" destination="lbT-MD-9E4" id="XJj-Jg-81w"/>
                         <outlet property="moneyLabel" destination="oQK-fr-ykM" id="dld-so-KmS"/>
@@ -206,7 +217,7 @@
                                 <rect key="frame" x="141" y="241" width="110.66666666666669" height="2"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rublesign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7WZ-7R-kee">
-                                <rect key="frame" x="259" y="218.66666666666666" width="14" height="22.333333333333343"/>
+                                <rect key="frame" x="259" y="219.33333333333331" width="14" height="22.333333333333343"/>
                                 <color key="tintColor" name="CategoryName"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
@@ -870,7 +881,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
+                                <rect key="frame" x="288" y="5" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -911,7 +922,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-Xn-JzK">
-                                <rect key="frame" x="20" y="110" width="353" height="708"/>
+                                <rect key="frame" x="20" y="110.00000000000001" width="353" height="708"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aC4-U4-hzm">
                                     <size key="itemSize" width="40" height="40"/>
@@ -1029,7 +1040,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ihS-zs-rBK">
-                                <rect key="frame" x="0.0" y="105" width="393" height="713"/>
+                                <rect key="frame" x="0.0" y="105.00000000000001" width="393" height="713"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pf9-fe-tLu">

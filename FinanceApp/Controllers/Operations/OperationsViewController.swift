@@ -12,6 +12,7 @@ class OperationsViewController: UIViewController{
     @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var chartBackgroundView: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var minusDateButton: UIButton!
     @IBOutlet weak var plusDateButton: UIButton!
     
@@ -25,6 +26,8 @@ class OperationsViewController: UIViewController{
         
         Appereances.applyShadow(chartBackgroundView)
         chartBackgroundView.layer.cornerRadius = 10
+    
+        dateUpdate()
     }
     
     // MARK: Dates
@@ -59,12 +62,14 @@ class OperationsViewController: UIViewController{
     func dateUpdate(direction: DateChangeDirrection = .no){
         activeDate = Calendar.current.date(byAdding: activePeriod, value: direction.rawValue, to: activeDate)!
         let interval = getDateInterval(start: activeDate, period: activePeriod)
-        print("\(interval.start.formatted(.dateTime)) - \(interval.end.formatted(.dateTime))")
-        let activeDay = Calendar.current.component(.day, from: activeDate)
-        let today = Calendar.current.component(.day, from: Date())
         
-        if activeDay >= today {plusDateButton.isEnabled = false}
+
+        //вкл/выкл кнопки вправо дат
+        
+        if startOfDay(activeDate) >= startOfDay(Date()) {plusDateButton.isEnabled = false}
         else {plusDateButton.isEnabled = true}
+
+        setDateLabelText(interval: interval, period: activePeriod)
     }
     
     func getDateInterval(start: Date, period: Calendar.Component) -> DateInterval{
@@ -159,5 +164,33 @@ class OperationsViewController: UIViewController{
         end.minute = 59
         end.second = 59
         return Calendar.current.date(from: end)!
+    }
+    
+    // MARK: Additions
+    ///ставим дату на лейбле
+    func setDateLabelText(interval: DateInterval, period: Calendar.Component){
+        
+        var dateString = ""
+        switch period{
+            
+        case .day: dateString = interval.start.formatted(.dateTime.day(.twoDigits).month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU")))
+            
+        case .weekOfYear: dateString = interval.start.formatted(.dateTime.day(.twoDigits).month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU")))
+            + " - " +
+            interval.end.formatted(.dateTime.day(.twoDigits).month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU")))
+            
+        case .month: dateString = interval.start.formatted(.dateTime.month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU")))
+            
+        case .year: dateString = interval.start.formatted(.dateTime.year(.defaultDigits))
+            
+        default: dateString = ""
+        }
+        
+        let attributedString = NSMutableAttributedString(string: dateString)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: dateString.count))
+        let font = UIFont.systemFont(ofSize: dateLabel.frame.height, weight: .semibold)
+        attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: dateString.count))
+        dateLabel.attributedText = attributedString
+        dateLabel.adjustsFontSizeToFitWidth = true
     }
 }
