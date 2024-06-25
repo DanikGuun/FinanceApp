@@ -11,6 +11,7 @@
 		565D48632C18D21A00E44B0A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48622C18D21A00E44B0A /* CategoriesViewController.swift */; };
 		565D48652C18E37100E44B0A /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D48642C18E37100E44B0A /* CategoryCell.swift */; };
 		5660E6FE2C26DB580099BEDE /* CategoryPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5660E6FD2C26DB580099BEDE /* CategoryPickViewController.swift */; };
+		566837E02C2B2BCB0002628E /* PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566837DF2C2B2BCB0002628E /* PeriodPicker.swift */; };
 		567CA9F42C18B37F00C1E4FA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */; };
 		567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */; };
 		567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */; };
@@ -46,6 +47,7 @@
 		565D48622C18D21A00E44B0A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		565D48642C18E37100E44B0A /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		5660E6FD2C26DB580099BEDE /* CategoryPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickViewController.swift; sourceTree = "<group>"; };
+		566837DF2C2B2BCB0002628E /* PeriodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPicker.swift; sourceTree = "<group>"; };
 		567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				5634F2152C1B74F400FB52EF /* Cells */,
 				56C291882C20B0E10006B629 /* ColorPickerCollectionView.swift */,
+				566837DF2C2B2BCB0002628E /* PeriodPicker.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				565D48652C18E37100E44B0A /* CategoryCell.swift in Sources */,
 				56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */,
 				56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */,
+				566837E02C2B2BCB0002628E /* PeriodPicker.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				56C291852C20964B0006B629 /* IconWithoutBackgroundCell.swift in Sources */,
