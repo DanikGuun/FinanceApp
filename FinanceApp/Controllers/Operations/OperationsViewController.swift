@@ -12,6 +12,8 @@ class OperationsViewController: UIViewController{
     @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var chartBackgroundView: UIView!
+    @IBOutlet weak var minusDateButton: UIButton!
+    @IBOutlet weak var plusDateButton: UIButton!
     
     var activePeriod: Calendar.Component = .day
     var activeDate: Date = Date()
@@ -29,6 +31,7 @@ class OperationsViewController: UIViewController{
     
     @IBAction func minusDate(_ sender: UIButton) {
         dateUpdate(direction: .past)
+        plusDateButton.isEnabled = true
     }
     @IBAction func plusDate(_ sender: UIButton) {
         dateUpdate(direction: .future)
@@ -57,6 +60,11 @@ class OperationsViewController: UIViewController{
         activeDate = Calendar.current.date(byAdding: activePeriod, value: direction.rawValue, to: activeDate)!
         let interval = getDateInterval(start: activeDate, period: activePeriod)
         print("\(interval.start.formatted(.dateTime)) - \(interval.end.formatted(.dateTime))")
+        let activeDay = Calendar.current.component(.day, from: activeDate)
+        let today = Calendar.current.component(.day, from: Date())
+        
+        if activeDay >= today {plusDateButton.isEnabled = false}
+        else {plusDateButton.isEnabled = true}
     }
     
     func getDateInterval(start: Date, period: Calendar.Component) -> DateInterval{
