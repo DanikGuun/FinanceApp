@@ -13,5 +13,47 @@ protocol IntervalCalendarDelegate{ //для делегата календаре�
 }
 protocol IntervalCalendar: UIView{ //чтобы подогнать все календари под 1, ради удобства
     var intervalDelegate: IntervalCalendarDelegate! { get set }
-    func constraintCalendar(dateLabel: UIView, chartBackground: UIView)//привязка календаря к родительскому бэку под дату
+    var bottomConstraint: NSLayoutConstraint! { get set }
+    var height: CGFloat { get }
+    
+    init (activeDate: Date)
 }
+
+extension IntervalCalendar{
+    func constraintCalendar(chartBackground: UIView){
+        //делаем календарь прижатым к низу, после раздвигаем
+        self.topAnchor.constraint(equalTo: chartBackground.topAnchor, constant: 0).isActive = true
+        self.leadingAnchor.constraint(equalTo: chartBackground.leadingAnchor, constant: -10).isActive = true
+        self.trailingAnchor.constraint(equalTo: chartBackground.trailingAnchor, constant: 10).isActive = true
+        self.bottomConstraint = bottomAnchor.constraint(equalTo: chartBackground.bottomAnchor, constant: -chartBackground.frame.height)
+        bottomConstraint.isActive = true
+        
+        self.superview!.layoutIfNeeded() //чтобы обновилось и стало прижатым к верху
+        UIView.animate(withDuration: 0.3, animations: {
+            self.bottomConstraint.constant = self.height - chartBackground.frame.height
+            self.superview!.layoutIfNeeded()
+        })
+        
+        self.backgroundColor = UIColor(named: "ControllersBackground")
+        self.layer.cornerRadius = 10
+        
+        
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 1
+        self.layer.shadowColor = UIColor(named: "ShadowColor")!.cgColor
+    }
+    
+    func removeCalendar(){
+        
+        //задаем констрейн высоты вместо нижней привязки и его к 0
+        let heightConstraint = self.heightAnchor.constraint(equalToConstant: self.frame.height)
+        heightConstraint.isActive = true
+        bottomConstraint.isActive = false
+        UIView.animate(withDuration: 0.3, animations: {
+            heightConstraint.constant = 0
+            self.superview!.layoutIfNeeded()
+        }, completion: {_ in self.removeFromSuperview()})
+    }
+}
+

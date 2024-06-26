@@ -33,21 +33,24 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateLabel.addGestureRecognizer(recogniser)
     }
     
+    
+    
     // MARK: Date Intervals Pickers
     @objc func dateLabelPressed(_ sender: UILabel){
         var calendar: IntervalCalendar
         
         switch activePeriod {
             case .day: calendar = DayPickerCalendarView(activeDate: activeDate)
+            case .weekOfYear: calendar = WeekPickerCalendarView()
             default: calendar = DayPickerCalendarView(activeDate: activeDate)
         }
-        chartBackgroundView.addSubview(calendar)
-        calendar.constraintCalendar(dateLabel: dateLabel, chartBackground: chartBackgroundView)
+        view.addSubview(calendar)
+        calendar.constraintCalendar(chartBackground: chartBackgroundView)
         calendar.intervalDelegate = self
     }
     
     func onIntervalSelected(interval: DateInterval) {
-        print("\(interval.start.formatted(.dateTime)) - \(interval.end.formatted(.dateTime))")
+        dateUpdate(newDate: interval.start) //сюда передаем просто день, а нужный период посчитает сам
     }
     
     // MARK: Dates
@@ -70,12 +73,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             case 3: activePeriod = .year
             default: activePeriod = .calendar
         }
-        
-        dateUpdate()
+        dateUpdate(newDate: Date())
     }
     
-    ///Обновляет Текущую дату, включая отрисовку
     func dateUpdate(newDate: Date? = nil){
+    ///Обновляет Текущую дату, включая отрисовку
         if let newDate {activeDate = newDate}
         let interval = DateManager.getDateInterval(start: activeDate, period: activePeriod)
         
