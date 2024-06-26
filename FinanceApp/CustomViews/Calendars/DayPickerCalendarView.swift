@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, IntervalCalendar{
+class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate, IntervalCalendar{
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     
@@ -22,12 +22,18 @@ class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, IntervalCal
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.delegate = self
+        self.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
         self.locale = Locale(identifier: "ru_RU")
         setupDates()
     }
     
     //MARK: Calendar
-    
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, canSelectDate dateComponents: DateComponents?) -> Bool {
+        return dateComponents != nil
+    }
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        
+    }
     
     //MARK: Setup
     private func setupDates(){
