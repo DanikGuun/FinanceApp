@@ -38,15 +38,16 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         var calendar: IntervalCalendar
         
         switch activePeriod {
-        case .day: calendar = DayPickerCalendarView()
-        default: calendar = DayPickerCalendarView()
+            case .day: calendar = DayPickerCalendarView(activeDate: activeDate)
+            default: calendar = DayPickerCalendarView(activeDate: activeDate)
         }
         chartBackgroundView.addSubview(calendar)
         calendar.constraintCalendar(dateLabel: dateLabel, chartBackground: chartBackgroundView)
         calendar.intervalDelegate = self
     }
+    
     func onIntervalSelected(interval: DateInterval) {
-        
+        print("\(interval.start.formatted(.dateTime)) - \(interval.end.formatted(.dateTime))")
     }
     
     // MARK: Dates

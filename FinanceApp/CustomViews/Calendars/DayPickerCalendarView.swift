@@ -11,28 +11,40 @@ import UIKit
 class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate, IntervalCalendar{
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
+    var bottomConstraint: NSLayoutConstraint!
     
     let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
-
+    
     required init? (coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    init() {
+    init(activeDate: Date) {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.delegate = self
-        self.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
+        let selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
+        self.selectionBehavior = selectionBehavior
+        selectionBehavior.setSelected(calendar.dateComponents(standartComponentSet, from: activeDate), animated: true)
         self.locale = Locale(identifier: "ru_RU")
         setupDates()
     }
     
     //MARK: Calendar
+    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, canSelectDate dateComponents: DateComponents?) -> Bool {
         return dateComponents != nil
     }
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        let date = calendar.date(from: dateComponents!)!
+        intervalDelegate.onIntervalSelected(interval: DateManager.dayInterval(date: date))
         
+        let height = self.frame.height
+        UIView.animate(withDuration: 0.3, animations: {
+            self.setNeedsLayout()
+            self.bottomConstraint.constant = -height
+            self.layoutIfNeeded()
+        }, completion: {_ in self.removeFromSuperview()})
     }
     
     //MARK: Setup
@@ -47,10 +59,12 @@ class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarS
         self.topAnchor.constraint(equalTo: chartBackground.topAnchor, constant: 0).isActive = true
         self.leadingAnchor.constraint(equalTo: chartBackground.leadingAnchor, constant: -10).isActive = true
         self.trailingAnchor.constraint(equalTo: chartBackground.trailingAnchor, constant: 10).isActive = true
-        let bottomConstraint = bottomAnchor.constraint(equalTo: chartBackground.bottomAnchor, constant: 50)
+        bottomConstraint = bottomAnchor.constraint(equalTo: chartBackground.bottomAnchor, constant: 50)
         bottomConstraint.isActive = true
+        
         UIView.animate(withDuration: 0.3, animations: {
-            bottomConstraint.constant = 130
+            self.setNeedsLayout()
+            self.bottomConstraint.constant = 130
             self.layoutIfNeeded()
         })
         

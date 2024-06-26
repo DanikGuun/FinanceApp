@@ -122,11 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				565D48602C18C27200E44B0A /* Model.swift */,
+				56690EA82C2C9190003F378C /* DateManager.swift */,
 				567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */,
 				567CAA012C18B5B800C1E4FA /* CoreDataEntities */,
 				56D3031D2C1C59B800E5DA37 /* IconManager.swift */,
 				56CBFA162C1F3A2400CA617E /* ColorManager.swift */,
-				56690EA82C2C9190003F378C /* DateManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
