@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class OperationsViewController: UIViewController{
+class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
     @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var moneyLabel: UILabel!
@@ -28,6 +28,25 @@ class OperationsViewController: UIViewController{
         chartBackgroundView.layer.cornerRadius = 10
     
         dateUpdate()
+        //делаем нажатия на лэйбл с датой
+        let recogniser = UITapGestureRecognizer(target: self, action: #selector(dateLabelPressed))
+        dateLabel.addGestureRecognizer(recogniser)
+    }
+    
+    // MARK: Date Intervals Pickers
+    @objc func dateLabelPressed(_ sender: UILabel){
+        var calendar: IntervalCalendar
+        
+        switch activePeriod {
+        case .day: calendar = DayPickerCalendarView()
+        default: calendar = DayPickerCalendarView()
+        }
+        chartBackgroundView.addSubview(calendar)
+        calendar.constraintCalendar(dateLabel: dateLabel, chartBackground: chartBackgroundView)
+        calendar.intervalDelegate = self
+    }
+    func onIntervalSelected(interval: DateInterval) {
+        
     }
     
     // MARK: Dates
