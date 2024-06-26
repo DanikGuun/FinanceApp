@@ -52,11 +52,13 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     // MARK: Dates
     
     @IBAction func minusDate(_ sender: UIButton) {
-        dateUpdate(direction: .past)
+        let date = Calendar.current.date(byAdding: activePeriod, value: -1, to: activeDate)
+        dateUpdate(newDate: date)
         plusDateButton.isEnabled = true
     }
     @IBAction func plusDate(_ sender: UIButton) {
-        dateUpdate(direction: .future)
+        let date = Calendar.current.date(byAdding: activePeriod, value: 1, to: activeDate)
+        dateUpdate(newDate: date)
     }
     
     @IBAction func changePeriod(_ sender: UISegmentedControl) {
@@ -71,15 +73,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateUpdate()
     }
     
-    enum DateChangeDirrection: Int{
-        case past = -1
-        case no = 0
-        case future = 1
-    }
-    
     ///Обновляет Текущую дату, включая отрисовку
-    func dateUpdate(direction: DateChangeDirrection = .no){
-        activeDate = Calendar.current.date(byAdding: activePeriod, value: direction.rawValue, to: activeDate)!
+    func dateUpdate(newDate: Date? = nil){
+        if let newDate {activeDate = newDate}
         let interval = getDateInterval(start: activeDate, period: activePeriod)
         
 
