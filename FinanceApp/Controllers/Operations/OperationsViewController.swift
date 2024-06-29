@@ -38,14 +38,22 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     // MARK: Date Intervals Pickers
     @objc func dateLabelPressed(_ sender: UILabel){
         var calendar: IntervalCalendar
+        var insets: UIEdgeInsets
         
         switch activePeriod {
-            case .day: calendar = DayPickerCalendarView(activeDate: activeDate)
-            case .weekOfYear: calendar = WeekPickerCalendarView()
-            default: calendar = DayPickerCalendarView(activeDate: activeDate)
+        case .day:
+            calendar = DayPickerCalendarView(activeDate: activeDate)
+            insets = UIEdgeInsets(top: 0, left: -10, bottom: 130, right: 10)
+            
+        case .weekOfYear:
+            calendar = WeekPickerCalendarView(activeDate: activeDate)
+            insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
+        default:
+            calendar = DayPickerCalendarView(activeDate: activeDate)
+            insets = UIEdgeInsets.zero
         }
         view.addSubview(calendar)
-        calendar.constraintCalendar(chartBackground: chartBackgroundView)
+        calendar.constraintCalendar(chartBackground: chartBackgroundView, insets: insets)
         calendar.intervalDelegate = self
     }
     

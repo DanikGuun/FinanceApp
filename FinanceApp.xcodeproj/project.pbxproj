@@ -14,7 +14,7 @@
 		56690EA52C2C779A003F378C /* IntervalCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */; };
 		56690EA72C2C7844003F378C /* DayPickerCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56690EA62C2C7844003F378C /* DayPickerCalendarView.swift */; };
 		56690EA92C2C9190003F378C /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56690EA82C2C9190003F378C /* DateManager.swift */; };
-		567122242C3078F000896346 /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567122232C3078F000896346 /* WeekCalendarView.swift */; };
+		567122242C3078F000896346 /* WeekPickerCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567122232C3078F000896346 /* WeekPickerCalendarView.swift */; };
 		567CA9F42C18B37F00C1E4FA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */; };
 		567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */; };
 		567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */; };
@@ -53,7 +53,7 @@
 		56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalCalendarDelegate.swift; sourceTree = "<group>"; };
 		56690EA62C2C7844003F378C /* DayPickerCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerCalendarView.swift; sourceTree = "<group>"; };
 		56690EA82C2C9190003F378C /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
-		567122232C3078F000896346 /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		567122232C3078F000896346 /* WeekPickerCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPickerCalendarView.swift; sourceTree = "<group>"; };
 		567CA9F32C18B37F00C1E4FA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		567CA9F92C18B58F00C1E4FA /* Operation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		567CA9FA2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			children = (
 				56690EA62C2C7844003F378C /* DayPickerCalendarView.swift */,
 				56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */,
-				567122232C3078F000896346 /* WeekCalendarView.swift */,
+				567122232C3078F000896346 /* WeekPickerCalendarView.swift */,
 			);
 			path = Calendars;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 				56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */,
 				56CBFA1A2C1F401A00CA617E /* MultiColorpickerCell.swift in Sources */,
 				567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */,
-				567122242C3078F000896346 /* WeekCalendarView.swift in Sources */,
+				567122242C3078F000896346 /* WeekPickerCalendarView.swift in Sources */,
 				56F50E4B2C11BC4F00A240D1 /* Appereances.swift in Sources */,
 				56C291852C20964B0006B629 /* IconWithoutBackgroundCell.swift in Sources */,
 				565D48612C18C27200E44B0A /* Model.swift in Sources */,

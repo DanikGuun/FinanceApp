@@ -14,23 +14,22 @@ protocol IntervalCalendarDelegate{ //для делегата календаре�
 protocol IntervalCalendar: UIView{ //чтобы подогнать все календари под 1, ради удобства
     var intervalDelegate: IntervalCalendarDelegate! { get set }
     var bottomConstraint: NSLayoutConstraint! { get set }
-    var height: CGFloat { get }
-    
-    init (activeDate: Date)
+
 }
 
 extension IntervalCalendar{
-    func constraintCalendar(chartBackground: UIView){
+    
+    func constraintCalendar(chartBackground: UIView, insets: UIEdgeInsets){
         //делаем календарь прижатым к низу, после раздвигаем
-        self.topAnchor.constraint(equalTo: chartBackground.topAnchor, constant: 0).isActive = true
-        self.leadingAnchor.constraint(equalTo: chartBackground.leadingAnchor, constant: -10).isActive = true
-        self.trailingAnchor.constraint(equalTo: chartBackground.trailingAnchor, constant: 10).isActive = true
+        self.topAnchor.constraint(equalTo: chartBackground.topAnchor, constant: insets.top).isActive = true
+        self.leadingAnchor.constraint(equalTo: chartBackground.leadingAnchor, constant: insets.left).isActive = true
+        self.trailingAnchor.constraint(equalTo: chartBackground.trailingAnchor, constant: insets.right).isActive = true
         self.bottomConstraint = bottomAnchor.constraint(equalTo: chartBackground.bottomAnchor, constant: -chartBackground.frame.height)
         bottomConstraint.isActive = true
         
         self.superview!.layoutIfNeeded() //чтобы обновилось и стало прижатым к верху
         UIView.animate(withDuration: 0.3, animations: {
-            self.bottomConstraint.constant = self.height - chartBackground.frame.height
+            self.bottomConstraint.constant = insets.bottom
             self.superview!.layoutIfNeeded()
         })
         
@@ -45,7 +44,6 @@ extension IntervalCalendar{
     }
     
     func removeCalendar(){
-        
         //задаем констрейн высоты вместо нижней привязки и его к 0
         let heightConstraint = self.heightAnchor.constraint(equalToConstant: self.frame.height)
         heightConstraint.isActive = true

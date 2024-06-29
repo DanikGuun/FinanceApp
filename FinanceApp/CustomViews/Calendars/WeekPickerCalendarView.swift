@@ -12,11 +12,13 @@ class WeekPickerCalendarView: UIView, IntervalCalendar{
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
     
-    
-    
-    func constraintCalendar(chartBackground: UIView, height: ) {
-        
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
+    init(activeDate: Date){
+        super.init(frame: CGRect.zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
     
 }
