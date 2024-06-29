@@ -44,10 +44,10 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         case .day:
             calendar = DayPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 130, right: 10)
-            
         case .weekOfYear:
             calendar = WeekPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
+            
         default:
             calendar = DayPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets.zero

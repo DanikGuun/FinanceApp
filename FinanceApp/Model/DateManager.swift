@@ -75,6 +75,25 @@ class DateManager{
         return DateInterval(start: startDate, end: endDate)
     }
     
+    ///получает все недели для месяца, в котором находится день
+    static func getWeeksForMonth(monthOf month: Date) -> [DateInterval]{
+        //делаем дату на начало месяца
+        var components = Calendar.current.dateComponents(standartComponentSet, from: month)
+        components.day = 1
+        var currentDate = Calendar.current.date(from: components)!
+        var currentComponents: DateComponents { Calendar.current.dateComponents(standartComponentSet, from: currentDate)}
+        
+        var intervals: [DateInterval] = []
+        
+        //пока месяц равен изначальному, добавляем неделю
+        while currentComponents.month == components.month{
+            intervals.append(weekInterval(date: currentDate))
+            currentDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: currentDate)!
+        }
+        
+        return intervals
+    }
+    
     //начало дня
     static func startOfDay(_ day: Date) -> Date{
         var start = Calendar.current.dateComponents(standartComponentSet, from: day)
