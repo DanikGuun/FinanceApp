@@ -14,7 +14,6 @@ protocol IntervalCalendarDelegate{ //для делегата календаре�
 protocol IntervalCalendar: UIView{ //чтобы подогнать все календари под 1, ради удобства
     var intervalDelegate: IntervalCalendarDelegate! { get set }
     var bottomConstraint: NSLayoutConstraint! { get set }
-
 }
 
 extension IntervalCalendar{

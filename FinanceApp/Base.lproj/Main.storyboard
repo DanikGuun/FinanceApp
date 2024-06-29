@@ -154,6 +154,7 @@
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="oSP-fu-CI7" secondAttribute="trailing" constant="28" id="Qbj-iK-Dd1"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="rOe-Cg-rbF" secondAttribute="trailing" constant="68" id="RVm-pB-g2B"/>
                             <constraint firstItem="oSP-fu-CI7" firstAttribute="top" secondItem="rOe-Cg-rbF" secondAttribute="bottom" constant="14" id="UNb-l4-h9T"/>
+                            <constraint firstItem="oSP-fu-CI7" firstAttribute="height" secondItem="Ie0-lD-WCh" secondAttribute="height" multiplier="0.266432" id="bvm-EZ-yVS"/>
                             <constraint firstItem="oSP-fu-CI7" firstAttribute="leading" secondItem="Wpb-Wj-o4A" secondAttribute="leading" constant="27" id="pVg-A6-0R7"/>
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="top" secondItem="Ie0-lD-WCh" secondAttribute="top" id="uJS-v2-8XP"/>
                         </constraints>
