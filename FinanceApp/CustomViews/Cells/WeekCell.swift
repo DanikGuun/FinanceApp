@@ -33,11 +33,11 @@ class WeekCell: UICollectionViewCell {
         self.addSubview(background)
         background.backgroundColor = .cellBackround
         background.translatesAutoresizingMaskIntoConstraints = false
-        background.layer.cornerRadius = 5
-        background.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        background.layer.cornerRadius = 7
+        background.layer.shadowColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         background.layer.shadowOpacity = 1
         background.layer.shadowOffset = CGSize(width: 0, height: 0)
-        background.layer.shadowRadius = 2
+        background.layer.shadowRadius = 1
         
         background.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
         background.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
