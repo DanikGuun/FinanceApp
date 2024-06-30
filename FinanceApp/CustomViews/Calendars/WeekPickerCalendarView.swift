@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-class WeekPickerCalendarView: UIView, IntervalCalendar{
+class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource{
     
     var yearAndMonthButton: UIButton!
+    var datePicker: UIPickerView!
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
@@ -26,10 +27,49 @@ class WeekPickerCalendarView: UIView, IntervalCalendar{
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         setupDateButton()
-        
+        setupDatePicker()
     }
     
-    //MARK: YearAndMonthLabel
+    //MARK: DatePicker
+    func picker(_ isShow: Bool){
+        let currentAlpha = isShow ? 1.0 : 0.0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.datePicker.alpha = currentAlpha
+        })
+    }
+    
+    func setupDatePicker(){
+        datePicker = UIPickerView()
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.alpha = 0
+        self.addSubview(datePicker)
+        
+        datePicker.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor).isActive = true
+        datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo:  self.bottomAnchor).isActive = true
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        6
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(component) - \(row)"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 100.0
+    }
+    
+    
+    //MARK: YearAndMonthButton
     func setDateButtonText(_ date: Date){
         let str = date.formatted(.dateTime.month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU"))).localizedCapitalized
         
@@ -84,6 +124,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar{
             })
         }
         
+        yearAndMonthButton.addAction(UIAction(handler: { [self] _ in picker(yearAndMonthButton.isSelected)}), for: .touchUpInside)
         setDateButtonText(activeDate)
     }
 }
