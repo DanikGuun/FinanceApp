@@ -10,11 +10,9 @@ import UIKit
 
 class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
-    
-    
     var yearAndMonthButton: UIButton!
     var datePicker: UIPickerView!
-    var weekCollewctionView: UICollectionView!
+    var weekCollectionView: UICollectionView!
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
@@ -44,18 +42,18 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         
-        weekCollewctionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
-        self.addSubview(weekCollewctionView)
-        weekCollewctionView.translatesAutoresizingMaskIntoConstraints = false
-        weekCollewctionView.delegate = self
-        weekCollewctionView.dataSource = self
-        weekCollewctionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
-        weekCollewctionView.backgroundColor = .clear
+        weekCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        self.addSubview(weekCollectionView)
+        weekCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        weekCollectionView.delegate = self
+        weekCollectionView.dataSource = self
+        weekCollectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
+        weekCollectionView.backgroundColor = .clear
         
-        weekCollewctionView.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor, constant: 10).isActive = true
-        weekCollewctionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
-        weekCollewctionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        weekCollewctionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        weekCollectionView.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor, constant: 10).isActive = true
+        weekCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
+        weekCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        weekCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,7 +69,6 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! WeekCell
         intervalDelegate.onIntervalSelected(interval: cell.dateInterval)
-        removeCalendar()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -148,7 +145,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         }
         activeDate = Calendar.current.date(from: currenDateComponents)!
         setDateButtonText(activeDate)
-        weekCollewctionView.reloadData()
+        weekCollectionView.reloadData()
     }
     
     

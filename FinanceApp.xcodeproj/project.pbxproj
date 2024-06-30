@@ -102,13 +102,13 @@
 		5634F2152C1B74F400FB52EF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
 				565D48642C18E37100E44B0A /* CategoryCell.swift */,
+				56C291862C20A44C0006B629 /* ColorpickCell.swift */,
 				56D3031B2C1C573D00E5DA37 /* IconCell.swift */,
-				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
 				56A334A62C1F973000909B35 /* IconsHeaderView.swift */,
 				56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */,
-				56C291862C20A44C0006B629 /* ColorpickCell.swift */,
+				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
+				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
 				567122252C31C21F00896346 /* WeekCell.swift */,
 			);
 			path = Cells;
@@ -118,8 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				56690EA62C2C7844003F378C /* DayPickerCalendarView.swift */,
-				56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */,
 				567122232C3078F000896346 /* WeekPickerCalendarView.swift */,
+				56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */,
 			);
 			path = Calendars;
 			sourceTree = "<group>";

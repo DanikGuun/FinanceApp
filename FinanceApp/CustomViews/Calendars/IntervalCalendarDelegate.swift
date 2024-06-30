@@ -42,6 +42,7 @@ extension IntervalCalendar{
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 1
         self.layer.shadowColor = UIColor(named: "ShadowColor")!.cgColor
+        
     }
     
     func removeCalendar(){
@@ -51,6 +52,7 @@ extension IntervalCalendar{
         bottomConstraint.isActive = false
         UIView.animate(withDuration: 0.3, animations: {
             heightConstraint.constant = 0
+            self.alpha = 0.3
             self.superview!.layoutIfNeeded()
         }, completion: {_ in self.removeFromSuperview()})
     }

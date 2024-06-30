@@ -18,8 +18,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pUr-lm-ZiN">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" systemColor="systemBlueColor"/>
                         </textAttributes>
@@ -97,8 +97,8 @@
                                             <action selector="minusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="tzz-5g-aPF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
-                                        <rect key="frame" x="234" y="193" width="104" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
+                                        <rect key="frame" x="226" y="193" width="112" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Операция">
                                             <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="small"/>
@@ -143,26 +143,39 @@
                                     <segment title="Доходы"/>
                                 </segments>
                             </segmentedControl>
+                            <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9Q-gp-jlg">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" name="CalendarBackground"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Sek-d5-mqI" appends="YES" id="yMr-YJ-MtC"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wpb-Wj-o4A"/>
                         <color key="backgroundColor" name="ControllersBackground"/>
                         <constraints>
                             <constraint firstItem="rOe-Cg-rbF" firstAttribute="leading" secondItem="Wpb-Wj-o4A" secondAttribute="leading" constant="68" id="0I1-iB-Hpa"/>
+                            <constraint firstItem="E9Q-gp-jlg" firstAttribute="bottom" secondItem="Wpb-Wj-o4A" secondAttribute="bottom" constant="34" id="5v0-do-D8o"/>
                             <constraint firstItem="rOe-Cg-rbF" firstAttribute="top" secondItem="Ogw-ng-awv" secondAttribute="bottom" constant="17" id="6QE-OM-OXQ"/>
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="leading" secondItem="Wpb-Wj-o4A" secondAttribute="leading" id="A4s-rM-vyL"/>
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="trailing" secondItem="Wpb-Wj-o4A" secondAttribute="trailing" id="AHd-ci-Rzv"/>
+                            <constraint firstItem="E9Q-gp-jlg" firstAttribute="leading" secondItem="Wpb-Wj-o4A" secondAttribute="leading" id="FEo-EG-db1"/>
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="height" secondItem="Ie0-lD-WCh" secondAttribute="height" multiplier="0.173709" id="N59-Nq-eAU"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="oSP-fu-CI7" secondAttribute="trailing" constant="28" id="Qbj-iK-Dd1"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="rOe-Cg-rbF" secondAttribute="trailing" constant="68" id="RVm-pB-g2B"/>
                             <constraint firstItem="oSP-fu-CI7" firstAttribute="top" secondItem="rOe-Cg-rbF" secondAttribute="bottom" constant="14" id="UNb-l4-h9T"/>
+                            <constraint firstItem="Wpb-Wj-o4A" firstAttribute="top" secondItem="E9Q-gp-jlg" secondAttribute="top" constant="103" id="nbP-lj-hbS"/>
                             <constraint firstItem="oSP-fu-CI7" firstAttribute="leading" secondItem="Wpb-Wj-o4A" secondAttribute="leading" constant="27" id="pVg-A6-0R7"/>
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="top" secondItem="Ie0-lD-WCh" secondAttribute="top" id="uJS-v2-8XP"/>
+                            <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="E9Q-gp-jlg" secondAttribute="trailing" id="zlv-Pi-g3Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6K9-Mq-B1q">
                         <barButtonItem key="backBarButtonItem" title="назад" id="lay-Ka-aCE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarBackground" destination="E9Q-gp-jlg" id="nwd-hl-qxD"/>
                         <outlet property="chartBackgroundView" destination="oSP-fu-CI7" id="CHY-EJ-iOz"/>
                         <outlet property="dateLabel" destination="zHk-Pe-fK6" id="41G-yU-E8G"/>
                         <outlet property="menuBackgroundView" destination="Ogw-ng-awv" id="0Zd-Do-Nck"/>
@@ -172,6 +185,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J2-Ak-ZMr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Sek-d5-mqI">
+                    <connections>
+                        <action selector="calendarHide" destination="TKD-BP-76y" id="xtn-i1-VVd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="83.206106870229007" y="214.08450704225353"/>
         </scene>
@@ -1223,6 +1241,9 @@
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="rublesign" catalog="system" width="115" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
+        <namedColor name="CalendarBackground">
+            <color red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="0.089999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="CategoryName">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1242,13 +1263,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

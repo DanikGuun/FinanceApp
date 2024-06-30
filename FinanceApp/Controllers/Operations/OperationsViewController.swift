@@ -15,9 +15,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var minusDateButton: UIButton!
     @IBOutlet weak var plusDateButton: UIButton!
+    @IBOutlet weak var calendarBackground: UIView!
     
     var activePeriod: Calendar.Component = .day
     var activeDate: Date = Date()
+    var activeCalendar: IntervalCalendar!
     let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
     
     override func viewDidLoad() {
@@ -33,10 +35,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateLabel.addGestureRecognizer(recogniser)
     }
     
-    
-    
     // MARK: Date Intervals Pickers
     @objc func dateLabelPressed(_ sender: UILabel){
+        let background = UIView()
+        view.addSubview(background)
+        
         var calendar: IntervalCalendar
         var insets: UIEdgeInsets
         
@@ -56,10 +59,22 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         calendar.constraintCalendar(chartBackground: chartBackgroundView, insets: insets)
         calendar.setup()
         calendar.intervalDelegate = self
+        activeCalendar = calendar
+        //фон для календаряz
+        UIView.animate(withDuration: 0.3, animations: {
+            self.calendarBackground.alpha = 1
+        })
     }
     
     func onIntervalSelected(interval: DateInterval) {
         dateUpdate(newDate: interval.start) //сюда передаем просто день, а нужный период посчитает сам
+        calendarHide()
+    }
+    @IBAction func calendarHide(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.calendarBackground.alpha = 0
+            self.activeCalendar.removeCalendar()
+        })
     }
     
     // MARK: Dates

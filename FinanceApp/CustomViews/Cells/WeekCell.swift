@@ -45,7 +45,7 @@ class WeekCell: UICollectionViewCell {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.adjustsFontSizeToFitWidth = true
         
-        dateLabel.font = UIFont.systemFont(ofSize: background.frame.height, weight: .medium)
+        dateLabel.font = UIFont.systemFont(ofSize: background.frame.height, weight: .semibold)
         dateLabel.textAlignment = .center
         
         dateLabel.topAnchor.constraint(equalTo: background.topAnchor).isActive = true

@@ -10,6 +10,7 @@ import UIKit
 
 class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate, IntervalCalendar{
     
+    
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
     
@@ -45,7 +46,6 @@ class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarS
         let date = calendar.date(from: dateComponents!)!
         intervalDelegate.onIntervalSelected(interval: DateManager.dayInterval(date: date))
         
-        removeCalendar()
     }
     
     //MARK: Setup
