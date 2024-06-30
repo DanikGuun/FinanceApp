@@ -14,7 +14,6 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     
     var yearAndMonthButton: UIButton!
     var datePicker: UIPickerView!
-    var datePickerBackground: UIView!
     var weekCollewctionView: UICollectionView!
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
@@ -69,6 +68,12 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! WeekCell
+        intervalDelegate.onIntervalSelected(interval: cell.dateInterval)
+        removeCalendar()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 2
         let height = collectionView.frame.height / 3
@@ -80,7 +85,6 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         let currentAlpha = isShow ? 1.0 : 0.0
         UIView.animate(withDuration: 0.3, animations: {
             self.datePicker.alpha = currentAlpha
-            self.datePickerBackground.alpha = currentAlpha
         })
     }
     
@@ -91,6 +95,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.alpha = 0
         datePicker.backgroundColor = self.backgroundColor
+        datePicker.layer.cornerRadius = self.layer.cornerRadius
         self.addSubview(datePicker)
         
         datePicker.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor).isActive = true
@@ -103,21 +108,6 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         datePicker.selectRow(year - 2000, inComponent: 1, animated: true)
         let month = Calendar.current.component(.month, from: activeDate)
         datePicker.selectRow(month - 1, inComponent: 0, animated: true)
-        
-        //настройка фона
-        datePickerBackground = UIView()
-        self.addSubview(datePickerBackground)
-        datePickerBackground.translatesAutoresizingMaskIntoConstraints = false
-        datePickerBackground.layer.cornerRadius = 50
-        datePickerBackground.backgroundColor = self.backgroundColor
-        datePickerBackground.alpha = 0
-        
-        datePickerBackground.topAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
-        datePickerBackground.bottomAnchor.constraint(equalTo: datePicker.bottomAnchor).isActive = true
-        datePickerBackground.leadingAnchor.constraint(equalTo: datePicker.leadingAnchor).isActive = true
-        datePickerBackground.trailingAnchor.constraint(equalTo: datePicker.trailingAnchor).isActive = true
-        
-        self.bringSubviewToFront(datePicker)//чтобы пикер был поверх фона
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
