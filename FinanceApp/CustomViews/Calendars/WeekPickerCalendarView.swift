@@ -50,6 +50,12 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         datePicker.bottomAnchor.constraint(equalTo:  self.bottomAnchor).isActive = true
+        
+        //выбор даты по умолчанию
+        let year = Calendar.current.component(.year, from: activeDate)
+        datePicker.selectRow(year - 2000, inComponent: 1, animated: true)
+        let month = Calendar.current.component(.month, from: activeDate)
+        datePicker.selectRow(month - 1, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,25 +63,56 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        6
+        let year = Calendar.current.component(.year, from: activeDate)
+        
+        if component == 0 {return 12}
+        return year - 1999 //года
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(component) - \(row)"
+        if component == 0{
+            //элемент с месяцами
+            var rusCalendar = Calendar(identifier: .gregorian)
+            rusCalendar.locale = Locale(identifier: "ru_RU")
+            return rusCalendar.standaloneMonthSymbols[row].capitalized
+        }
+        else{
+            //года
+            return "\(2000 + row)"
+        }
     }
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 100.0
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var currenDateComponents = Calendar.current.dateComponents(DateManager.standartComponentSet, from: activeDate)
+        currenDateComponents.month = pickerView.selectedRow(inComponent: 0) + 1
+        currenDateComponents.year = pickerView.selectedRow(inComponent: 1) + 2000
+        
+        let nowYear = Calendar.current.component(.year, from: Date())
+        let availableMonthsNow = DateManager.getAvailableMonths(for: Date())
+        //если забежали вперед по месяцам в текущем году, то откат
+        if nowYear == currenDateComponents.year! && currenDateComponents.month! > availableMonthsNow.count + 1{
+            pickerView.selectRow(availableMonthsNow.count - 1, inComponent: 0, animated: true)
+            currenDateComponents.month = availableMonthsNow.count
+        }
+        activeDate = Calendar.current.date(from: currenDateComponents)!
+        setDateButtonText(activeDate)
+
     }
+    
     
     
     //MARK: YearAndMonthButton
     func setDateButtonText(_ date: Date){
         let str = date.formatted(.dateTime.month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU"))).localizedCapitalized
         
-        let attributed = NSMutableAttributedString(string: str)
-        attributed.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: str.count))
-        let font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        //берем текущий title
+        let buttonAttributed = NSAttributedString((yearAndMonthButton.configuration?.attributedTitle)!)
+        let attributed = NSMutableAttributedString(attributedString: buttonAttributed)
+        
+        //меняем текст
+        attributed.replaceCharacters(in: NSRange(location: 0, length: attributed.length), with: str)
+        //шрифт
+        let font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         attributed.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.count))
         
         var conf = yearAndMonthButton.configuration
@@ -89,25 +126,28 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         yearAndMonthButton.changesSelectionAsPrimaryAction = true
         yearAndMonthButton.translatesAutoresizingMaskIntoConstraints = false
         yearAndMonthButton.contentHorizontalAlignment = .right
-        yearAndMonthButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 14)
+        yearAndMonthButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16)
         self.addSubview(yearAndMonthButton)
         
         yearAndMonthButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         yearAndMonthButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
         yearAndMonthButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.18).isActive = true
         
+        //делаем attributed для кнопки, чтобы при первом изменении не выкинул nil
+        yearAndMonthButton.configuration?.attributedTitle = AttributedString()
+        
         //стрелка делаем
         let chevronImage = UIImageView()
+        chevronImage.image = UIImage(systemName: "chevron.forward")!.withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         chevronImage.translatesAutoresizingMaskIntoConstraints = false
-        chevronImage.image = UIImage(systemName: "chevron.forward")
         chevronImage.tintColor = .systemBlue
         chevronImage.contentMode = .scaleAspectFit
         self.addSubview(chevronImage)
         
-        chevronImage.leadingAnchor.constraint(equalTo: yearAndMonthButton.trailingAnchor, constant: -14).isActive = true
+        chevronImage.leadingAnchor.constraint(equalTo: yearAndMonthButton.trailingAnchor, constant: -16).isActive = true
         chevronImage.centerYAnchor.constraint(equalTo: yearAndMonthButton.centerYAnchor).isActive = true
-        chevronImage.heightAnchor.constraint(equalToConstant: 14).isActive = true
-        chevronImage.widthAnchor.constraint(equalToConstant: 14).isActive = true
+        chevronImage.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        chevronImage.widthAnchor.constraint(equalToConstant: 16).isActive = true
         
         yearAndMonthButton.configurationUpdateHandler = { button in
             
@@ -123,7 +163,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
                 chevronImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 1/2 * (button.isSelected ? 1 : 0))
             })
         }
-        
+        //действие
         yearAndMonthButton.addAction(UIAction(handler: { [self] _ in picker(yearAndMonthButton.isSelected)}), for: .touchUpInside)
         setDateButtonText(activeDate)
     }

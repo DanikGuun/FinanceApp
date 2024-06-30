@@ -9,7 +9,7 @@ import Foundation
 
 class DateManager{
     
-    static private let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
+    static let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
 
     /**
     определяет промежуток для одного дня
@@ -92,6 +92,12 @@ class DateManager{
         }
         
         return intervals
+    }
+    
+    ///Получает все месяцы до текущего
+    static func getAvailableMonths(for month: Date) -> [Int]{
+        let currentMonth = Calendar.current.component(.month, from: month)
+        return Array(0..<currentMonth)
     }
     
     //начало дня
