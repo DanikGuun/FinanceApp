@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
-class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource{
+class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+
+    
     
     var yearAndMonthButton: UIButton!
     var datePicker: UIPickerView!
+    var weekCollewctionView: UICollectionView!
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
@@ -28,8 +31,38 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         self.translatesAutoresizingMaskIntoConstraints = false
         setupDateButton()
         setupDatePicker()
+        setupCollectionView()
     }
     
+    //MARK: Week CollectionView
+    func setupCollectionView(){
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 100, height: 50)
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 10
+        
+        weekCollewctionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        self.addSubview(weekCollewctionView)
+        weekCollewctionView.translatesAutoresizingMaskIntoConstraints = false
+        weekCollewctionView.delegate = self
+        weekCollewctionView.dataSource = self
+        weekCollewctionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
+        
+        weekCollewctionView.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor, constant: 10).isActive = true
+        weekCollewctionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        weekCollewctionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        weekCollewctionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return DateManager.getWeeksForMonth(monthOf: activeDate).count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! WeekCell
+        cell.setup(dateInterval: DateManager.getWeeksForMonth(monthOf: activeDate)[indexPath.row])
+        return cell
+    }
     //MARK: DatePicker
     func picker(_ isShow: Bool){
         let currentAlpha = isShow ? 1.0 : 0.0
