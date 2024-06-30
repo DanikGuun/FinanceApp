@@ -54,6 +54,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         }
         view.addSubview(calendar)
         calendar.constraintCalendar(chartBackground: chartBackgroundView, insets: insets)
+        calendar.setup()
         calendar.intervalDelegate = self
     }
     

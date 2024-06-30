@@ -30,6 +30,9 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         self.activeDate = activeDate
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setup(){
         setupDateButton()
         setupCollectionView()
         setupDatePicker()
@@ -39,8 +42,8 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     func setupCollectionView(){
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 100, height: 50)
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
         
         weekCollewctionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         self.addSubview(weekCollewctionView)
@@ -51,7 +54,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         weekCollewctionView.backgroundColor = .clear
         
         weekCollewctionView.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor, constant: 10).isActive = true
-        weekCollewctionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        weekCollewctionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
         weekCollewctionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         weekCollewctionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
@@ -65,6 +68,13 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         cell.setup(dateInterval: DateManager.getWeeksForMonth(monthOf: activeDate)[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2
+        let height = collectionView.frame.height / 3
+        return CGSize(width: width, height: height)
+    }
+    
     //MARK: DatePicker
     func picker(_ isShow: Bool){
         let currentAlpha = isShow ? 1.0 : 0.0
@@ -99,7 +109,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         self.addSubview(datePickerBackground)
         datePickerBackground.translatesAutoresizingMaskIntoConstraints = false
         datePickerBackground.layer.cornerRadius = 50
-        datePickerBackground.backgroundColor = .controllersBackground
+        datePickerBackground.backgroundColor = self.backgroundColor
         datePickerBackground.alpha = 0
         
         datePickerBackground.topAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
@@ -148,7 +158,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         }
         activeDate = Calendar.current.date(from: currenDateComponents)!
         setDateButtonText(activeDate)
-
+        weekCollewctionView.reloadData()
     }
     
     

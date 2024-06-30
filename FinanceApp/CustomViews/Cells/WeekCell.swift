@@ -10,6 +10,8 @@ import UIKit
 class WeekCell: UICollectionViewCell {
     
     private var background: UIView!
+    var dateLabel: UILabel!
+    
     var dateInterval: DateInterval
     
     required init?(coder: NSCoder) {
@@ -20,14 +22,38 @@ class WeekCell: UICollectionViewCell {
     override init(frame: CGRect) {
         dateInterval = DateInterval()
         super.init(frame: frame)
+        setupBackground()
+        setupLabel()
     }
     
     func setup(dateInterval: DateInterval){
         self.dateInterval = dateInterval
-        setupBackground()
+        setText(dateInterval: dateInterval)
+    }
+    //MARK: Setups
+    
+    func setText(dateInterval: DateInterval){
+        let startFormatted = dateInterval.start.formatted(.dateTime.day().month(.abbreviated).locale(Locale(identifier: "ru_RU")))
+        let endFormatted = dateInterval.end.formatted(.dateTime.day().month(.abbreviated).locale(Locale(identifier: "ru_RU")))
+        let text = "\(startFormatted) - \(endFormatted)".capitalized
+        dateLabel.text = text
     }
     
-    //MARK: Setups
+    private func setupLabel(){
+        dateLabel = UILabel()
+        self.addSubview(dateLabel)
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.adjustsFontSizeToFitWidth = true
+        
+        dateLabel.font = UIFont.systemFont(ofSize: background.frame.height, weight: .medium)
+        dateLabel.textAlignment = .center
+        
+        dateLabel.topAnchor.constraint(equalTo: background.topAnchor).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor).isActive = true
+    }
+    
     private func setupBackground(){
         background = UIView()
         self.addSubview(background)

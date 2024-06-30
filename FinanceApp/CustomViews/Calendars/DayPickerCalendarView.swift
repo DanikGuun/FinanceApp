@@ -29,6 +29,9 @@ class DayPickerCalendarView: UICalendarView, UICalendarViewDelegate, UICalendarS
         selectionBehavior.setSelected(calendar.dateComponents(standartComponentSet, from: activeDate), animated: true)
         
         self.locale = Locale(identifier: "ru_RU")
+    }
+    
+    func setup() {
         setupDates()
     }
     
