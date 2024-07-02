@@ -134,9 +134,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             
         default: dateString = ""
         }
+        dateString = dateString.localizedCapitalized
         
         let attributedString = NSMutableAttributedString(string: dateString)
         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: dateString.count))
+        
         let font = UIFont.systemFont(ofSize: dateLabel.frame.height, weight: .semibold)
         attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: dateString.count))
         dateLabel.attributedText = attributedString

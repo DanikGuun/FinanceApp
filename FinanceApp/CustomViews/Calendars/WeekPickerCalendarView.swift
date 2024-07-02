@@ -10,9 +10,10 @@ import UIKit
 
 class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
-    var yearAndMonthButton: UIButton!
+    var yearButton: UIButton!
     var datePicker: UIPickerView!
     var weekCollectionView: UICollectionView!
+    let cellFormat = DateFormatter()
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
@@ -33,6 +34,8 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     }
     
     func setup(){
+        cellFormat.dateFormat = "d MMMM"
+        
         setupDateButton()
         setupCollectionView()
         setupDatePicker()
@@ -50,10 +53,10 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         weekCollectionView.translatesAutoresizingMaskIntoConstraints = false
         weekCollectionView.delegate = self
         weekCollectionView.dataSource = self
-        weekCollectionView.register(WeekCell.self, forCellWithReuseIdentifier: "weekCell")
+        weekCollectionView.register(DateIntervalCell.self, forCellWithReuseIdentifier: "weekCell")
         weekCollectionView.backgroundColor = .clear
         
-        weekCollectionView.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor, constant: 10).isActive = true
+        weekCollectionView.topAnchor.constraint(equalTo: yearButton.bottomAnchor, constant: 10).isActive = true
         weekCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
         weekCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         weekCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
@@ -64,16 +67,16 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! WeekCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! DateIntervalCell
         let interval = DateManager.getWeeksForMonth(monthOf: activeDate)[indexPath.row]
-        cell.setup(dateInterval: interval)
+        cell.setup(dateInterval: interval, format: cellFormat, period: .weekOfYear)
         if interval.contains(initialDate) {cell.select(nil)}
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         unselectCells()
-        let cell = collectionView.cellForItem(at: indexPath) as! WeekCell
+        let cell = collectionView.cellForItem(at: indexPath) as! DateIntervalCell
         cell.select(nil)
         intervalDelegate.onIntervalSelected(interval: cell.dateInterval)
     }
@@ -85,7 +88,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     }
     
     func unselectCells(){
-        for cell in weekCollectionView.visibleCells as! [WeekCell]{
+        for cell in weekCollectionView.visibleCells as! [DateIntervalCell]{
             cell.unselect()
         }
     }
@@ -108,7 +111,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         datePicker.layer.cornerRadius = self.layer.cornerRadius
         self.addSubview(datePicker)
         
-        datePicker.topAnchor.constraint(equalTo: yearAndMonthButton.bottomAnchor).isActive = true
+        datePicker.topAnchor.constraint(equalTo: yearButton.bottomAnchor).isActive = true
         datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         datePicker.bottomAnchor.constraint(equalTo:  self.bottomAnchor).isActive = true
@@ -164,12 +167,12 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     
     
     
-    //MARK: YearAndMonthButton
+    //MARK: YearButton
     func setDateButtonText(_ date: Date){
         let str = date.formatted(.dateTime.month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU"))).localizedCapitalized
         
         //берем текущий title
-        let buttonAttributed = NSAttributedString((yearAndMonthButton.configuration?.attributedTitle)!)
+        let buttonAttributed = NSAttributedString((yearButton.configuration?.attributedTitle)!)
         let attributed = NSMutableAttributedString(attributedString: buttonAttributed)
         
         //меняем текст
@@ -178,26 +181,26 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         let font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         attributed.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.count))
         
-        var conf = yearAndMonthButton.configuration
+        var conf = yearButton.configuration
         conf?.attributedTitle = AttributedString(attributed)
-        yearAndMonthButton.configuration = conf
+        yearButton.configuration = conf
     }
     
     func setupDateButton(){
         //кнопка делаем
-        yearAndMonthButton = UIButton(configuration: .plain())
-        yearAndMonthButton.changesSelectionAsPrimaryAction = true
-        yearAndMonthButton.translatesAutoresizingMaskIntoConstraints = false
-        yearAndMonthButton.contentHorizontalAlignment = .right
-        yearAndMonthButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16)
-        self.addSubview(yearAndMonthButton)
+        yearButton = UIButton(configuration: .plain())
+        yearButton.changesSelectionAsPrimaryAction = true
+        yearButton.translatesAutoresizingMaskIntoConstraints = false
+        yearButton.contentHorizontalAlignment = .right
+        yearButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16)
+        self.addSubview(yearButton)
         
-        yearAndMonthButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        yearAndMonthButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
-        yearAndMonthButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.18).isActive = true
+        yearButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        yearButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+        yearButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.18).isActive = true
         
         //делаем attributed для кнопки, чтобы при первом изменении не выкинул nil
-        yearAndMonthButton.configuration?.attributedTitle = AttributedString()
+        yearButton.configuration?.attributedTitle = AttributedString()
         
         //стрелка делаем
         let chevronImage = UIImageView()
@@ -207,12 +210,12 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         chevronImage.contentMode = .scaleAspectFit
         self.addSubview(chevronImage)
         
-        chevronImage.leadingAnchor.constraint(equalTo: yearAndMonthButton.trailingAnchor, constant: -16).isActive = true
-        chevronImage.centerYAnchor.constraint(equalTo: yearAndMonthButton.centerYAnchor).isActive = true
+        chevronImage.leadingAnchor.constraint(equalTo: yearButton.trailingAnchor, constant: -16).isActive = true
+        chevronImage.centerYAnchor.constraint(equalTo: yearButton.centerYAnchor).isActive = true
         chevronImage.heightAnchor.constraint(equalToConstant: 16).isActive = true
         chevronImage.widthAnchor.constraint(equalToConstant: 16).isActive = true
         
-        yearAndMonthButton.configurationUpdateHandler = { button in
+        yearButton.configurationUpdateHandler = { button in
             
             //цвет текста
             button.tintColor = .clear
@@ -227,7 +230,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
             })
         }
         //действие
-        yearAndMonthButton.addAction(UIAction(handler: { [self] _ in picker(yearAndMonthButton.isSelected)}), for: .touchUpInside)
+        yearButton.addAction(UIAction(handler: { [self] _ in picker(yearButton.isSelected)}), for: .touchUpInside)
         setDateButtonText(activeDate)
     }
 }

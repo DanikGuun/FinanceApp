@@ -96,7 +96,10 @@ class DateManager{
     
     ///Получает все месяцы до текущего
     static func getAvailableMonths(for month: Date) -> [Int]{
-        let currentMonth = Calendar.current.component(.month, from: month)
+        if Calendar.current.component(.year, from: Date()) != Calendar.current.component(.year, from: month){
+            return Array(0..<12)
+        }
+        let currentMonth = Calendar.current.component(.month, from: Date())
         return Array(0..<currentMonth)
     }
     

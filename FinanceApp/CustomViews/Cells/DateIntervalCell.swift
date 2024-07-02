@@ -7,27 +7,34 @@
 
 import UIKit
 
-class WeekCell: UICollectionViewCell {
+class DateIntervalCell: UICollectionViewCell {
     
     private var background: UIView!
-    var dateLabel: UILabel!
+    private var dateLabel: UILabel!
+    private var format: DateFormatter
+    private var period: Calendar.Component = .calendar
     
     var dateInterval: DateInterval
     
     required init?(coder: NSCoder) {
+        format = DateFormatter()
         dateInterval = DateInterval()
         super.init(coder: coder)
     }
     
     override init(frame: CGRect) {
         dateInterval = DateInterval()
+        format = DateFormatter()
         super.init(frame: frame)
         setupBackground()
         setupLabel()
     }
     
-    func setup(dateInterval: DateInterval){
+    func setup(dateInterval: DateInterval, format: DateFormatter, period: Calendar.Component){
         self.dateInterval = dateInterval
+        self.period = period
+        self.format = format
+        format.locale = Locale(identifier: "ru_RU")
         setText(dateInterval: dateInterval)
     }
     
@@ -43,9 +50,21 @@ class WeekCell: UICollectionViewCell {
     //MARK: Setups
     
     func setText(dateInterval: DateInterval){
-        let startFormatted = dateInterval.start.formatted(.dateTime.day().month(.abbreviated).locale(Locale(identifier: "ru_RU")))
-        let endFormatted = dateInterval.end.formatted(.dateTime.day().month(.abbreviated).locale(Locale(identifier: "ru_RU")))
-        let text = "\(startFormatted) - \(endFormatted)".capitalized
+        var text = ""
+        switch period {
+        case .weekOfYear:
+            let startFormatted = format.string(from: dateInterval.start)
+            let endFormatted = format.string(from: dateInterval.end)
+            text = "\(startFormatted) - \(endFormatted)".capitalized
+        case .month: //для месяца
+            let month = Calendar.current.component(.month, from: dateInterval.start)
+            var ruCalendar = Calendar(identifier: .gregorian)
+            ruCalendar.locale = Locale(identifier: "ru_RU")
+            text = ruCalendar.standaloneMonthSymbols[month - 1].capitalized
+        default:
+            text = ""
+        }
+
         dateLabel.text = text
     }
     
