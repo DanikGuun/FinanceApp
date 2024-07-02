@@ -34,10 +34,11 @@ class YearCalendarView: UIView, IntervalCalendar, UICollectionViewDelegate, UICo
         format.dateFormat = "YYYY"
         yearCollectionSetup()
         
-        //небольшая задержка на создание ячеек
+        //небольшая задержка на создание ячеек и листаем к выделенной
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { _ in
-            let lastIndex = IndexPath(row: self.yearCollectionView.numberOfItems(inSection: 0) - 1, section: 0)
-            self.yearCollectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
+            let year = Calendar.current.component(.year, from: self.activeDate) - 2000
+            let lastIndex = IndexPath(row: year, section: 0)
+            self.yearCollectionView.scrollToItem(at: lastIndex, at: .centeredVertically, animated: true)
         })
     }
     
@@ -92,7 +93,7 @@ class YearCalendarView: UIView, IntervalCalendar, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 4
+        let width = collectionView.frame.width / 3
         let height = width * 0.5
         return CGSize(width: width, height: height)
     }
