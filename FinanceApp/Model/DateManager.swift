@@ -77,8 +77,12 @@ class DateManager{
     
     ///получает все недели для месяца, в котором находится день
     static func getWeeksForMonth(monthOf month: Date) -> [DateInterval]{
+        
+        let todayMonth = Calendar.current.component(.month, from: Date())//текущий месяц
+        
         //делаем дату на начало месяца
         var components = Calendar.current.dateComponents(standartComponentSet, from: month)
+        let lastDay = todayMonth == components.month! ? components.day! : 31
         components.day = 1
         var currentDate = Calendar.current.date(from: components)!
         var currentComponents: DateComponents { Calendar.current.dateComponents(standartComponentSet, from: currentDate)}
@@ -86,7 +90,7 @@ class DateManager{
         var intervals: [DateInterval] = []
         
         //пока месяц равен изначальному, добавляем неделю
-        while currentComponents.month == components.month{
+        while currentComponents.month == components.month && currentComponents.day! <= lastDay{
             intervals.append(weekInterval(date: currentDate))
             currentDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: currentDate)!
         }
