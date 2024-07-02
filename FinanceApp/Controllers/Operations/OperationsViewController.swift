@@ -50,7 +50,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         case .weekOfYear:
             calendar = WeekPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
-            
+        case .month:
+            calendar = MonthCalendarView(activeDate: activeDate)
+            insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
         default:
             calendar = DayPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets.zero
@@ -70,6 +72,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateUpdate(newDate: interval.start) //сюда передаем просто день, а нужный период посчитает сам
         calendarHide()
     }
+    
     @IBAction func calendarHide(){
         UIView.animate(withDuration: 0.3, animations: {
             self.calendarBackground.alpha = 0
