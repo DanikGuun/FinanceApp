@@ -30,6 +30,16 @@ class WeekCell: UICollectionViewCell {
         self.dateInterval = dateInterval
         setText(dateInterval: dateInterval)
     }
+    
+    override func select(_ sender: Any?) {
+        dateLabel.textColor = .systemBlue
+        background.backgroundColor = .systemGray6
+    }
+    func unselect(){
+        dateLabel.textColor = .black
+        background.backgroundColor = .cellBackround
+        
+    }
     //MARK: Setups
     
     func setText(dateInterval: DateInterval){

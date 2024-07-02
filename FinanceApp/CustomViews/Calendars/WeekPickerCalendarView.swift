@@ -17,14 +17,17 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
     var activeDate: Date
+    let initialDate: Date
     
     required init?(coder: NSCoder) {
-        activeDate = Date()
+        self.activeDate = Date()
+        self.initialDate = Date()
         super.init(coder: coder)
     }
     
     init(activeDate: Date){
         self.activeDate = activeDate
+        self.initialDate = activeDate
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -62,12 +65,16 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weekCell", for: indexPath) as! WeekCell
-        cell.setup(dateInterval: DateManager.getWeeksForMonth(monthOf: activeDate)[indexPath.row])
+        let interval = DateManager.getWeeksForMonth(monthOf: activeDate)[indexPath.row]
+        cell.setup(dateInterval: interval)
+        if interval.contains(initialDate) {cell.select(nil)}
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        unselectCells()
         let cell = collectionView.cellForItem(at: indexPath) as! WeekCell
+        cell.select(nil)
         intervalDelegate.onIntervalSelected(interval: cell.dateInterval)
     }
     
@@ -75,6 +82,12 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         let width = collectionView.frame.width / 2
         let height = collectionView.frame.height / 3
         return CGSize(width: width, height: height)
+    }
+    
+    func unselectCells(){
+        for cell in weekCollectionView.visibleCells as! [WeekCell]{
+            cell.unselect()
+        }
     }
     
     //MARK: DatePicker
@@ -145,6 +158,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         }
         activeDate = Calendar.current.date(from: currenDateComponents)!
         setDateButtonText(activeDate)
+        unselectCells()
         weekCollectionView.reloadData()
     }
     
