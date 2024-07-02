@@ -125,7 +125,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let year = Calendar.current.component(.year, from: activeDate)
+        let year = Calendar.current.component(.year, from: Date())
         
         if component == 0 {return 12}
         return year - 1999 //года
