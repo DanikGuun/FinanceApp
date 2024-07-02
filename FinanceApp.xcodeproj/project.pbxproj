@@ -23,6 +23,7 @@
 		567CAA002C18B58F00C1E4FA /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */; };
 		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		567F98B42C242E6D00534566 /* OperationHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */; };
+		56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56806CF12C3498D6008DA848 /* YearCalendarView.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
 		56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* IconsHeaderView.swift */; };
 		56A46DCB2C23619200997F4D /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A46DCA2C23619200997F4D /* OperationsViewController.swift */; };
@@ -64,6 +65,7 @@
 		567CA9FC2C18B58F00C1E4FA /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHandlerViewController.swift; sourceTree = "<group>"; };
+		56806CF12C3498D6008DA848 /* YearCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCalendarView.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
 		56A334A62C1F973000909B35 /* IconsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHeaderView.swift; sourceTree = "<group>"; };
 		56A46DCA2C23619200997F4D /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				56690EA62C2C7844003F378C /* DayPickerCalendarView.swift */,
 				567122232C3078F000896346 /* WeekPickerCalendarView.swift */,
 				56B1F9052C3421420042EF19 /* MonthCalendarView.swift */,
+				56806CF12C3498D6008DA848 /* YearCalendarView.swift */,
 				56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */,
 			);
 			path = Calendars;
@@ -313,6 +316,7 @@
 				56690EA52C2C779A003F378C /* IntervalCalendarDelegate.swift in Sources */,
 				567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */,
 				56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */,
+				56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */,
 				56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */,
 				56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,

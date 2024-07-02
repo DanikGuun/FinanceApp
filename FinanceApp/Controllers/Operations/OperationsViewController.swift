@@ -53,6 +53,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         case .month:
             calendar = MonthCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
+        case .year:
+            calendar = YearCalendarView(activeDate: activeDate)
+            insets = UIEdgeInsets(top: 0, left: -10, bottom: 90, right: 10)
         default:
             calendar = DayPickerCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets.zero

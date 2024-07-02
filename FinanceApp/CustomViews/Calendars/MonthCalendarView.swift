@@ -58,7 +58,7 @@ class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPicke
         monthCollection.dataSource = self
         
         monthCollection.topAnchor.constraint(equalTo: yearButton.bottomAnchor).isActive = true
-        monthCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        monthCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
         monthCollection.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         monthCollection.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         

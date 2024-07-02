@@ -61,6 +61,10 @@ class DateIntervalCell: UICollectionViewCell {
             var ruCalendar = Calendar(identifier: .gregorian)
             ruCalendar.locale = Locale(identifier: "ru_RU")
             text = ruCalendar.standaloneMonthSymbols[month - 1].capitalized
+        case .year:
+            //а то года сбиваются
+            let date = Calendar.current.date(byAdding: .month, value: -1, to: dateInterval.end)!
+            text = format.string(from: date)
         default:
             text = ""
         }
