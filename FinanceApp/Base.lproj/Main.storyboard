@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSP-fu-CI7">
-                                <rect key="frame" x="27" y="210" width="338" height="278"/>
+                                <rect key="frame" x="27" y="210" width="338" height="263"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RmY-PQ-RyI">
                                         <rect key="frame" x="12" y="8" width="314" height="32"/>
@@ -98,7 +98,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
-                                        <rect key="frame" x="233.66666666666671" y="244" width="104.33333333333334" height="34"/>
+                                        <rect key="frame" x="233.66666666666671" y="229" width="104.33333333333334" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Операция">
                                             <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="small"/>
@@ -119,13 +119,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hbJ-Yt-96c" secondAttribute="trailing" id="5MS-Fl-bGj"/>
-                                    <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" constant="-75.938325991189458" id="7PO-T7-DzF"/>
+                                    <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" constant="-53.603524229074878" id="7PO-T7-DzF"/>
                                     <constraint firstAttribute="trailing" secondItem="RmY-PQ-RyI" secondAttribute="trailing" constant="12" id="8yJ-j0-ljE"/>
                                     <constraint firstItem="zHk-Pe-fK6" firstAttribute="height" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="0.5" id="DR7-e1-Bjh"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="leading" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="8" id="Hd1-DT-Zrw"/>
                                     <constraint firstItem="zHk-Pe-fK6" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="Jw4-94-RRO"/>
                                     <constraint firstItem="Xyq-BP-jKG" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="STW-GX-igm"/>
-                                    <constraint firstItem="lbT-MD-9E4" firstAttribute="height" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="0.145374" constant="-7.4139720000000011" id="Sd5-Cr-J3y"/>
+                                    <constraint firstItem="lbT-MD-9E4" firstAttribute="height" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="0.145374" constant="-5.2333619999999996" id="Sd5-Cr-J3y"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="top" secondItem="RmY-PQ-RyI" secondAttribute="bottom" constant="8" symbolic="YES" id="VJm-FL-iN2"/>
                                     <constraint firstAttribute="bottom" secondItem="hbJ-Yt-96c" secondAttribute="bottom" id="bg5-HI-fH6"/>
                                     <constraint firstItem="hbJ-Yt-96c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="20" symbolic="YES" id="e8N-0P-pcn"/>
@@ -908,7 +908,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
+                                <rect key="frame" x="288" y="5" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>

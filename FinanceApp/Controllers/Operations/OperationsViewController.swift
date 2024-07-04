@@ -144,18 +144,33 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         operationsPieChart.pieFilledPercentages = [1, 1, 1]
         operationsPieChart.segments = [0.5, 0.5, 0.2]
         operationsPieChart.pieGradientColors = [
-            [UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0), UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0)],
-            [UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0), UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0)],
-            [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)],
+            [.systemBlue, .systemBlue],
+            [.systemRed, .systemRed],
+            [.systemGreen, .systemGreen],
             [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)]
         ]
-
+        //констрейны
         chartBackgroundView.addSubview(operationsPieChart)
         operationsPieChart.translatesAutoresizingMaskIntoConstraints = false
         operationsPieChart.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
-        operationsPieChart.bottomAnchor.constraint(equalTo: chartBackgroundView.bottomAnchor, constant: -20).isActive = true
+        operationsPieChart.bottomAnchor.constraint(equalTo: chartBackgroundView.bottomAnchor, constant: -17).isActive = true
         operationsPieChart.centerXAnchor.constraint(equalTo: chartBackgroundView.centerXAnchor).isActive = true
-        operationsPieChart.widthAnchor.constraint(equalTo: operationsPieChart.heightAnchor).isActive = true
+        operationsPieChart.widthAnchor.constraint(equalTo: operationsPieChart.heightAnchor, multiplier: 1.0).isActive = true
+        
+        chartBackgroundView.layoutIfNeeded()
+
+        //белый кружок посередине
+        let centerCircle = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        chartBackgroundView.addSubview(centerCircle)
+        centerCircle.translatesAutoresizingMaskIntoConstraints = false
+        centerCircle.image = UIImage(systemName: "circle.fill")
+        centerCircle.tintColor = chartBackgroundView.backgroundColor
+        
+        let inset = CGFloat(17)
+        centerCircle.centerXAnchor.constraint(equalTo: operationsPieChart.centerXAnchor).isActive = true
+        centerCircle.centerYAnchor.constraint(equalTo: operationsPieChart.centerYAnchor).isActive = true
+        centerCircle.heightAnchor.constraint(equalToConstant: operationsPieChart.frame.height - inset*2).isActive = true
+        centerCircle.widthAnchor.constraint(equalToConstant: operationsPieChart.frame.width - inset*2).isActive = true
     }
     
     // MARK: Additions
