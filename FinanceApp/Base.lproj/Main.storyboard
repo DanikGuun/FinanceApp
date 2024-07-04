@@ -142,6 +142,9 @@
                                     <segment title="Расходы"/>
                                     <segment title="Доходы"/>
                                 </segments>
+                                <connections>
+                                    <action selector="operationTypeChanged" destination="TKD-BP-76y" eventType="valueChanged" id="K4H-NF-1N5"/>
+                                </connections>
                             </segmentedControl>
                             <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9Q-gp-jlg">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -186,6 +189,7 @@
                         <outlet property="menuBackgroundView" destination="Ogw-ng-awv" id="0Zd-Do-Nck"/>
                         <outlet property="minusDateButton" destination="lbT-MD-9E4" id="XJj-Jg-81w"/>
                         <outlet property="moneyLabel" destination="oQK-fr-ykM" id="dld-so-KmS"/>
+                        <outlet property="operationTypeSegmented" destination="rOe-Cg-rbF" id="ELJ-pf-PQe"/>
                         <outlet property="plusDateButton" destination="Xyq-BP-jKG" id="QTS-vQ-pzi"/>
                     </connections>
                 </viewController>

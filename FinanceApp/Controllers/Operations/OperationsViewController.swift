@@ -11,6 +11,7 @@ import PieChartUIKit
 class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
     @IBOutlet weak var menuBackgroundView: UIView!
+    @IBOutlet weak var operationTypeSegmented: UISegmentedControl!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var chartBackgroundView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -24,8 +25,14 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     var activeInterval: DateInterval = DateInterval(start: DateManager.startOfDay(Date()), end: DateManager.endOfDay(Date()))
     var activeCalendar: IntervalCalendar!
     let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
+    var activeOperationType: Model.OperationType {
+        if operationTypeSegmented.selectedSegmentIndex == 0 {return .Expence}
+        return .Income
+    }
     
     override func viewDidLoad() {
+        setupOperationsPieChart()
+        
         Appereances.applyMenuBorder(menuBackgroundView)
         moneyLabel.text = "Счёт: \(Appereances.moneyFormat(16583))"
         
@@ -37,7 +44,6 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         let recogniser = UITapGestureRecognizer(target: self, action: #selector(dateLabelPressed))
         dateLabel.addGestureRecognizer(recogniser)
         
-        setupOperationsPieChart()
     }
     
     // MARK: Date Intervals Pickers
@@ -131,6 +137,24 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         }
 
         setDateLabelText(interval: activeInterval, period: activePeriod)
+        updateData()
+    }
+    
+    //MARK: Operations
+    func updateData(){
+        let operations = Model.shared.getCategoriedOperatioinsForPeriod(period: activeInterval, type: activeOperationType)
+        
+        var chartData: [ChartSegment] = []
+        
+        for categoryID in operations.keys{
+            let category = Model.shared.getCategoryByUUID(categoryID)
+            let categoryColor = UIColor(cgColor: Model.shared.stringToColor((category?.color)!))
+            let amount: Double = (operations[categoryID]?.reduce(0.0, {$0 + $1.amount}))!
+            chartData.append(ChartSegment(value: amount, color: categoryColor))
+            print(chartData)
+        }
+        
+        setChartData(chartData)
     }
     
     //MARK: PieChart
@@ -141,14 +165,6 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         operationsPieChart.segmentInnerCornerRadius = 5
         operationsPieChart.offset = 1
         operationsPieChart.segmentOuterCornerRadius = 0
-        operationsPieChart.pieFilledPercentages = [1, 1, 1]
-        operationsPieChart.segments = [0.5, 0.5, 0.2]
-        operationsPieChart.pieGradientColors = [
-            [.systemBlue, .systemBlue],
-            [.systemRed, .systemRed],
-            [.systemGreen, .systemGreen],
-            [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)]
-        ]
         //констрейны
         chartBackgroundView.addSubview(operationsPieChart)
         operationsPieChart.translatesAutoresizingMaskIntoConstraints = false
@@ -173,6 +189,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         centerCircle.widthAnchor.constraint(equalToConstant: operationsPieChart.frame.width - inset*2).isActive = true
     }
     
+    func setChartData(_ data: [ChartSegment]){
+            operationsPieChart.pieFilledPercentages = Array(repeating: 1, count: data.count)
+            operationsPieChart.segments = data.map {$0.value}
+            operationsPieChart.pieGradientColors = data.map {[$0.color, $0.color]}
+    }
     // MARK: Additions
     ///ставим дату на лейбле
     func setDateLabelText(interval: DateInterval, period: Calendar.Component){
@@ -202,4 +223,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateLabel.attributedText = attributedString
         dateLabel.adjustsFontSizeToFitWidth = true
     }
+    @IBAction func operationTypeChanged() {
+        updateData()
+    }
+}
+struct ChartSegment{
+    let value: CGFloat
+    let color: UIColor
 }

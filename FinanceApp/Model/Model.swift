@@ -17,7 +17,7 @@ class Model{
     
     
     // MARK: Catrgories
-    ///Добавление категории в persistanceContainerф
+    ///Добавление категории в persistanceContainer
     func addCategory(id: UUID, name: String, type: String, icon: String, color: String){
         let _ = Category(id: id, name: name, type: type, icon: icon, color: color)
         CoreDataManager.shared.saveContext()
@@ -67,6 +67,34 @@ class Model{
     func addOperation(categoryID: UUID, amount: Double, date: Date, notes: String){
         let _ = Operation(id: UUID(), categoryID: categoryID, amount: amount, date: date, notes: notes)
         CoreDataManager.shared.saveContext()
+    }
+    func getOperationsForPeriod(_ period: DateInterval, type: OperationType) -> [Operation]{
+        var operations: [Operation] = []
+        do{
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Operation")
+            let result = try CoreDataManager.shared.context.fetch(request) as! [Operation]
+            for operation in result{
+                if period.contains(operation.date!) && type == operation.type{
+                    operations.append(operation)
+                }
+            }
+        }
+        catch {print(error)}
+        return operations
+    }
+    
+    ///возвращает idCategory: [operation]
+    func getCategoriedOperatioinsForPeriod(period: DateInterval, type: OperationType) -> Dictionary<UUID, [Operation]>{
+        var categoriedOperation: Dictionary<UUID, [Operation]> = [:]
+        for operation in getOperationsForPeriod(period, type: type){
+            if categoriedOperation[operation.categoryID!] != nil{
+                categoriedOperation[operation.categoryID!]?.append(operation)
+            }
+            else{
+                categoriedOperation[operation.categoryID!] = [operation]
+            }
+        }
+        return categoriedOperation
     }
     
     // MARK: Colors
