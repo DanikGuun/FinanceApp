@@ -45,6 +45,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         dateLabel.addGestureRecognizer(recogniser)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        updateData()
+    }
     
     // MARK: Date Intervals Pickers
     @objc func dateLabelPressed(_ sender: UILabel){
@@ -190,16 +193,19 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     }
     
     func setChartData(_ data: [ChartSegment]){
+        //если не пустой
         if data.count > 0{
             operationsPieChart.pieFilledPercentages = Array(repeating: 1, count: data.count)
             operationsPieChart.segments = data.map {$0.value}
             operationsPieChart.pieGradientColors = data.map {[$0.color, $0.color]}
+            //если меньше 3 элементов, чарт не может работать адекватно, поэтому добавляем пустышки
             if data.count < 3{
                 operationsPieChart.pieFilledPercentages = operationsPieChart.pieFilledPercentages + [0,0,0]
                 operationsPieChart.segments = operationsPieChart.segments + [0,0,0]
                 operationsPieChart.pieGradientColors = operationsPieChart.pieGradientColors + [[UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear]]
             }
         }
+        //если пустой, заливаес серым
         else{
             operationsPieChart.pieFilledPercentages = [1,0,0]
             operationsPieChart.segments = [1,0,0]

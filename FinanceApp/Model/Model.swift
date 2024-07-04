@@ -23,6 +23,7 @@ class Model{
         CoreDataManager.shared.saveContext()
     }
     func deleteCategory(category: Category){
+        removeOperationForCategory(category)
         CoreDataManager.shared.context.delete(category)
         CoreDataManager.shared.saveContext()
     }
@@ -68,19 +69,33 @@ class Model{
         let _ = Operation(id: UUID(), categoryID: categoryID, amount: amount, date: date, notes: notes)
         CoreDataManager.shared.saveContext()
     }
-    func getOperationsForPeriod(_ period: DateInterval, type: OperationType) -> [Operation]{
-        var operations: [Operation] = []
+    func getAllOperations() -> [Operation]{
         do{
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Operation")
-            let result = try CoreDataManager.shared.context.fetch(request) as! [Operation]
-            for operation in result{
-                if period.contains(operation.date!) && type == operation.type{
-                    operations.append(operation)
-                }
+            let result = try? CoreDataManager.shared.context.fetch(request)
+            return result as! [Operation]
+        }
+        return []
+    }
+    func getOperationsForPeriod(_ period: DateInterval, type: OperationType) -> [Operation]{
+        var operations: [Operation] = []
+        for operation in getAllOperations(){
+            if period.contains(operation.date!) && type == operation.type{
+                operations.append(operation)
             }
         }
-        catch {print(error)}
         return operations
+    }
+    func removeOperationForCategory(_ category: Category){
+        for operation in getAllOperations(){
+            if category == getCategoryByUUID(operation.categoryID!){
+                removeOperation(operation)
+            }
+        }
+    }
+    func removeOperation(_ operation: Operation){
+        CoreDataManager.shared.context.delete(operation)
+        CoreDataManager.shared.saveContext()
     }
     
     ///возвращает idCategory: [operation]
