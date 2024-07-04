@@ -18,7 +18,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBOutlet weak var calendarBackground: UIView!
     
     var activePeriod: Calendar.Component = .day
-    var activeDate: Date = Date()
+    var activeInterval: DateInterval = DateInterval(start: DateManager.startOfDay(Date()), end: DateManager.endOfDay(Date()))
     var activeCalendar: IntervalCalendar!
     let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
     
@@ -45,16 +45,16 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         
         switch activePeriod {
         case .day:
-            calendar = DayPickerCalendarView(activeDate: activeDate)
+            calendar = DayPickerCalendarView(activeDate: activeInterval.start)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 130, right: 10)
         case .weekOfYear:
-            calendar = WeekPickerCalendarView(activeDate: activeDate)
+            calendar = WeekPickerCalendarView(activeDate: activeInterval.start)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
         case .month:
-            calendar = MonthCalendarView(activeDate: activeDate)
+            calendar = MonthCalendarView(activeDate: activeInterval.start)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 10, right: 10)
         case .year:
-            calendar = YearCalendarView(activeDate: activeDate)
+            calendar = YearCalendarView(activeDate: activeInterval.start)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 90, right: 10)
         default:
             calendar = PeriodCalendarView()
@@ -72,7 +72,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     }
     
     func onIntervalSelected(interval: DateInterval) {
-        dateUpdate(newDate: interval.start) //сюда передаем просто день, а нужный период посчитает сам
+        dateUpdate(newInterval: interval) //сюда передаем просто день, а нужный период посчитает сам
         calendarHide()
     }
     
@@ -86,13 +86,15 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     // MARK: Dates
     
     @IBAction func minusDate(_ sender: UIButton) {
-        let date = Calendar.current.date(byAdding: activePeriod, value: -1, to: activeDate)
-        dateUpdate(newDate: date)
+        //считаем новый день, от которого почсчитается интервал
+        let newStartDate = Calendar.current.date(byAdding: activePeriod, value: -1, to: activeInterval.start)!
+        dateUpdate(newInterval: DateManager.getDateInterval(start: newStartDate, period: activePeriod))
         plusDateButton.isEnabled = true
     }
     @IBAction func plusDate(_ sender: UIButton) {
-        let date = Calendar.current.date(byAdding: activePeriod, value: 1, to: activeDate)
-        dateUpdate(newDate: date)
+        //считаем новый день, от которого почсчитается интервал
+        let newStartDate = Calendar.current.date(byAdding: activePeriod, value: 1, to: activeInterval.start)!
+        dateUpdate(newInterval: DateManager.getDateInterval(start: newStartDate, period: activePeriod))
     }
     
     @IBAction func changePeriod(_ sender: UISegmentedControl) {
@@ -110,21 +112,20 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             plusDateButton.isEnabled = false
         }
         }
-        dateUpdate(newDate: Date())
+        dateUpdate(newInterval: DateManager.getDateInterval(start: Date(), period: activePeriod))
     }
     
-    func dateUpdate(newDate: Date? = nil){
+    func dateUpdate(newInterval: DateInterval? = nil){
     ///Обновляет Текущую дату, включая отрисовку
-        if let newDate {activeDate = newDate}
-        let interval = DateManager.getDateInterval(start: activeDate, period: activePeriod)
+        if let newInterval {activeInterval = newInterval}
         
         //вкл/выкл кнопки вправо дат, не включаем, если период
         if activePeriod != .calendar{
-            if DateManager.endOfDay(activeDate) >= DateManager.endOfDay(Date()) {plusDateButton.isEnabled = false}
+            if activeInterval.end >= DateManager.endOfDay(Date()) {plusDateButton.isEnabled = false}
             else {plusDateButton.isEnabled = true}
         }
 
-        setDateLabelText(interval: interval, period: activePeriod)
+        setDateLabelText(interval: activeInterval, period: activePeriod)
     }
     
     // MARK: Additions
