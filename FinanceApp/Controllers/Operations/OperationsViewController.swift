@@ -151,12 +151,12 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             let categoryColor = UIColor(cgColor: Model.shared.stringToColor((category?.color)!))
             let amount: Double = (operations[categoryID]?.reduce(0.0, {$0 + $1.amount}))!
             chartData.append(ChartSegment(value: amount, color: categoryColor))
-            print(chartData)
+            
         }
         
         setChartData(chartData)
     }
-    
+
     //MARK: PieChart
     func setupOperationsPieChart(){
         operationsPieChart = PieChartView(frame: CGRect.zero)
@@ -190,9 +190,21 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     }
     
     func setChartData(_ data: [ChartSegment]){
+        if data.count > 0{
             operationsPieChart.pieFilledPercentages = Array(repeating: 1, count: data.count)
             operationsPieChart.segments = data.map {$0.value}
             operationsPieChart.pieGradientColors = data.map {[$0.color, $0.color]}
+            if data.count < 3{
+                operationsPieChart.pieFilledPercentages = operationsPieChart.pieFilledPercentages + [0,0,0]
+                operationsPieChart.segments = operationsPieChart.segments + [0,0,0]
+                operationsPieChart.pieGradientColors = operationsPieChart.pieGradientColors + [[UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear]]
+            }
+        }
+        else{
+            operationsPieChart.pieFilledPercentages = [1,0,0]
+            operationsPieChart.segments = [1,0,0]
+            operationsPieChart.pieGradientColors = [[UIColor.emptyChart, UIColor.emptyChart], [UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear]]
+        }
     }
     // MARK: Additions
     ///ставим дату на лейбле
@@ -225,6 +237,16 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     }
     @IBAction func operationTypeChanged() {
         updateData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let operationHandler = segue.destination as? OperationHandlerViewController{
+            operationHandler.operationTypeSegmentedControl.selectedSegmentIndex = self.operationTypeSegmented.selectedSegmentIndex
+            if activePeriod == .day{
+                operationHandler.opertaionDatePicker.date = activeInterval.start
+            }
+            segue.perform()
+        }
     }
 }
 struct ChartSegment{

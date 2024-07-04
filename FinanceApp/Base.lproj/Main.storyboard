@@ -73,10 +73,10 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyq-BP-jKG">
-                                        <rect key="frame" x="308" y="47" width="22" height="33"/>
+                                        <rect key="frame" x="288" y="47" width="42" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="8Z5-jM-sYS"/>
-                                            <constraint firstAttribute="width" secondItem="Xyq-BP-jKG" secondAttribute="height" multiplier="2:3" id="Xdx-lI-Dl3"/>
+                                            <constraint firstAttribute="width" secondItem="Xyq-BP-jKG" secondAttribute="height" multiplier="2:3" constant="20" id="Xdx-lI-Dl3"/>
                                         </constraints>
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
@@ -86,9 +86,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbT-MD-9E4">
-                                        <rect key="frame" x="8" y="47" width="22" height="33"/>
+                                        <rect key="frame" x="8" y="47" width="40" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="2:3" id="xBR-kB-b0d"/>
+                                            <constraint firstAttribute="width" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="2:3" constant="18" id="xBR-kB-b0d"/>
                                         </constraints>
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
@@ -106,11 +106,11 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="13"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="bch-z0-xIC" kind="show" id="Lhi-MP-c7B"/>
+                                            <segue destination="bch-z0-xIC" kind="show" id="cwL-Vi-hIl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="zHk-Pe-fK6">
-                                        <rect key="frame" x="30" y="55.333333333333314" width="278" height="16.333333333333329"/>
+                                        <rect key="frame" x="49" y="55.333333333333314" width="240" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -131,8 +131,8 @@
                                     <constraint firstItem="hbJ-Yt-96c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="20" symbolic="YES" id="e8N-0P-pcn"/>
                                     <constraint firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="trailing" constant="8" id="gHB-Wn-DHM"/>
                                     <constraint firstItem="RmY-PQ-RyI" firstAttribute="leading" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="12" id="hoD-Xh-GHY"/>
-                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="leading" secondItem="lbT-MD-9E4" secondAttribute="trailing" id="kpS-NR-Brb"/>
-                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="leading" id="wes-9H-mI3"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="leading" secondItem="lbT-MD-9E4" secondAttribute="trailing" constant="1" id="kpS-NR-Brb"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="leading" constant="1" id="wes-9H-mI3"/>
                                     <constraint firstItem="RmY-PQ-RyI" firstAttribute="top" secondItem="oSP-fu-CI7" secondAttribute="top" constant="8" id="zsy-jn-sIZ"/>
                                 </constraints>
                             </view>
