@@ -57,8 +57,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             calendar = YearCalendarView(activeDate: activeDate)
             insets = UIEdgeInsets(top: 0, left: -10, bottom: 90, right: 10)
         default:
-            calendar = DayPickerCalendarView(activeDate: activeDate)
-            insets = UIEdgeInsets.zero
+            calendar = PeriodCalendarView()
+            insets = UIEdgeInsets(top: 0, left: -10, bottom: 130, right: 10)
         }
         view.addSubview(calendar)
         calendar.constraintCalendar(chartBackground: chartBackgroundView, insets: insets)
@@ -96,12 +96,19 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     }
     
     @IBAction func changePeriod(_ sender: UISegmentedControl) {
+        minusDateButton.isEnabled = true
+        plusDateButton.isEnabled = true
         switch sender.selectedSegmentIndex{
-            case 0: activePeriod = .day
-            case 1: activePeriod = .weekOfYear
-            case 2: activePeriod = .month
-            case 3: activePeriod = .year
-            default: activePeriod = .calendar
+        case 0: activePeriod = .day
+        case 1: activePeriod = .weekOfYear
+        case 2: activePeriod = .month
+        case 3: activePeriod = .year
+        default: do {
+            self.activePeriod = .calendar
+            self.dateLabelPressed(UILabel())
+            minusDateButton.isEnabled = false
+            plusDateButton.isEnabled = false
+        }
         }
         dateUpdate(newDate: Date())
     }

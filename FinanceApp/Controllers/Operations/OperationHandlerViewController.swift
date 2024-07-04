@@ -150,6 +150,11 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }
     
     // MARK: Notes TextField
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        notesToDateConstraint.isActive = false
+        notesToKeyboardConstraint.isActive = true
+        return true
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -157,11 +162,6 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         notesToDateConstraint.isActive = true
         notesToKeyboardConstraint.isActive = false
-    }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        notesToDateConstraint.isActive = false
-        notesToKeyboardConstraint.isActive = true
-        return true
     }
     
     // MARK: Apply Button

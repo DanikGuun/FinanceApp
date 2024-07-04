@@ -24,6 +24,8 @@
 		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		567F98B42C242E6D00534566 /* OperationHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */; };
 		56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56806CF12C3498D6008DA848 /* YearCalendarView.swift */; };
+		5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */; };
+		5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
 		56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* IconsHeaderView.swift */; };
 		56A46DCB2C23619200997F4D /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A46DCA2C23619200997F4D /* OperationsViewController.swift */; };
@@ -66,6 +68,8 @@
 		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHandlerViewController.swift; sourceTree = "<group>"; };
 		56806CF12C3498D6008DA848 /* YearCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCalendarView.swift; sourceTree = "<group>"; };
+		5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo_2024-07-03 22.20.24.jpeg"; sourceTree = "<group>"; };
+		5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCalendarView.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
 		56A334A62C1F973000909B35 /* IconsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHeaderView.swift; sourceTree = "<group>"; };
 		56A46DCA2C23619200997F4D /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				56B1F9052C3421420042EF19 /* MonthCalendarView.swift */,
 				56806CF12C3498D6008DA848 /* YearCalendarView.swift */,
 				56690EA42C2C779A003F378C /* IntervalCalendarDelegate.swift */,
+				5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */,
 			);
 			path = Calendars;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				56F50E4A2C11BC4F00A240D1 /* Appereances.swift */,
 				56F50E192C11AD8300A240D1 /* AppDelegate.swift */,
 				56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */,
+				5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */,
 				567CA9F22C18B36500C1E4FA /* Model */,
 				56F50E4C2C11C7D600A240D1 /* CustomViews */,
 				56F50E472C11BB7D00A240D1 /* Controllers */,
@@ -298,6 +304,7 @@
 			files = (
 				56F50E262C11AD8400A240D1 /* Assets.xcassets in Resources */,
 				56F50E292C11AD8400A240D1 /* Base in Resources */,
+				5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */,
 				56F50E442C11B20A00A240D1 /* SF-Pro-Text-Bold.otf in Resources */,
 				56F50E212C11AD8300A240D1 /* Base in Resources */,
 			);
@@ -317,6 +324,7 @@
 				567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */,
 				56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */,
 				56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */,
+				5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */,
 				56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */,
 				56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,
