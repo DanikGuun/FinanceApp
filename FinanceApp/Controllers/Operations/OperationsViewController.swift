@@ -241,11 +241,10 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let operationHandler = segue.destination as? OperationHandlerViewController{
-            operationHandler.operationTypeSegmentedControl.selectedSegmentIndex = self.operationTypeSegmented.selectedSegmentIndex
+            operationHandler.startOperationType = self.operationTypeSegmented.selectedSegmentIndex
             if activePeriod == .day{
-                operationHandler.opertaionDatePicker.date = activeInterval.start
+                operationHandler.startDate = activeInterval.start
             }
-            segue.perform()
         }
     }
 }

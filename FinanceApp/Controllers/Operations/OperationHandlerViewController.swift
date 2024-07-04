@@ -37,6 +37,9 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }//активная категория через segmentedControl
     var activeCategory: Category?
     var needSelectFirstCategory = false //чтобы выделять первую категорию, если выбираем из меню
+    //для инициализации стартовых значений
+    var startOperationType = 0
+    var startDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,8 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         setupOperationType() //задание начального типа
         setupCategories() //стартовая генерация категорий
         setupApplyButton()
+
+        setupDate()
         
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
@@ -54,14 +59,12 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         notesToKeyboardConstraint = notesTextField.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -30)
         notesToDateConstraint.isActive = true
         
-        opertaionDatePicker.maximumDate = Date()
-        
         emptyAmountWarning.layer.cornerRadius = 5
         emptyCategoryWarning.layer.cornerRadius = 5
         
         amountTextField.text = currentOperation?.amount.formatted(.number) ?? ""
-        opertaionDatePicker.date = currentOperation?.date ?? Date()
         notesTextField.text = currentOperation?.notes
+    
     }
     
     // MARK: Collection view
@@ -218,7 +221,10 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         if let operation = currentOperation{
             activeOperationType = operation.type
         }
-        activeOperationType = .Expence
+        else{
+            if startOperationType == 0 {activeOperationType = .Expence}
+            else {activeOperationType = .Income}
+        }
     }
     
     /**
@@ -233,6 +239,16 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
             if operation.type == activeOperationType{
                 categories[0] = Model.shared.getCategoryByUUID(operation.id!)!
             }
+        }
+    }
+    
+    func setupDate(){
+        opertaionDatePicker.maximumDate = Date()
+        if let currentOperation{
+            opertaionDatePicker.date = currentOperation.date!
+        }
+        else{
+            opertaionDatePicker.setDate(startDate, animated: true)
         }
     }
     
@@ -254,5 +270,4 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
             destination.parentOperationController = self
         }
     }
-    
 }
