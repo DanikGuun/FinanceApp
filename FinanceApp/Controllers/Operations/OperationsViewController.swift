@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import PieChartUIKit
 
 class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
@@ -16,6 +17,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBOutlet weak var minusDateButton: UIButton!
     @IBOutlet weak var plusDateButton: UIButton!
     @IBOutlet weak var calendarBackground: UIView!
+    var operationsPieChart: PieChartView!
+    
     
     var activePeriod: Calendar.Component = .day
     var activeInterval: DateInterval = DateInterval(start: DateManager.startOfDay(Date()), end: DateManager.endOfDay(Date()))
@@ -33,6 +36,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         //делаем нажатия на лэйбл с датой
         let recogniser = UITapGestureRecognizer(target: self, action: #selector(dateLabelPressed))
         dateLabel.addGestureRecognizer(recogniser)
+        
+        setupOperationsPieChart()
     }
     
     // MARK: Date Intervals Pickers
@@ -126,6 +131,26 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         }
 
         setDateLabelText(interval: activeInterval, period: activePeriod)
+    }
+    
+    //MARK: PieChart
+    func setupOperationsPieChart(){
+        operationsPieChart = PieChartView(frame: CGRect(x: 50, y: 150, width: 300, height: 300))
+        operationsPieChart.shouldShowPercentageLabel = false
+        operationsPieChart.shouldHighlightPieOnTouch = false
+        operationsPieChart.segmentInnerCornerRadius = 5
+        operationsPieChart.offset = 1
+        operationsPieChart.segmentOuterCornerRadius = 0
+        operationsPieChart.pieFilledPercentages = [0.5, 0.5, 0.5]
+        operationsPieChart.segments = [0.5, 0.5, 0.5]
+        operationsPieChart.pieGradientColors = [
+            [UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0), UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0)],
+            [UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0), UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0)],
+            [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)],
+            [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)]
+        ]
+
+        view.addSubview(operationsPieChart)
     }
     
     // MARK: Additions
