@@ -135,14 +135,14 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
     //MARK: PieChart
     func setupOperationsPieChart(){
-        operationsPieChart = PieChartView(frame: CGRect(x: 50, y: 150, width: 300, height: 300))
+        operationsPieChart = PieChartView(frame: CGRect.zero)
         operationsPieChart.shouldShowPercentageLabel = false
         operationsPieChart.shouldHighlightPieOnTouch = false
         operationsPieChart.segmentInnerCornerRadius = 5
         operationsPieChart.offset = 1
         operationsPieChart.segmentOuterCornerRadius = 0
-        operationsPieChart.pieFilledPercentages = [0.5, 0.5, 0.5]
-        operationsPieChart.segments = [0.5, 0.5, 0.5]
+        operationsPieChart.pieFilledPercentages = [1, 1, 1]
+        operationsPieChart.segments = [0.5, 0.5, 0.2]
         operationsPieChart.pieGradientColors = [
             [UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0), UIColor(red: 118/255, green: 190/255, blue: 255/255, alpha: 1.0)],
             [UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0), UIColor(red: 255/255, green: 225/255, blue: 86/255, alpha: 1.0)],
@@ -150,7 +150,12 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             [UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0), UIColor(red: 254/255, green: 166/255, blue: 101/255, alpha: 1.0)]
         ]
 
-        view.addSubview(operationsPieChart)
+        chartBackgroundView.addSubview(operationsPieChart)
+        operationsPieChart.translatesAutoresizingMaskIntoConstraints = false
+        operationsPieChart.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
+        operationsPieChart.bottomAnchor.constraint(equalTo: chartBackgroundView.bottomAnchor, constant: -20).isActive = true
+        operationsPieChart.centerXAnchor.constraint(equalTo: chartBackgroundView.centerXAnchor).isActive = true
+        operationsPieChart.widthAnchor.constraint(equalTo: operationsPieChart.heightAnchor).isActive = true
     }
     
     // MARK: Additions

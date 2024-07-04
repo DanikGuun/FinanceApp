@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSP-fu-CI7">
-                                <rect key="frame" x="27" y="210" width="338" height="227"/>
+                                <rect key="frame" x="27" y="210" width="338" height="278"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RmY-PQ-RyI">
                                         <rect key="frame" x="12" y="8" width="314" height="32"/>
@@ -97,8 +97,8 @@
                                             <action selector="minusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="tzz-5g-aPF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
-                                        <rect key="frame" x="226" y="193" width="112" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
+                                        <rect key="frame" x="233.66666666666671" y="244" width="104.33333333333334" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Операция">
                                             <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="small"/>
@@ -110,8 +110,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="zHk-Pe-fK6">
-                                        <rect key="frame" x="30" y="56.666666666666686" width="278" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <rect key="frame" x="30" y="55.333333333333314" width="278" height="16.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -119,13 +119,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hbJ-Yt-96c" secondAttribute="trailing" id="5MS-Fl-bGj"/>
-                                    <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" id="7PO-T7-DzF"/>
+                                    <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" constant="-75.938325991189458" id="7PO-T7-DzF"/>
                                     <constraint firstAttribute="trailing" secondItem="RmY-PQ-RyI" secondAttribute="trailing" constant="12" id="8yJ-j0-ljE"/>
-                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="height" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="0.424242" id="DR7-e1-Bjh"/>
+                                    <constraint firstItem="zHk-Pe-fK6" firstAttribute="height" secondItem="lbT-MD-9E4" secondAttribute="height" multiplier="0.5" id="DR7-e1-Bjh"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="leading" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="8" id="Hd1-DT-Zrw"/>
                                     <constraint firstItem="zHk-Pe-fK6" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="Jw4-94-RRO"/>
                                     <constraint firstItem="Xyq-BP-jKG" firstAttribute="centerY" secondItem="lbT-MD-9E4" secondAttribute="centerY" id="STW-GX-igm"/>
-                                    <constraint firstItem="lbT-MD-9E4" firstAttribute="height" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="0.145374" id="Sd5-Cr-J3y"/>
+                                    <constraint firstItem="lbT-MD-9E4" firstAttribute="height" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="0.145374" constant="-7.4139720000000011" id="Sd5-Cr-J3y"/>
                                     <constraint firstItem="lbT-MD-9E4" firstAttribute="top" secondItem="RmY-PQ-RyI" secondAttribute="bottom" constant="8" symbolic="YES" id="VJm-FL-iN2"/>
                                     <constraint firstAttribute="bottom" secondItem="hbJ-Yt-96c" secondAttribute="bottom" id="bg5-HI-fH6"/>
                                     <constraint firstItem="hbJ-Yt-96c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oSP-fu-CI7" secondAttribute="leading" constant="20" symbolic="YES" id="e8N-0P-pcn"/>
@@ -170,6 +170,11 @@
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="top" secondItem="Ie0-lD-WCh" secondAttribute="top" id="uJS-v2-8XP"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="E9Q-gp-jlg" secondAttribute="trailing" id="zlv-Pi-g3Q"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="E9Q-gp-jlg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6K9-Mq-B1q">
                         <barButtonItem key="backBarButtonItem" title="назад" id="lay-Ka-aCE"/>
@@ -903,7 +908,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="5" width="89" height="35"/>
+                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1263,13 +1268,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
