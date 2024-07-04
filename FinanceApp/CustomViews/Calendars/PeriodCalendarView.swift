@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PeriodCalendarView: UICalendarView, IntervalCalendar {
+class PeriodCalendarView: UICalendarView, IntervalCalendar, UICalendarSelectionMultiDateDelegate {
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
     var bottomConstraint: NSLayoutConstraint!
@@ -16,6 +16,8 @@ class PeriodCalendarView: UICalendarView, IntervalCalendar {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.locale = Locale(identifier: "ru_RU")
+        let selection = UICalendarSelectionMultiDate(delegate: self)
+        self.selectionBehavior = selection
         setupDates()
     }
     
@@ -23,6 +25,21 @@ class PeriodCalendarView: UICalendarView, IntervalCalendar {
         super.init(coder: coder)
     }
     
+    //MARK: CalendarView
+    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
+        if selection.selectedDates.count == 2{
+            let date1 = Calendar.current.date(from: selection.selectedDates[0])!
+            let date2 = Calendar.current.date(from: selection.selectedDates[1])!
+            
+            intervalDelegate.onIntervalSelected(interval: DateInterval(start: min(date1, date2), end: max(date1, date2)))
+        }
+    }
+    
+    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
+        
+    }
+    
+    //MARK: Setups
     func setup() {
         
     }

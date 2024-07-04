@@ -118,9 +118,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         if let newDate {activeDate = newDate}
         let interval = DateManager.getDateInterval(start: activeDate, period: activePeriod)
         
-        //вкл/выкл кнопки вправо дат
-        if DateManager.startOfDay(activeDate) >= DateManager.startOfDay(Date()) {plusDateButton.isEnabled = false}
-        else {plusDateButton.isEnabled = true}
+        //вкл/выкл кнопки вправо дат, не включаем, если период
+        if activePeriod != .calendar{
+            if DateManager.endOfDay(activeDate) >= DateManager.endOfDay(Date()) {plusDateButton.isEnabled = false}
+            else {plusDateButton.isEnabled = true}
+        }
 
         setDateLabelText(interval: interval, period: activePeriod)
     }
