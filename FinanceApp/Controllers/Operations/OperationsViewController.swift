@@ -140,7 +140,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         
         //вкл/выкл кнопки вправо дат, не включаем, если период
         if activePeriod != .calendar{
-            if activeInterval.end >= DateManager.endOfDay(Date()) {plusDateButton.isEnabled = false}
+            if activeInterval.end >= DateManager.endOfDay(Date()) {
+                plusDateButton.isEnabled = false}
             else {plusDateButton.isEnabled = true}
         }
 
@@ -154,7 +155,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         
         var chartData: [ChartSegment] = []
         var categoryData: [CategoryInfo] = []
-        var todaySumm = Model.shared.getOperationsForPeriod(activeInterval, type: activeOperationType).reduce(0.0, {$0 + $1.amount})
+        let todaySumm = Model.shared.getOperationsForPeriod(activeInterval, type: activeOperationType).reduce(0.0, {$0 + $1.amount})
         
         for categoryID in operations.keys{
             
@@ -208,7 +209,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         centerCircle.heightAnchor.constraint(equalToConstant: operationsPieChart.frame.height - inset*2).isActive = true
         centerCircle.widthAnchor.constraint(equalToConstant: operationsPieChart.frame.width - inset*2).isActive = true
     }
-    
+
     func setChartData(_ data: [ChartSegment]){
         //если не пустой
         if data.count > 0{
@@ -230,6 +231,13 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         }
     }
     
+    @IBAction func chartSwiped(_ sender: UISwipeGestureRecognizer) {
+        if activePeriod != .calendar{
+            if sender.direction == .left && activeInterval.end <= DateManager.startOfDay(Date()) {plusDate(plusDateButton)}
+            else if sender.direction == .right {minusDate(minusDateButton)}
+        }
+    }
+    
     //MARK: TodayBalance
     func setupTodayBalance(){
         todayBalance = UILabel(frame: CGRect.zero)
@@ -246,10 +254,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         todayBalance.leadingAnchor.constraint(equalTo: centerCircle.readableContentGuide.leadingAnchor, constant: 3).isActive = true
         todayBalance.trailingAnchor.constraint(equalTo: centerCircle.readableContentGuide.trailingAnchor, constant: -3).isActive = true
     }
+    
     func updateTodatBalance(sum: Double){
         todayBalance.text = Appereances.moneyFormat(sum)
     }
-    
+
     //MARK: Categories Info Collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         currentCollectionViewData.count

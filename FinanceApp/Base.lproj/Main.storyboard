@@ -117,6 +117,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hbJ-Yt-96c" secondAttribute="trailing" id="5MS-Fl-bGj"/>
                                     <constraint firstAttribute="width" secondItem="oSP-fu-CI7" secondAttribute="height" multiplier="338:227" constant="-53.603524229074878" id="7PO-T7-DzF"/>
@@ -135,6 +136,10 @@
                                     <constraint firstItem="zHk-Pe-fK6" firstAttribute="trailing" secondItem="Xyq-BP-jKG" secondAttribute="leading" constant="1" id="wes-9H-mI3"/>
                                     <constraint firstItem="RmY-PQ-RyI" firstAttribute="top" secondItem="oSP-fu-CI7" secondAttribute="top" constant="8" id="zsy-jn-sIZ"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pld-3r-IfD" appends="YES" id="65S-A1-M0R"/>
+                                    <outletCollection property="gestureRecognizers" destination="nqJ-RY-u7V" appends="YES" id="hvd-sk-jwy"/>
+                                </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Cg-rbF">
                                 <rect key="frame" x="68" y="165" width="257" height="32"/>
@@ -184,8 +189,8 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMx-hG-jRf">
-                                                            <rect key="frame" x="52" y="0.0" width="169" height="50"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="51.999999999999986" y="0.0" width="167.66666666666663" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -194,13 +199,13 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="RHN-d7-WlT" secondAttribute="height" multiplier="21:20" id="FeG-8W-sof"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" name="CategoryPercent"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMk-ni-wqI">
-                                                            <rect key="frame" x="236" y="0.0" width="42" height="50"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="234.66666666666666" y="0.0" width="43.333333333333343" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" name="CategoryPercent"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -300,6 +305,16 @@
                         <action selector="calendarHide" destination="TKD-BP-76y" id="xtn-i1-VVd"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="pld-3r-IfD">
+                    <connections>
+                        <action selector="chartSwiped:" destination="TKD-BP-76y" id="Hds-cI-AYb"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="nqJ-RY-u7V">
+                    <connections>
+                        <action selector="chartSwiped:" destination="TKD-BP-76y" id="8Pl-J8-QnI"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="83.206106870229007" y="214.08450704225353"/>
         </scene>
@@ -1013,7 +1028,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="5" width="89" height="35"/>
+                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
