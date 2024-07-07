@@ -9,6 +9,8 @@ import UIKit
 
 class OperationsStoryViewController: UIViewController {
 
+    var category: Category?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

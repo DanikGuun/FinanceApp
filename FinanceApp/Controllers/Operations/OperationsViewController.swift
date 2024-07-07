@@ -275,7 +275,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let cell = collectionView.cellForItem(at: indexPath) as! CategoryInfoCell
+        performSegue(withIdentifier: "operationsStorySegue", sender: cell.category)
     }
     
     // MARK: Additions
@@ -325,6 +326,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
             if activePeriod == .day{
                 operationHandler.startDate = activeInterval.start
             }
+        }
+        if let operationsStoryController = segue.destination as? OperationsStoryViewController{
+            operationsStoryController.category = sender as? Category
         }
     }
 }
