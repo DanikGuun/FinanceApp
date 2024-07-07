@@ -24,6 +24,7 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         Appereances.applyMenuBorder(menuBackgroundView)
         menuButtonsColectionSetup()
+        performSegue(withIdentifier: "operationsSegou", sender: nil) //сразу переход на главную
     }
     
     // MARK: - CollectionView

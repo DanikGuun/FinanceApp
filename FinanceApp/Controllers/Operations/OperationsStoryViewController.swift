@@ -10,6 +10,7 @@ import UIKit
 class OperationsStoryViewController: UIViewController {
 
     var category: Category?
+    var interval: DateInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
