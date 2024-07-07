@@ -76,11 +76,14 @@ class Model{
             return result as! [Operation]
         }
     }
-    func getOperationsForPeriod(_ period: DateInterval, type: OperationType) -> [Operation]{
+    func getOperationsForPeriod(_ period: DateInterval, type: OperationType? = nil) -> [Operation]{
         var operations: [Operation] = []
         for operation in getAllOperations(){
-            if period.contains(operation.date!) && type == operation.type{
-                operations.append(operation)
+            if period.contains(operation.date!){
+                if type != nil{
+                    if type == operation.type {operations.append(operation)}
+                }
+                else {operations.append(operation)}
             }
         }
         return operations

@@ -19,6 +19,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBOutlet weak var plusDateButton: UIButton!
     @IBOutlet weak var calendarBackground: UIView!
     var operationsPieChart: PieChartView!
+    var centerCircle: UIImageView!
+    var todayBalance: UILabel!
     
     
     var activePeriod: Calendar.Component = .day
@@ -32,6 +34,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     
     override func viewDidLoad() {
         setupOperationsPieChart()
+        setupTodayBalance()
         
         Appereances.applyMenuBorder(menuBackgroundView)
         
@@ -42,7 +45,6 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         //делаем нажатия на лэйбл с датой
         let recogniser = UITapGestureRecognizer(target: self, action: #selector(dateLabelPressed))
         dateLabel.addGestureRecognizer(recogniser)
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         updateData()
@@ -147,6 +149,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         let operations = Model.shared.getCategoriedOperatioinsForPeriod(period: activeInterval, type: activeOperationType)
         
         var chartData: [ChartSegment] = []
+        var todaySumm = Model.shared.getOperationsForPeriod(activeInterval, type: activeOperationType).reduce(0.0, {$0 + $1.amount})
         
         for categoryID in operations.keys{
             let category = Model.shared.getCategoryByUUID(categoryID)
@@ -158,6 +161,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         
         setChartData(chartData)
         updateBalance()
+        updateTodatBalance(sum: todaySumm)
     }
 
     //MARK: PieChart
@@ -179,7 +183,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         chartBackgroundView.layoutIfNeeded()
 
         //белый кружок посередине
-        let centerCircle = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        centerCircle = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         chartBackgroundView.addSubview(centerCircle)
         centerCircle.translatesAutoresizingMaskIntoConstraints = false
         centerCircle.image = UIImage(systemName: "circle.fill")
@@ -212,6 +216,27 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
             operationsPieChart.pieGradientColors = [[UIColor.emptyChart, UIColor.emptyChart], [UIColor.clear, UIColor.clear], [UIColor.clear, UIColor.clear]]
         }
     }
+    
+    //MARK: TodayBalance
+    func setupTodayBalance(){
+        todayBalance = UILabel(frame: CGRect.zero)
+        todayBalance.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(todayBalance)
+        
+        todayBalance.textAlignment = .center
+        todayBalance.adjustsFontSizeToFitWidth = true
+        todayBalance.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        
+        //тут использвуем гайд, чтобы привязать к концу кружка, а не всей вью
+        todayBalance.topAnchor.constraint(equalTo: centerCircle.readableContentGuide.topAnchor, constant: 3).isActive = true
+        todayBalance.bottomAnchor.constraint(equalTo: centerCircle.readableContentGuide.bottomAnchor, constant: -3).isActive = true
+        todayBalance.leadingAnchor.constraint(equalTo: centerCircle.readableContentGuide.leadingAnchor, constant: 3).isActive = true
+        todayBalance.trailingAnchor.constraint(equalTo: centerCircle.readableContentGuide.trailingAnchor, constant: -3).isActive = true
+    }
+    func updateTodatBalance(sum: Double){
+        todayBalance.text = Appereances.moneyFormat(sum)
+    }
+    
     // MARK: Additions
     ///ставим дату на лейбле
     func setDateLabelText(interval: DateInterval, period: Calendar.Component){
