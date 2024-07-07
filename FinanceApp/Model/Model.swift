@@ -75,7 +75,6 @@ class Model{
             let result = try? CoreDataManager.shared.context.fetch(request)
             return result as! [Operation]
         }
-        return []
     }
     func getOperationsForPeriod(_ period: DateInterval, type: OperationType) -> [Operation]{
         var operations: [Operation] = []

@@ -34,7 +34,6 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         setupOperationsPieChart()
         
         Appereances.applyMenuBorder(menuBackgroundView)
-        moneyLabel.text = "Счёт: \(Appereances.moneyFormat(16583))"
         
         Appereances.applyShadow(chartBackgroundView)
         chartBackgroundView.layer.cornerRadius = 10
@@ -158,6 +157,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         }
         
         setChartData(chartData)
+        updateBalance()
     }
 
     //MARK: PieChart
@@ -244,7 +244,15 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBAction func operationTypeChanged() {
         updateData()
     }
-    
+    //обновляет баланс
+    func updateBalance(){
+        var total = 0.0
+        for operation in Model.shared.getAllOperations(){
+            if operation.type == .Expence {total -= operation.amount}
+            else {total += operation.amount}
+        }
+        moneyLabel.text = "Счёт: \(Appereances.moneyFormat(total))"
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let operationHandler = segue.destination as? OperationHandlerViewController{
             operationHandler.startOperationType = self.operationTypeSegmented.selectedSegmentIndex
