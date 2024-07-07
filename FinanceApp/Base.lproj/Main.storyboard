@@ -297,6 +297,7 @@
                         <outlet property="moneyLabel" destination="oQK-fr-ykM" id="dld-so-KmS"/>
                         <outlet property="operationTypeSegmented" destination="rOe-Cg-rbF" id="ELJ-pf-PQe"/>
                         <outlet property="plusDateButton" destination="Xyq-BP-jKG" id="QTS-vQ-pzi"/>
+                        <segue destination="e09-ut-gIA" kind="show" identifier="operationsStorySegue" id="oVA-rr-DEM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J2-Ak-ZMr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1028,7 +1029,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
+                                <rect key="frame" x="288" y="5" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1355,6 +1356,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8n-kF-8Wr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-924.4274809160305" y="634.50704225352115"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6IZ-qe-oeC">
+            <objects>
+                <viewController id="e09-ut-gIA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="heM-f1-QrY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOK-42-nfp">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aOK-42-nfp" secondAttribute="height" multiplier="393:128" id="OR7-xV-bcy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vFU-Ye-bnR"/>
+                        <color key="backgroundColor" name="ControllersBackground"/>
+                        <constraints>
+                            <constraint firstItem="aOK-42-nfp" firstAttribute="leading" secondItem="vFU-Ye-bnR" secondAttribute="leading" id="N7d-JQ-zcY"/>
+                            <constraint firstItem="aOK-42-nfp" firstAttribute="top" secondItem="heM-f1-QrY" secondAttribute="top" id="R1N-EZ-f3q"/>
+                            <constraint firstItem="vFU-Ye-bnR" firstAttribute="trailing" secondItem="aOK-42-nfp" secondAttribute="trailing" id="iNM-dn-GiK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nLk-zg-dwa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfV-By-aFS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1144" y="583"/>
         </scene>
     </scenes>
     <resources>

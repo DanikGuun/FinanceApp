@@ -15,6 +15,7 @@ class CategoryInfoCell: UICollectionViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var categoryAmountLabel: UILabel!
     @IBOutlet weak var categoryPercentLabel: UILabel!
+    var category: Category!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -42,10 +43,11 @@ class CategoryInfoCell: UICollectionViewCell {
     func setup(data: CategoryInfo){
         initialize()
         
-        iconBackgroundView.backgroundColor = data.iconColor
-        iconImageView.image = UIImage(systemName: data.icon)
-        categoryNameLabel.text = data.name
+        iconBackgroundView.backgroundColor = UIColor( cgColor: Model.shared.stringToColor(data.category.color!))
+        iconImageView.image = UIImage(systemName: data.category.icon!)
+        categoryNameLabel.text = data.category.name
         categoryAmountLabel.text = Appereances.moneyFormat(data.amount)
         categoryPercentLabel.text = "\(data.percent)%"
+        self.category = data.category
     }
 }

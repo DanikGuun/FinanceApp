@@ -24,6 +24,7 @@
 		567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */; };
 		567F98B42C242E6D00534566 /* OperationHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */; };
 		56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56806CF12C3498D6008DA848 /* YearCalendarView.swift */; };
+		568DCE212C3B2BCD00F670B3 /* OperationsStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */; };
 		5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */; };
 		5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
@@ -70,6 +71,7 @@
 		567F58702C1A153600E75652 /* CategoryHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHandlerViewController.swift; sourceTree = "<group>"; };
 		567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHandlerViewController.swift; sourceTree = "<group>"; };
 		56806CF12C3498D6008DA848 /* YearCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCalendarView.swift; sourceTree = "<group>"; };
+		568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsStoryViewController.swift; sourceTree = "<group>"; };
 		5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo_2024-07-03 22.20.24.jpeg"; sourceTree = "<group>"; };
 		5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCalendarView.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				56A46DCA2C23619200997F4D /* OperationsViewController.swift */,
+				568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */,
 				567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */,
 				5660E6FD2C26DB580099BEDE /* CategoryPickViewController.swift */,
 			);
@@ -338,6 +341,7 @@
 				5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */,
 				56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */,
 				56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */,
+				568DCE212C3B2BCD00F670B3 /* OperationsStoryViewController.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,
 				56B1F9062C3421420042EF19 /* MonthCalendarView.swift in Sources */,
 				56ED04CB2C3B006900E0BBC6 /* CategoryInfoCell.swift in Sources */,

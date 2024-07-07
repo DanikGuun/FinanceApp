@@ -159,14 +159,12 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         
         for categoryID in operations.keys{
             
-            let category = Model.shared.getCategoryByUUID(categoryID)
-            let categoryColor = UIColor(cgColor: Model.shared.stringToColor((category?.color)!))
+            let category = Model.shared.getCategoryByUUID(categoryID)!
+            let categoryColor = UIColor(cgColor: Model.shared.stringToColor((category.color)!))
             let amount: Double = (operations[categoryID]?.reduce(0.0, {$0 + $1.amount}))!
             
             chartData.append(ChartSegment(value: amount, color: categoryColor))
-            let categoryInfo = CategoryInfo(name: category?.name ?? "", 
-                                            icon: category?.icon ?? "",
-                                            iconColor: categoryColor,
+            let categoryInfo = CategoryInfo(category: category,
                                             percent: Int((amount/todaySumm*100).rounded()),
                                             amount: amount)
             categoryData.append(categoryInfo)
@@ -276,6 +274,10 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
     // MARK: Additions
     ///ставим дату на лейбле
     func setDateLabelText(interval: DateInterval, period: Calendar.Component){
@@ -331,9 +333,7 @@ struct ChartSegment{
     let color: UIColor
 }
 struct CategoryInfo{
-    let name: String
-    let icon: String
-    let iconColor: UIColor
+    let category: Category
     let percent: Int
     let amount: Double
 }
