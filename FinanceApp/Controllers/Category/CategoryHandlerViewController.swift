@@ -160,6 +160,7 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
             currentCategory.type = categoryType
         }
         else {Model.shared.addCategory(id: UUID(), name: name, type: categoryType, icon: activeIcon!, color: color)}
+        CoreDataManager.shared.saveContext()
         navigationController?.popViewController(animated: true) //закрытие страницы
     }
     

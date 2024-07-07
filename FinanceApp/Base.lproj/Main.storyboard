@@ -834,7 +834,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Название..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bhc-74-4tY">
                                 <rect key="frame" x="16" y="217" width="132.66666666666666" height="18.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" smartQuotesType="yes"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnderLine" translatesAutoresizingMaskIntoConstraints="NO" id="WU5-1L-TI4">
                                 <rect key="frame" x="10" y="235" width="153.66666666666666" height="2"/>
