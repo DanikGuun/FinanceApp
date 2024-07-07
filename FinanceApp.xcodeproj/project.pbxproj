@@ -39,6 +39,7 @@
 		56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3031B2C1C573D00E5DA37 /* IconCell.swift */; };
 		56D3031E2C1C59B800E5DA37 /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3031D2C1C59B800E5DA37 /* IconManager.swift */; };
 		56E65BF12C37221B00D1DAB6 /* PieChartUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56E65BF02C37221B00D1DAB6 /* PieChartUIKit */; };
+		56ED04CB2C3B006900E0BBC6 /* CategoryInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ED04CA2C3B006900E0BBC6 /* CategoryInfoCell.swift */; };
 		56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E192C11AD8300A240D1 /* AppDelegate.swift */; };
 		56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */; };
 		56F50E212C11AD8300A240D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 56F50E202C11AD8300A240D1 /* Base */; };
@@ -83,6 +84,7 @@
 		56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiColorpickerCell.swift; sourceTree = "<group>"; };
 		56D3031B2C1C573D00E5DA37 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		56D3031D2C1C59B800E5DA37 /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
+		56ED04CA2C3B006900E0BBC6 /* CategoryInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInfoCell.swift; sourceTree = "<group>"; };
 		56F50E162C11AD8300A240D1 /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F50E192C11AD8300A240D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				565D48642C18E37100E44B0A /* CategoryCell.swift */,
+				56ED04CA2C3B006900E0BBC6 /* CategoryInfoCell.swift */,
 				56C291862C20A44C0006B629 /* ColorpickCell.swift */,
 				567122252C31C21F00896346 /* DateIntervalCell.swift */,
 				56D3031B2C1C573D00E5DA37 /* IconCell.swift */,
@@ -337,6 +340,7 @@
 				56D3031C2C1C573D00E5DA37 /* IconCell.swift in Sources */,
 				567CA9FD2C18B58F00C1E4FA /* Operation+CoreDataClass.swift in Sources */,
 				56B1F9062C3421420042EF19 /* MonthCalendarView.swift in Sources */,
+				56ED04CB2C3B006900E0BBC6 /* CategoryInfoCell.swift in Sources */,
 				56C291892C20B0E10006B629 /* ColorPickerCollectionView.swift in Sources */,
 				567CA9FE2C18B58F00C1E4FA /* Operation+CoreDataProperties.swift in Sources */,
 				5660E6FE2C26DB580099BEDE /* CategoryPickViewController.swift in Sources */,

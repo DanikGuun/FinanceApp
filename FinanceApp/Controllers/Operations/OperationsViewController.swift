@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import PieChartUIKit
 
-class OperationsViewController: UIViewController, IntervalCalendarDelegate{
+class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var operationTypeSegmented: UISegmentedControl!
@@ -18,10 +18,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
     @IBOutlet weak var minusDateButton: UIButton!
     @IBOutlet weak var plusDateButton: UIButton!
     @IBOutlet weak var calendarBackground: UIView!
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
     var operationsPieChart: PieChartView!
     var centerCircle: UIImageView!
     var todayBalance: UILabel!
-    
+    var currentCollectionViewData: [CategoryInfo] = []
     
     var activePeriod: Calendar.Component = .day
     var activeInterval: DateInterval = DateInterval(start: DateManager.startOfDay(Date()), end: DateManager.endOfDay(Date()))
@@ -45,6 +46,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         //делаем нажатия на лэйбл с датой
         let recogniser = UITapGestureRecognizer(target: self, action: #selector(dateLabelPressed))
         dateLabel.addGestureRecognizer(recogniser)
+        
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         updateData()
@@ -149,19 +153,28 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         let operations = Model.shared.getCategoriedOperatioinsForPeriod(period: activeInterval, type: activeOperationType)
         
         var chartData: [ChartSegment] = []
+        var categoryData: [CategoryInfo] = []
         var todaySumm = Model.shared.getOperationsForPeriod(activeInterval, type: activeOperationType).reduce(0.0, {$0 + $1.amount})
         
         for categoryID in operations.keys{
+            
             let category = Model.shared.getCategoryByUUID(categoryID)
             let categoryColor = UIColor(cgColor: Model.shared.stringToColor((category?.color)!))
             let amount: Double = (operations[categoryID]?.reduce(0.0, {$0 + $1.amount}))!
-            chartData.append(ChartSegment(value: amount, color: categoryColor))
             
+            chartData.append(ChartSegment(value: amount, color: categoryColor))
+            let categoryInfo = CategoryInfo(name: category?.name ?? "", 
+                                            icon: category?.icon ?? "",
+                                            iconColor: categoryColor,
+                                            percent: Int((amount/todaySumm*100).rounded()),
+                                            amount: amount)
+            categoryData.append(categoryInfo)
         }
-        
+        self.currentCollectionViewData = categoryData
         setChartData(chartData)
         updateBalance()
         updateTodatBalance(sum: todaySumm)
+        categoryCollectionView.reloadData()
     }
 
     //MARK: PieChart
@@ -237,6 +250,23 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
         todayBalance.text = Appereances.moneyFormat(sum)
     }
     
+    //MARK: Categories Info Collection
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        currentCollectionViewData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryInfoCell", for: indexPath) as! CategoryInfoCell
+        cell.setup(data: currentCollectionViewData[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        let height = collectionView.frame.height / 5
+        return CGSize(width: width, height: height)
+    }
+    
     // MARK: Additions
     ///ставим дату на лейбле
     func setDateLabelText(interval: DateInterval, period: Calendar.Component){
@@ -290,4 +320,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate{
 struct ChartSegment{
     let value: CGFloat
     let color: UIColor
+}
+struct CategoryInfo{
+    let name: String
+    let icon: String
+    let iconColor: UIColor
+    let percent: Int
+    let amount: Double
 }

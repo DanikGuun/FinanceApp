@@ -41,7 +41,6 @@ class IconpickerViewController: UIViewController, UICollectionViewDelegate, UICo
         let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "iconType", for: indexPath) as! IconsHeaderView
         sectionHeader.setup(name: iconCategories[indexPath.section].rawValue)
         return sectionHeader
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
