@@ -68,7 +68,7 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
     
     //MARK: Additions
     func setupOperations(){
-        let operations = Model.shared.getOperationsForPeriod(interval, type: operationsType)
+        let operations = Model.shared.getOperationsForPeriod(interval, type: operationsType, category: category)
         var unsortedOperations: Dictionary<Date, [Operation]> = [:]
         for operation in operations {
             //брать дату только по дню

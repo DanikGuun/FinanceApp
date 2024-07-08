@@ -76,21 +76,30 @@ class Model{
         let _ = Operation(id: UUID(), categoryID: categoryID, amount: amount, date: date, notes: notes)
         CoreDataManager.shared.saveContext()
     }
-    func getAllOperations() -> [Operation]{
+    func getAllOperations(category: Category? = nil) -> [Operation]{
         do{
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Operation")
             let result = try? CoreDataManager.shared.context.fetch(request)
-            return result as! [Operation]
+            var operations: [Operation] = []
+            for (index, operation) in (result as! [Operation]).enumerated(){
+                operations.append(operation)
+                if category != nil && category != getCategoryByUUID(operation.categoryID){
+                    operations.remove(at: operations.count - 1)
+                }
+            }
+            return operations
         }
     }
     func getOperationsForPeriod(_ period: DateInterval, type: OperationType? = nil, category: Category? = nil) -> [Operation]{
         var operations: [Operation] = []
-        for operation in getAllOperations(){
+        for operation in getAllOperations(category: category){
             if period.contains(operation.date!){
-                if type != nil{
-                    if type == operation.type {operations.append(operation)}
+                
+                operations.append(operation)
+                if type != nil && type != operation.type{
+                    operations.remove(at: operations.count - 1)
                 }
-                else {operations.append(operation)}
+
             }
         }
         return operations
