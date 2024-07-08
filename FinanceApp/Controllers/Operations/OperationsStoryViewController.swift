@@ -15,7 +15,7 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
     var interval: DateInterval!
     var operationsType: Model.OperationType!
     
-    var currentOperations: Dictionary<Date, [Operation]> = [:]
+    var currentOperations: [(date: Date, operations: [Operation])] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,28 +27,26 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
     
     //MARK: CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return currentOperations.keys.count
+        return currentOperations.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionsHeaderView
-        let sectionDateIndex = currentOperations.keys.index(currentOperations.startIndex, offsetBy: indexPath.section)
-        header.setup(name: currentOperations.keys[sectionDateIndex].formatted(.dateTime.day().month().year()))
+        let date = currentOperations[indexPath.section].date
+        let formatted = date.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU")))
+        header.setup(name: formatted)
         return header
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let currentDateIndex = currentOperations.keys.index(currentOperations.startIndex, offsetBy: section)
-        let currentKey = currentOperations.keys[currentDateIndex]
-        return currentOperations[currentKey]?.count ?? 0
+      
+        return currentOperations[section].operations.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentDateIndex = currentOperations.keys.index(currentOperations.startIndex, offsetBy: indexPath.section)
-        let currentKey = currentOperations.keys[currentDateIndex]
-        let operations = currentOperations[currentKey]
+        let operations = currentOperations[indexPath.section].operations
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "operationStoryCell", for: indexPath) as! OperationStoryCell
-        cell.setup(operation: operations![indexPath.row])
+        cell.setup(operation: operations[indexPath.row])
         return cell
     }
     
@@ -60,15 +58,24 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
     
     //MARK: Additions
     func setupOperations(){
-        let operations = Model.shared.getOperationsForPeriod(interval, type: operationsType)
+        var operations = Model.shared.getOperationsForPeriod(interval, type: operationsType)
+        var unsortedOperations: Dictionary<Date, [Operation]> = [:]
         for operation in operations {
+            //брать дату только по дню
+            let components = Calendar.current.dateComponents([.year, .month, .day], from: operation.date!)
+            let operationDate = Calendar.current.date(from: components)!
             //если элемент уже есть, то добавляем в массив, если нет, то создаем новый
-            if let currentOperation = currentOperations[operation.date!]{
-                currentOperations[operation.date!]?.append(operation)
+            if let currentOperation = unsortedOperations[operationDate]{
+                unsortedOperations[operationDate]?.append(operation)
             }
             else{
-                currentOperations[operation.date!] = [operation]
+                unsortedOperations[operationDate] = [operation]
             }
         }
+        var sortedOperations: [(date: Date, operations: [Operation])] = []
+        for operation in unsortedOperations.sorted(by: {$0.key > $1.key}){
+            sortedOperations.append((operation.key, operation.value))
+        }
+        currentOperations = sortedOperations
     }
 }
