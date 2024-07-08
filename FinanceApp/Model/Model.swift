@@ -54,11 +54,14 @@ class Model{
             let id = Int.random(in: 0..<categories.count)
             categories.remove(at: id)
         }
+        //если есть уже категория для операции и совпадает тип, то вставляем ее
         if let first{
-            categories.insert(first, at: 0)
-            // чтобы не было больше 6 элементов
-            if count > 5{
-                categories = categories.dropLast()
+            if type == OperationType(rawValue: first.type!){
+                categories.insert(first, at: 0)
+                // чтобы не было больше 6 элементов
+                if count > 5{
+                    categories = categories.dropLast()
+                }
             }
         }
         return categories

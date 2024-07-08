@@ -252,12 +252,6 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     func setupCategories(){
         let category = Model.shared.getCategoryByUUID(currentOperation?.categoryID)
         categories = Model.shared.getRandomCategories(count: 5, type: activeOperationType, first: category)
-        //добавляем имеющуюся, только если тип операций совпадает
-        if let operation = currentOperation{
-            if operation.type == activeOperationType{
-                categories[0] = Model.shared.getCategoryByUUID(operation.categoryID!)!
-            }
-        }
     }
     
     func setupDate(){

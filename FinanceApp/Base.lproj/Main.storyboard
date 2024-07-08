@@ -139,6 +139,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="pld-3r-IfD" appends="YES" id="65S-A1-M0R"/>
                                     <outletCollection property="gestureRecognizers" destination="nqJ-RY-u7V" appends="YES" id="hvd-sk-jwy"/>
+                                    <outletCollection property="gestureRecognizers" destination="LV2-jV-Plt" appends="YES" id="4K4-zG-R9b"/>
                                 </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Cg-rbF">
@@ -311,6 +312,11 @@
                         <action selector="chartSwiped:" destination="TKD-BP-76y" id="8Pl-J8-QnI"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="LV2-jV-Plt">
+                    <connections>
+                        <action selector="chartTapped:" destination="TKD-BP-76y" id="oEr-Ti-Psk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="83" y="42"/>
         </scene>
@@ -544,12 +550,9 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Удалить"/>
                                 <connections>
-                                    <action selector="removeButtonPressed:" destination="bch-z0-xIC" eventType="touchUpInside" id="Fn6-8n-tr0"/>
+                                    <action selector="removeButtonPressed:" destination="bch-z0-xIC" eventType="touchUpInside" id="sHW-ND-8cn"/>
                                 </connections>
                             </button>
-                            <connections>
-                                <action selector="removeButtonPressed:" destination="bch-z0-xIC" id="nm7-cN-rlh"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1525,7 +1528,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxW-lu-NaI"/>
+        <segue reference="cwL-Vi-hIl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>

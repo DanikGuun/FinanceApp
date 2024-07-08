@@ -257,6 +257,10 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         todayBalance.text = Appereances.moneyFormat(sum)
     }
 
+    @IBAction func chartTapped(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "operationsStorySegue", sender: nil)
+    }
+    
     //MARK: Categories Info Collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         currentCollectionViewData.count
