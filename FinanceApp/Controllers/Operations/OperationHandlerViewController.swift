@@ -18,6 +18,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var emptyCategoryWarning: UIView!
     @IBOutlet weak var opertaionDatePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     
     var notesToDateConstraint: NSLayoutConstraint!
@@ -47,7 +48,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         setupOperationType() //задание начального типа
         setupCategories() //стартовая генерация категорий
         setupApplyButton()
-
+        setupRemoveButton()
         setupDate()
         
         categoriesCollectionView.delegate = self
@@ -62,7 +63,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         emptyAmountWarning.layer.cornerRadius = 5
         emptyCategoryWarning.layer.cornerRadius = 5
         
-        amountTextField.text = currentOperation?.amount.formatted(.number) ?? ""
+        amountTextField.text = currentOperation?.amount.formatted(.number.grouping(.never)) ?? ""
         notesTextField.text = currentOperation?.notes
     
     }
@@ -208,8 +209,24 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
                 currentOperation.notes = notes
             }
             else {Model.shared.addOperation(categoryID: activeCategory!.id!, amount: amount, date: date, notes: notes)}
+            CoreDataManager.shared.saveContext()
             navigationController?.popViewController(animated: true)
         }
+    }
+    
+    //MARK: Remove Button
+    func setupRemoveButton(){
+        if currentOperation != nil {removeButton.isHidden = false}
+        else {removeButton.isHidden = true}
+    }
+    @IBAction func removeButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Удаляем операцию?", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: {_ in}))
+        alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { _ in
+            Model.shared.removeOperation(self.currentOperation!)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
     }
     
     // MARK: Additions
@@ -233,11 +250,12 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
      - Parameter type: Тип текущей операций
      */
     func setupCategories(){
-        categories = Model.shared.getRandomCategories(count: 5, type: activeOperationType)
+        let category = Model.shared.getCategoryByUUID(currentOperation?.categoryID)
+        categories = Model.shared.getRandomCategories(count: 5, type: activeOperationType, first: category)
         //добавляем имеющуюся, только если тип операций совпадает
         if let operation = currentOperation{
             if operation.type == activeOperationType{
-                categories[0] = Model.shared.getCategoryByUUID(operation.id!)!
+                categories[0] = Model.shared.getCategoryByUUID(operation.categoryID!)!
             }
         }
     }

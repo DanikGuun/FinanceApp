@@ -169,7 +169,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
                                             amount: amount)
             categoryData.append(categoryInfo)
         }
-        self.currentCollectionViewData = categoryData
+        self.currentCollectionViewData = categoryData.sorted {$0.amount > $1.amount}
         setChartData(chartData)
         updateBalance()
         updateTodatBalance(sum: todaySumm)

@@ -47,20 +47,27 @@ class Model{
         return categories
     }
     
-    func getRandomCategories(count: Int, type: OperationType) -> [Category]{
+    func getRandomCategories(count: Int, type: OperationType, first: Category? = nil) -> [Category]{
         var categories = getAllCategories(type: type)
+        categories.removeAll(where: {$0 == first})
         while categories.count > count{
             let id = Int.random(in: 0..<categories.count)
             categories.remove(at: id)
         }
+        if let first{
+            categories.insert(first, at: 0)
+            // чтобы не было больше 6 элементов
+            if count > 5{
+                categories = categories.dropLast()
+            }
+        }
         return categories
     }
     
-    func getCategoryByUUID(_ id: UUID) -> Category?{
+    func getCategoryByUUID(_ id: UUID?) -> Category?{
         for category in getAllCategories(){
             if category.id == id {return category}
         }
-        print("Ошибка нахождения категории")
         return nil
     }
     

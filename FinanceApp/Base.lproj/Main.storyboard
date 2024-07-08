@@ -278,11 +278,6 @@
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="top" secondItem="Ie0-lD-WCh" secondAttribute="top" id="uJS-v2-8XP"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="E9Q-gp-jlg" secondAttribute="trailing" id="zlv-Pi-g3Q"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="E9Q-gp-jlg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6K9-Mq-B1q">
                         <barButtonItem key="backBarButtonItem" title="назад" id="lay-Ka-aCE"/>
@@ -317,7 +312,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="83.206106870229007" y="214.08450704225353"/>
+            <point key="canvasLocation" x="83" y="42"/>
         </scene>
         <!--Operation Handler View Controller-->
         <scene sceneID="tGp-Ol-pn2">
@@ -475,7 +470,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Заметки..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtq-9z-pj1">
                                 <rect key="frame" x="10" y="635" width="373" height="19"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" smartDashesType="yes"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnderLine" translatesAutoresizingMaskIntoConstraints="NO" id="pY3-bx-97D">
                                 <rect key="frame" x="5" y="654.33333333333337" width="383" height="2"/>
@@ -541,6 +536,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="NuB-L5-R3r">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="iny-R1-whq"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wzs-4m-dwX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="v5T-Lr-vaC">
+                                <rect key="frame" x="288.33333333333331" y="5" width="88.666666666666686" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Удалить"/>
+                            </button>
+                            <connections>
+                                <action selector="removeButtonPressed:" destination="bch-z0-xIC" id="nm7-cN-rlh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="04L-fs-8wL" id="jNL-Ad-UHr"/>
@@ -552,12 +559,13 @@
                         <outlet property="notesTextField" destination="dtq-9z-pj1" id="H3J-mI-Brc"/>
                         <outlet property="operationTypeSegmentedControl" destination="mTK-vz-WRh" id="jPD-Ug-dKT"/>
                         <outlet property="opertaionDatePicker" destination="BOV-TF-udx" id="EB8-Ea-tee"/>
+                        <outlet property="removeButton" destination="v5T-Lr-vaC" id="SfZ-lE-bGm"/>
                         <segue destination="RV2-mn-RwB" kind="show" identifier="pickCategorySegue" id="CLm-Nc-3Qm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9M-jg-hU6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.2748091603053" y="-176.05633802816902"/>
+            <point key="canvasLocation" x="1360" y="405"/>
         </scene>
         <!--Выбор категории-->
         <scene sceneID="mni-IV-nA8">
@@ -666,7 +674,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9H-iA-unC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.7022900763359" y="-176.05633802816902"/>
+            <point key="canvasLocation" x="2418" y="405"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="uHv-Fd-JIk">
@@ -850,7 +858,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Название..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bhc-74-4tY">
                                 <rect key="frame" x="16" y="217" width="132.66666666666666" height="18.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" smartQuotesType="yes"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" smartDashesType="yes" smartQuotesType="yes"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnderLine" translatesAutoresizingMaskIntoConstraints="NO" id="WU5-1L-TI4">
                                 <rect key="frame" x="10" y="235" width="153.66666666666666" height="2"/>
@@ -1029,7 +1037,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="5" width="89" height="35"/>
+                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1422,7 +1430,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-M9-0wv">
-                                                            <rect key="frame" x="78" y="45.333333333333336" width="267" height="14.333333333333336"/>
+                                                            <rect key="frame" x="78" y="42.333333333333336" width="267" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" name="CategoryPercent"/>
                                                             <nil key="highlightedColor"/>
@@ -1433,7 +1441,7 @@
                                                         <constraint firstItem="W3H-vm-ols" firstAttribute="leading" secondItem="qIs-1L-Vj1" secondAttribute="trailing" constant="10" id="2jB-Vv-EdC"/>
                                                         <constraint firstItem="qIs-1L-Vj1" firstAttribute="top" secondItem="ATw-pb-lKE" secondAttribute="top" constant="6" id="Bzd-gG-Rfd"/>
                                                         <constraint firstAttribute="bottom" secondItem="qIs-1L-Vj1" secondAttribute="bottom" constant="6" id="JU9-rd-muS"/>
-                                                        <constraint firstItem="a0L-M9-0wv" firstAttribute="top" secondItem="W3H-vm-ols" secondAttribute="bottom" constant="3" id="O6u-cj-S2K"/>
+                                                        <constraint firstItem="a0L-M9-0wv" firstAttribute="top" secondItem="W3H-vm-ols" secondAttribute="bottom" id="O6u-cj-S2K"/>
                                                         <constraint firstAttribute="trailing" secondItem="gMQ-6w-OV9" secondAttribute="trailing" constant="15" id="Rac-wM-obr"/>
                                                         <constraint firstItem="qIs-1L-Vj1" firstAttribute="leading" secondItem="ATw-pb-lKE" secondAttribute="leading" constant="6" id="Tus-GO-ARK"/>
                                                         <constraint firstItem="gMQ-6w-OV9" firstAttribute="top" secondItem="ATw-pb-lKE" secondAttribute="top" constant="1" id="Y5i-hA-ikk"/>
@@ -1500,16 +1508,22 @@
                             <constraint firstItem="vFU-Ye-bnR" firstAttribute="trailing" secondItem="aOK-42-nfp" secondAttribute="trailing" id="iNM-dn-GiK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nLk-zg-dwa"/>
+                    <navigationItem key="navigationItem" id="nLk-zg-dwa">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="V1n-kn-xsD"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="operationsCollectionView" destination="Wjw-bh-db7" id="Pms-ik-ek7"/>
+                        <segue destination="bch-z0-xIC" kind="show" identifier="editOperationSegue" id="wxW-lu-NaI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfV-By-aFS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142.7480916030534" y="582.3943661971831"/>
+            <point key="canvasLocation" x="1079" y="-329"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wxW-lu-NaI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
@@ -1544,13 +1558,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -32,5 +32,7 @@ class OperationStoryCell: UICollectionViewCell {
         categoryNameLabel.text = category?.name
         amountLabel.text = Appereances.moneyFormat(operation.amount)
         notesLabel.text = operation.notes
+        
+        currentOperation = operation
     }
 }
