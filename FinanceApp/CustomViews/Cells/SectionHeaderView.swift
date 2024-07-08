@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IconsHeaderView: UICollectionReusableView{
+class SectionsHeaderView: UICollectionReusableView{
     
     @IBOutlet weak var sectionNameLabel: UILabel!
     

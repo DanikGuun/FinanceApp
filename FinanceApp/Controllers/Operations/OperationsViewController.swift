@@ -330,6 +330,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         if let operationsStoryController = segue.destination as? OperationsStoryViewController{
             operationsStoryController.category = sender as? Category
             operationsStoryController.interval = activeInterval
+            operationsStoryController.operationsType = activeOperationType
         }
     }
 }

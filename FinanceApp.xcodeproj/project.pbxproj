@@ -25,10 +25,11 @@
 		567F98B42C242E6D00534566 /* OperationHandlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */; };
 		56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56806CF12C3498D6008DA848 /* YearCalendarView.swift */; };
 		568DCE212C3B2BCD00F670B3 /* OperationsStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */; };
+		568DCE232C3BC41300F670B3 /* OperationStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568DCE222C3BC41300F670B3 /* OperationStoryCell.swift */; };
 		5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */; };
 		5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
-		56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* IconsHeaderView.swift */; };
+		56A334A72C1F973000909B35 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* SectionHeaderView.swift */; };
 		56A46DCB2C23619200997F4D /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A46DCA2C23619200997F4D /* OperationsViewController.swift */; };
 		56B1F9062C3421420042EF19 /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1F9052C3421420042EF19 /* MonthCalendarView.swift */; };
 		56C291852C20964B0006B629 /* IconWithoutBackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */; };
@@ -72,10 +73,11 @@
 		567F98B32C242E6D00534566 /* OperationHandlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationHandlerViewController.swift; sourceTree = "<group>"; };
 		56806CF12C3498D6008DA848 /* YearCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCalendarView.swift; sourceTree = "<group>"; };
 		568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsStoryViewController.swift; sourceTree = "<group>"; };
+		568DCE222C3BC41300F670B3 /* OperationStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationStoryCell.swift; sourceTree = "<group>"; };
 		5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo_2024-07-03 22.20.24.jpeg"; sourceTree = "<group>"; };
 		5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCalendarView.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
-		56A334A62C1F973000909B35 /* IconsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHeaderView.swift; sourceTree = "<group>"; };
+		56A334A62C1F973000909B35 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		56A46DCA2C23619200997F4D /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
 		56B1F9052C3421420042EF19 /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
 		56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithoutBackgroundCell.swift; sourceTree = "<group>"; };
@@ -121,10 +123,11 @@
 				56C291862C20A44C0006B629 /* ColorpickCell.swift */,
 				567122252C31C21F00896346 /* DateIntervalCell.swift */,
 				56D3031B2C1C573D00E5DA37 /* IconCell.swift */,
-				56A334A62C1F973000909B35 /* IconsHeaderView.swift */,
+				56A334A62C1F973000909B35 /* SectionHeaderView.swift */,
 				56C291842C20964B0006B629 /* IconWithoutBackgroundCell.swift */,
 				56F50E4D2C11C80100A240D1 /* MenuButtonCell.swift */,
 				56CBFA192C1F401A00CA617E /* MultiColorpickerCell.swift */,
+				568DCE222C3BC41300F670B3 /* OperationStoryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				56690EA52C2C779A003F378C /* IntervalCalendarDelegate.swift in Sources */,
 				567F58712C1A153600E75652 /* CategoryHandlerViewController.swift in Sources */,
 				56CBFA152C1F38FC00CA617E /* MultiColorpickerViewController.swift in Sources */,
+				568DCE232C3BC41300F670B3 /* OperationStoryCell.swift in Sources */,
 				56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */,
 				5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */,
 				56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */,
@@ -360,7 +364,7 @@
 				56C291852C20964B0006B629 /* IconWithoutBackgroundCell.swift in Sources */,
 				565D48612C18C27200E44B0A /* Model.swift in Sources */,
 				56690EA92C2C9190003F378C /* DateManager.swift in Sources */,
-				56A334A72C1F973000909B35 /* IconsHeaderView.swift in Sources */,
+				56A334A72C1F973000909B35 /* SectionHeaderView.swift in Sources */,
 				56F50E1A2C11AD8300A240D1 /* AppDelegate.swift in Sources */,
 				56A46DCB2C23619200997F4D /* OperationsViewController.swift in Sources */,
 				56F50E1C2C11AD8300A240D1 /* SceneDelegate.swift in Sources */,
