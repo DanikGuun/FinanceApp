@@ -221,7 +221,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
     }
     @IBAction func removeButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Удаляем операцию?", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: {_ in}))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: {_ in}))
         alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: { _ in
             Model.shared.removeOperation(self.currentOperation!)
             self.navigationController?.popViewController(animated: true)

@@ -36,51 +36,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FC365F94-DABC-40D7-BA18-8209ADE95C80"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FinanceApp/Controllers/Operations/OperationHandlerViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "removeButtonPressed(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FC365F94-DABC-40D7-BA18-8209ADE95C80 - ba7bf1c7505b327"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FinanceApp.OperationHandlerViewController.removeButtonPressed(Any) -&gt; ()"
-                  moduleName = "FinanceApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danilabondar/Projects/XCode/FinanceApp/FinanceApp/Controllers/Operations/OperationHandlerViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "224"
-                  endingLineNumber = "224">
-               </Location>
-               <Location
-                  uuid = "FC365F94-DABC-40D7-BA18-8209ADE95C80 - 34f5cc938b5c51dc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in FinanceApp.OperationHandlerViewController.removeButtonPressed(Any) -&gt; ()"
-                  moduleName = "FinanceApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danilabondar/Projects/XCode/FinanceApp/FinanceApp/Controllers/Operations/OperationHandlerViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "224"
-                  endingLineNumber = "224">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
