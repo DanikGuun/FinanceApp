@@ -195,10 +195,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-d7-WlT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-d7-WlT">
                                                             <rect key="frame" x="293" y="5" width="42" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="RHN-d7-WlT" secondAttribute="height" multiplier="21:20" id="FeG-8W-sof"/>
+                                                                <constraint firstAttribute="width" secondItem="RHN-d7-WlT" secondAttribute="height" multiplier="21:20" priority="999" id="FeG-8W-sof"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" name="CategoryPercent"/>
@@ -1383,7 +1383,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3t-tQ-iaE">
-                                        <rect key="frame" x="20" y="102" width="353" height="21"/>
+                                        <rect key="frame" x="20" y="107" width="353" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
@@ -1394,7 +1394,7 @@
                                     <constraint firstAttribute="trailing" secondItem="H3t-tQ-iaE" secondAttribute="trailing" constant="20" id="A3k-6b-Irt"/>
                                     <constraint firstItem="H3t-tQ-iaE" firstAttribute="leading" secondItem="aOK-42-nfp" secondAttribute="leading" constant="20" id="CCG-EA-RP7"/>
                                     <constraint firstAttribute="width" secondItem="aOK-42-nfp" secondAttribute="height" multiplier="393:128" id="OR7-xV-bcy"/>
-                                    <constraint firstAttribute="bottom" secondItem="H3t-tQ-iaE" secondAttribute="bottom" constant="5" id="hd8-6g-d2K"/>
+                                    <constraint firstAttribute="bottom" secondItem="H3t-tQ-iaE" secondAttribute="bottom" id="hd8-6g-d2K"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wjw-bh-db7">
@@ -1538,7 +1538,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxW-lu-NaI"/>
+        <segue reference="cwL-Vi-hIl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>

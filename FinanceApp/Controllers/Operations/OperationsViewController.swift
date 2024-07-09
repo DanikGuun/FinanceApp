@@ -274,7 +274,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        let height = collectionView.frame.height / 5
+        let height = [collectionView.frame.height / 5, 60.0].max()!
         return CGSize(width: width, height: height)
     }
     
