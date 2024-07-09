@@ -46,11 +46,12 @@ class ColorpickerCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = cellForItem(at: indexPath) as! ColorpickCell
         
-        for otherCell in collectionView.visibleCells as! [ColorpickCell]{
-            otherCell.deselectColor()
+        if indexPath.row != collectionView.visibleCells.count - 1{
+            for otherCell in collectionView.visibleCells as! [ColorpickCell]{
+                otherCell.deselectColor()
+            }
+            cell.selectColor()
         }
-        cell.selectColor()
-        
         //если не меню выбора цветов
         if indexPath.row != collectionView.visibleCells.count - 1 {parentView.colorPick(cell.color)}
         else {parentView.moreColorsPressed()}
