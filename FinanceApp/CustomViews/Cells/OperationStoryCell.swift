@@ -26,7 +26,7 @@ class OperationStoryCell: UICollectionViewCell {
         iconBackgroundView.backgroundColor = UIColor(cgColor: Model.shared.stringToColor(category!.color!))
         iconBackgroundView.layer.cornerRadius = 7
         
-        iconImageView.tintColor = UIColor.systemBackground
+        iconImageView.tintColor = UIColor.white
         iconImageView.image = UIImage(systemName: (category?.icon)!)
         
         categoryNameLabel.text = category?.name

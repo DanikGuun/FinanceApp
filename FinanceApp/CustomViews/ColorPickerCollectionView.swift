@@ -32,8 +32,9 @@ class ColorpickerCollectionView: UICollectionView, UICollectionViewDelegate, UIC
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorpickCell", for: indexPath) as! ColorpickCell
         
+        //смотрим последний элемент или нет
         if indexPath.row < colors.count {cell.setup(color: colors[indexPath.row])}
-        else {cell.setup(color: .systemGray4, image: UIImage(systemName: "ellipsis.circle.fill")!)}
+        else {cell.setup(color: .colorMenuButton, image: UIImage(systemName: "ellipsis.circle.fill")!)}
         
         if indexPath.row == 0{
             cell.selectColor()

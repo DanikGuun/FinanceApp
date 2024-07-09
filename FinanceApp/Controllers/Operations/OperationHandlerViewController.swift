@@ -92,7 +92,7 @@ class OperationHandlerViewController: UIViewController, UICollectionViewDelegate
         }
         //если это последняя
         else if indexPath.row == categories.count || categories.count == 0{
-            cell.setup(name: "Больше", icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .white, iconColor: .systemBlue)
+            cell.setup(name: "Больше", icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .clear, iconColor: .systemBlue)
         }
         else{
             cell.setup(categories[indexPath.row])

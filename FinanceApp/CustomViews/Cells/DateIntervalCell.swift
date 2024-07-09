@@ -40,10 +40,10 @@ class DateIntervalCell: UICollectionViewCell {
     
     override func select(_ sender: Any?) {
         dateLabel.textColor = .systemBlue
-        background.backgroundColor = .systemGray6
+        background.backgroundColor = .selectedDateCell
     }
     func unselect(){
-        dateLabel.textColor = .black
+        dateLabel.textColor = .label
         background.backgroundColor = .cellBackround
         
     }
@@ -77,6 +77,7 @@ class DateIntervalCell: UICollectionViewCell {
         self.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.adjustsFontSizeToFitWidth = true
+        dateLabel.textColor = .label
         
         dateLabel.font = UIFont.systemFont(ofSize: background.frame.height, weight: .semibold)
         dateLabel.textAlignment = .center

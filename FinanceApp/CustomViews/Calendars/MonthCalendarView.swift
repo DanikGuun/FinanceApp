@@ -206,7 +206,7 @@ class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPicke
             button.tintColor = .clear
             let attributed = NSMutableAttributedString((button.configuration?.attributedTitle)!)
             let titleLength = button.titleLabel?.text?.count ?? 0
-            let targetColor = button.isSelected ? UIColor.systemBlue : UIColor.black
+            let targetColor = button.isSelected ? UIColor.systemBlue : UIColor.label
             attributed.addAttribute(.foregroundColor, value: targetColor, range: NSRange(location: 0, length: titleLength))
             button.configuration?.attributedTitle = AttributedString(attributed)
             

@@ -25,7 +25,7 @@ public class Appereances{
     
     ///тень для объектов из меню с операциями, или не только
     static func applyShadow(_ view: UIView){
-        view.layer.shadowColor = CGColor(red: 145/255, green: 143/255, blue: 143/255, alpha: 0.25)
+        view.layer.shadowColor = UIColor(named: "ShadowColor")?.cgColor
         view.layer.shadowOpacity = 1
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 4

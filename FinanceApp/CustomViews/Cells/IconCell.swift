@@ -21,10 +21,10 @@ class IconCell: UICollectionViewCell{
         background.layer.shadowRadius = 2
         
         iconBackground.layer.cornerRadius = 9
-        icon.tintColor = .white
+        icon.tintColor = .iconTint
     }
     
-    func setup(icon: UIImage, iconBackroundColor: UIColor, iconColor: UIColor = .white){
+    func setup(icon: UIImage, iconBackroundColor: UIColor, iconColor: UIColor = .iconTint){
         superSetup()
         self.icon.image = icon
         self.icon.tintColor = iconColor
