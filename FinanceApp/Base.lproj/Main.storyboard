@@ -543,7 +543,7 @@
                     <navigationItem key="navigationItem" id="NuB-L5-R3r">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="iny-R1-whq"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="wzs-4m-dwX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="v5T-Lr-vaC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="v5T-Lr-vaC">
                                 <rect key="frame" x="288.33333333333331" y="5" width="88.666666666666686" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
@@ -1371,7 +1371,7 @@
             </objects>
             <point key="canvasLocation" x="-924.4274809160305" y="634.50704225352115"/>
         </scene>
-        <!--Operations Story View Controller-->
+        <!--Операции-->
         <scene sceneID="6IZ-qe-oeC">
             <objects>
                 <viewController id="e09-ut-gIA" customClass="OperationsStoryViewController" customModule="FinanceApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1381,9 +1381,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOK-42-nfp">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3t-tQ-iaE">
+                                        <rect key="frame" x="20" y="102" width="353" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="H3t-tQ-iaE" secondAttribute="trailing" constant="20" id="A3k-6b-Irt"/>
+                                    <constraint firstItem="H3t-tQ-iaE" firstAttribute="leading" secondItem="aOK-42-nfp" secondAttribute="leading" constant="20" id="CCG-EA-RP7"/>
                                     <constraint firstAttribute="width" secondItem="aOK-42-nfp" secondAttribute="height" multiplier="393:128" id="OR7-xV-bcy"/>
+                                    <constraint firstAttribute="bottom" secondItem="H3t-tQ-iaE" secondAttribute="bottom" constant="5" id="hd8-6g-d2K"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wjw-bh-db7">
@@ -1514,10 +1525,9 @@
                             <constraint firstItem="vFU-Ye-bnR" firstAttribute="trailing" secondItem="aOK-42-nfp" secondAttribute="trailing" id="iNM-dn-GiK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nLk-zg-dwa">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="V1n-kn-xsD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Операции" id="Pxo-ir-2OY"/>
                     <connections>
+                        <outlet property="intervalLabel" destination="H3t-tQ-iaE" id="dug-x5-yoT"/>
                         <outlet property="operationsCollectionView" destination="Wjw-bh-db7" id="Pms-ik-ek7"/>
                         <segue destination="bch-z0-xIC" kind="show" identifier="editOperationSegue" id="wxW-lu-NaI"/>
                     </connections>
@@ -1528,7 +1538,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cwL-Vi-hIl"/>
+        <segue reference="wxW-lu-NaI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>
@@ -1560,6 +1570,9 @@
         <namedColor name="MenuBackground">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

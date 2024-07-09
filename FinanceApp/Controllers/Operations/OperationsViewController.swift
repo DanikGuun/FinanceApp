@@ -335,6 +335,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
             operationsStoryController.category = sender as? Category
             operationsStoryController.interval = activeInterval
             operationsStoryController.operationsType = activeOperationType
+            operationsStoryController.textInterval = dateLabel.attributedText?.string
         }
     }
 }

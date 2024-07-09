@@ -10,10 +10,12 @@ import UIKit
 class OperationsStoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var operationsCollectionView: UICollectionView!
+    @IBOutlet weak var intervalLabel: UILabel!
     
     var category: Category?
     var interval: DateInterval!
     var operationsType: Model.OperationType!
+    var textInterval: String!
     
     var currentOperations: [(date: Date, operations: [Operation])] = []
     
@@ -23,6 +25,8 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
         
         operationsCollectionView.delegate = self
         operationsCollectionView.dataSource = self
+        
+        intervalLabel.text = textInterval
     }
     
     override func viewWillAppear(_ animated: Bool) {
