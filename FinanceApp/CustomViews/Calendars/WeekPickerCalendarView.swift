@@ -36,6 +36,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     func setup(){
         cellFormat.dateFormat = "d MMMM"
         
+        setupPlusMinusButtons()
         setupDateButton()
         setupCollectionView()
         setupDatePicker()
@@ -165,7 +166,18 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         weekCollectionView.reloadData()
     }
     
-    
+    //MARK: Plus Minus Button
+    func setupPlusMinusButtons(){
+        let leftHandler = { (direction: UIAction) in
+            print(-1)
+        }
+        let rightHandler = { (direction: UIAction) in
+            print(1)
+        }
+        let buttons = LeftRightButtons(leftHandler: leftHandler, rightHandler: rightHandler)
+        self.addSubview(buttons)
+        buttons.constraintToUpRight(to: self)
+    }
     
     //MARK: YearButton
     func setDateButtonText(_ date: Date){

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="69c-zA-for">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -80,7 +80,9 @@
                                         </constraints>
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="plusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="3Eq-VK-pob"/>
                                         </connections>
@@ -92,7 +94,9 @@
                                         </constraints>
                                         <color key="tintColor" name="CategoryName"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="minusDate:" destination="TKD-BP-76y" eventType="touchUpInside" id="tzz-5g-aPF"/>
                                         </connections>
@@ -139,7 +143,6 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="pld-3r-IfD" appends="YES" id="65S-A1-M0R"/>
                                     <outletCollection property="gestureRecognizers" destination="nqJ-RY-u7V" appends="YES" id="hvd-sk-jwy"/>
-                                    <outletCollection property="gestureRecognizers" destination="LV2-jV-Plt" appends="YES" id="4K4-zG-R9b"/>
                                 </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Cg-rbF">
@@ -288,6 +291,7 @@
                         <outlet property="categoryCollectionView" destination="KGx-lM-sAq" id="HIM-wM-1c5"/>
                         <outlet property="chartBackgroundView" destination="oSP-fu-CI7" id="CHY-EJ-iOz"/>
                         <outlet property="dateLabel" destination="zHk-Pe-fK6" id="41G-yU-E8G"/>
+                        <outlet property="fullStoryOpenGesture" destination="LV2-jV-Plt" id="UyO-Wt-gDr"/>
                         <outlet property="menuBackgroundView" destination="Ogw-ng-awv" id="0Zd-Do-Nck"/>
                         <outlet property="minusDateButton" destination="lbT-MD-9E4" id="XJj-Jg-81w"/>
                         <outlet property="moneyLabel" destination="oQK-fr-ykM" id="dld-so-KmS"/>
@@ -1044,7 +1048,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
+                                <rect key="frame" x="288" y="5" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1388,8 +1392,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3t-tQ-iaE">
-                                        <rect key="frame" x="20" y="102" width="353" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <rect key="frame" x="20" y="106" width="353" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1544,7 +1548,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxW-lu-NaI"/>
+        <segue reference="cwL-Vi-hIl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>
@@ -1556,7 +1560,7 @@
         <image name="rublesign" catalog="system" width="115" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <namedColor name="AppMenuBackground">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CalendarBackground">
             <color red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1580,7 +1584,7 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MenuItem">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

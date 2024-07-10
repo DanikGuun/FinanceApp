@@ -19,6 +19,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     @IBOutlet weak var plusDateButton: UIButton!
     @IBOutlet weak var calendarBackground: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet var fullStoryOpenGesture: UITapGestureRecognizer!
+    
     var operationsPieChart: PieChartView!
     var centerCircle: UIImageView!
     var todayBalance: UILabel!
@@ -184,6 +186,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         operationsPieChart.segmentInnerCornerRadius = 5
         operationsPieChart.offset = 1
         operationsPieChart.segmentOuterCornerRadius = 0
+        operationsPieChart.addGestureRecognizer(fullStoryOpenGesture)
         //констрейны
         chartBackgroundView.addSubview(operationsPieChart)
         operationsPieChart.translatesAutoresizingMaskIntoConstraints = false
