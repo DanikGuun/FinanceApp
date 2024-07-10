@@ -10,6 +10,17 @@ import Foundation
 class DateManager{
     
     static let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
+    static var minimumDate: Date {
+        var comps = Calendar.current.dateComponents(standartComponentSet, from: Date())
+        comps.second = 0
+        comps.minute = 0
+        comps.hour = 0
+        comps.day = 1
+        comps.month = 1
+        comps.year = 2000
+        return Calendar.current.date(from: comps)!
+        
+    }
 
     /**
     определяет промежуток для одного дня

@@ -13,6 +13,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
     var yearButton: UIButton!
     var datePicker: UIPickerView!
     var weekCollectionView: UICollectionView!
+    var leftRightButtons: LeftRightButtons!
     let cellFormat = DateFormatter()
     
     var intervalDelegate: (any IntervalCalendarDelegate)!
@@ -40,6 +41,7 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         setupDateButton()
         setupCollectionView()
         setupDatePicker()
+        updateDate(activeDate)
     }
     
     //MARK: Week CollectionView
@@ -161,26 +163,35 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
             currenDateComponents.month = availableMonthsNow.count
         }
         activeDate = Calendar.current.date(from: currenDateComponents)!
-        setDateButtonText(activeDate)
-        unselectCells()
-        weekCollectionView.reloadData()
+        updateDate(activeDate)
     }
     
     //MARK: Plus Minus Button
     func setupPlusMinusButtons(){
-        let leftHandler = { (direction: UIAction) in
-            print(-1)
+        let leftHandler = { [self] (direction: UIAction) in
+            let newDate = Calendar.current.date(byAdding: .month, value: -1, to: activeDate)!
+            if Calendar.current.component(.year, from: newDate) >= 2000{
+                activeDate = newDate
+                updateDate(activeDate)
+            }
+            
         }
-        let rightHandler = { (direction: UIAction) in
-            print(1)
+        let rightHandler = { [self] (direction: UIAction) in
+            let newDate = Calendar.current.date(byAdding: .month, value: 1, to: activeDate)!
+            if newDate <= Date(){
+                activeDate = newDate
+                updateDate(activeDate)
+            }
         }
-        let buttons = LeftRightButtons(leftHandler: leftHandler, rightHandler: rightHandler)
-        self.addSubview(buttons)
-        buttons.constraintToUpRight(to: self)
+        leftRightButtons = LeftRightButtons(leftHandler: leftHandler, rightHandler: rightHandler)
+        self.addSubview(leftRightButtons)
+        leftRightButtons.constraintToUpRight(to: self)
     }
     
     //MARK: YearButton
     func setDateButtonText(_ date: Date){
+        
+        
         let str = date.formatted(.dateTime.month(.wide).year(.defaultDigits).locale(Locale(identifier: "ru_RU"))).localizedCapitalized
         
         //берем текущий title
@@ -244,5 +255,21 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         //действие
         yearButton.addAction(UIAction(handler: { [self] _ in picker(yearButton.isSelected)}), for: .touchUpInside)
         setDateButtonText(activeDate)
+    }
+    
+    //MARK: Date
+    func updateDate(_ date: Date){
+        setDateButtonText(date)
+        unselectCells()
+        weekCollectionView.reloadData()
+        //проверка ограничений для кнопок
+        leftRightButtons.setLeftButtonEnabled(true)
+        leftRightButtons.setRightButtonEnabled(true)
+        if Calendar.current.component(.year, from: activeDate) <= 2000 && Calendar.current.component(.month, from: activeDate) <= 1{
+            leftRightButtons.setLeftButtonEnabled(false)
+        }
+        if DateManager.getDateInterval(start: activeDate, period: .month).end >= Date(){
+            leftRightButtons.setRightButtonEnabled(false)
+        }
     }
 }

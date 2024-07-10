@@ -25,10 +25,17 @@ class LeftRightButtons: UIView {
     }
     
     func constraintToUpRight(to parrent : UIView){
-        self.topAnchor.constraint(equalTo: parrent.topAnchor, constant: 10).isActive = true
-        self.trailingAnchor.constraint(equalTo: parrent.trailingAnchor, constant: -10).isActive = true
+        self.topAnchor.constraint(equalTo: parrent.topAnchor, constant: 5).isActive = true
+        self.trailingAnchor.constraint(equalTo: parrent.trailingAnchor, constant: 0).isActive = true
         self.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        self.widthAnchor.constraint(equalToConstant: 90).isActive = true
+    }
+    
+    func setRightButtonEnabled(_ state: Bool){
+        self.rightButton.isEnabled = state
+    }
+    func setLeftButtonEnabled(_ state: Bool){
+        self.leftButton.isEnabled = state
     }
     
     private func setupButtons(){
@@ -48,7 +55,7 @@ class LeftRightButtons: UIView {
         rightButton = UIButton(frame: CGRect.zero)
         rightButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(rightButton)
-        rightButton.setImage(UIImage(systemName: "chevron.right")?.withConfiguration(UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
+        rightButton.setImage(UIImage(systemName: "chevron.right")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .bold, scale: .large)), for: .normal)
         rightButton.tintColor = .systemBlue
         
         rightButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true

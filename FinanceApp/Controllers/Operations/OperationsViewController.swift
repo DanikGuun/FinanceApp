@@ -109,6 +109,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     @IBAction func minusDate(_ sender: UIButton) {
         //считаем новый день, от которого почсчитается интервал
         let newStartDate = Calendar.current.date(byAdding: activePeriod, value: -1, to: activeInterval.start)!
+        
         dateUpdate(newInterval: DateManager.getDateInterval(start: newStartDate, period: activePeriod))
         plusDateButton.isEnabled = true
     }
@@ -142,9 +143,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         
         //вкл/выкл кнопки вправо дат, не включаем, если период
         if activePeriod != .calendar{
-            if activeInterval.end >= DateManager.endOfDay(Date()) {
-                plusDateButton.isEnabled = false}
+            if activeInterval.end >= DateManager.endOfDay(Date()) {plusDateButton.isEnabled = false}
             else {plusDateButton.isEnabled = true}
+            
+            if activeInterval.start <= DateManager.minimumDate {minusDateButton.isEnabled = false}
+            else {minusDateButton.isEnabled = true}
         }
 
         setDateLabelText(interval: activeInterval, period: activePeriod)
