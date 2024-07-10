@@ -271,5 +271,8 @@ class WeekPickerCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UI
         if DateManager.getDateInterval(start: activeDate, period: .month).end >= Date(){
             leftRightButtons.setRightButtonEnabled(false)
         }
+        
+        datePicker.selectRow(Calendar.current.component(.month, from: activeDate) - 1, inComponent: 0, animated: true)
+        datePicker.selectRow(Calendar.current.component(.year, from: activeDate) - 2000, inComponent: 1, animated: true)
     }
 }

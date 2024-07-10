@@ -280,10 +280,9 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        let height = [collectionView.frame.height / 5, 60.0].max()!
+        let height = [collectionView.frame.height / 4.7, 60.0].max()!
         return CGSize(width: width, height: height)
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CategoryInfoCell
         performSegue(withIdentifier: "operationsStorySegue", sender: cell.category)

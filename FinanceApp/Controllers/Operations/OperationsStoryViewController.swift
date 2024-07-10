@@ -66,7 +66,7 @@ class OperationsStoryViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - 20
-        let height = collectionView.frame.height / 10
+        let height = collectionView.frame.height / 9
         return CGSize(width: width, height: height)
     }
     

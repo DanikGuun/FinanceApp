@@ -10,10 +10,12 @@ import UIKit
 
 class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    
     var yearButton: UIButton!
     var yearPicker: UIPickerView!
     var monthCollection: UICollectionView!
     var bottomConstraint: NSLayoutConstraint!
+    var leftRightButtons: LeftRightButtons!
     var intervalDelegate: (any IntervalCalendarDelegate)!
     let cellFormat = DateFormatter()
     
@@ -42,6 +44,8 @@ class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPicke
         setDateButtonText(activeDate)
         monthCollectionSetup()
         setupYearPicker()
+        setupLeftRightButtons()
+        updateDate(activeDate)
     }
     
     //MARK: Month Collection
@@ -146,9 +150,7 @@ class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPicke
         var components = Calendar.current.dateComponents(DateManager.standartComponentSet, from: activeDate)
         components.year = 2000 + pickerView.selectedRow(inComponent: 0)
         activeDate = Calendar.current.date(from: components)!
-        setDateButtonText(activeDate)
-        unSelectCells()
-        monthCollection.reloadData()
+        updateDate(activeDate)
     }
     
     
@@ -217,5 +219,45 @@ class MonthCalendarView: UIView, IntervalCalendar, UIPickerViewDelegate, UIPicke
         //действие
         setDateButtonText(activeDate)
         yearButton.addAction(UIAction(handler: { [self]_ in picker(isShow: yearButton.isSelected)}), for: .touchUpInside)
+    }
+    
+    //MARK: Left Right Buttons
+    func setupLeftRightButtons(){
+        let leftHandler = { [self] (direction: UIAction) in
+            let newDate = Calendar.current.date(byAdding: .year, value: -1, to: activeDate)!
+            if Calendar.current.component(.year, from: newDate) >= 2000{
+                activeDate = newDate
+                updateDate(activeDate)
+            }
+            
+        }
+        let rightHandler = { [self] (direction: UIAction) in
+            let newDate = Calendar.current.date(byAdding: .year, value: 1, to: activeDate)!
+            if newDate <= Date(){
+                activeDate = newDate
+                updateDate(activeDate)
+            }
+        }
+        leftRightButtons = LeftRightButtons(leftHandler: leftHandler, rightHandler: rightHandler)
+        self.addSubview(leftRightButtons)
+        leftRightButtons.constraintToUpRight(to: self)
+    }
+    
+    //MARK: Date
+    func updateDate(_ date: Date){
+        setDateButtonText(date)
+        unSelectCells()
+        monthCollection.reloadData()
+        //проверка ограничений для кнопок
+        leftRightButtons.setLeftButtonEnabled(true)
+        leftRightButtons.setRightButtonEnabled(true)
+        if Calendar.current.component(.year, from: activeDate) <= 2000{
+            leftRightButtons.setLeftButtonEnabled(false)
+        }
+        if DateManager.getDateInterval(start: activeDate, period: .year).end >= Date(){
+            leftRightButtons.setRightButtonEnabled(false)
+        }
+        
+        yearPicker.selectRow(Calendar.current.component(.year, from: activeDate) - 2000, inComponent: 0, animated: true)
     }
 }
