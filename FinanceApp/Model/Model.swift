@@ -59,7 +59,7 @@ class Model{
             if type == OperationType(rawValue: first.type!){
                 categories.insert(first, at: 0)
                 // чтобы не было больше 6 элементов
-                if count > 5{
+                if categories.count > 5{
                     categories = categories.dropLast()
                 }
             }
