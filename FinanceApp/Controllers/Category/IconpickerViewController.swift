@@ -47,7 +47,7 @@ class IconpickerViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! IconWithoutBackgroundCell
         let currentCategory = iconCategories[indexPath.section]
         let currentIconName = iconDictionary[currentCategory]![indexPath.row]
-        cell.setup(icon: UIImage(systemName: currentIconName)!, iconBackgroundColor: iconBackgroundColor)
+        cell.setup(icon: IconManager.getIconImage(name: currentIconName), iconBackgroundColor: iconBackgroundColor)
         
         return cell
     }

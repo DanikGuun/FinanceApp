@@ -120,7 +120,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-Yt-96c">
-                                        <rect key="frame" x="233.66666666666671" y="229" width="104.33333333333334" height="34"/>
+                                        <rect key="frame" x="234" y="229" width="104" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Операция">
                                             <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="small"/>
@@ -385,7 +385,7 @@
                                 <rect key="frame" x="141" y="241" width="110.66666666666669" height="2"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rublesign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7WZ-7R-kee">
-                                <rect key="frame" x="259" y="218.66666666666666" width="14" height="22.333333333333343"/>
+                                <rect key="frame" x="259" y="219.33333333333331" width="14" height="22.333333333333343"/>
                                 <color key="tintColor" name="CategoryName"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
@@ -566,7 +566,7 @@
                         <barButtonItem key="backBarButtonItem" title="Назад" id="iny-R1-whq"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="wzs-4m-dwX">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="v5T-Lr-vaC">
-                                <rect key="frame" x="288.33333333333331" y="5" width="88.666666666666686" height="34.333333333333336"/>
+                                <rect key="frame" x="288.33333333333331" y="4.6666666666666679" width="88.666666666666686" height="34.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1066,7 +1066,7 @@
                         <barButtonItem key="backBarButtonItem" title="назад" id="hV1-El-hCG"/>
                         <barButtonItem key="rightBarButtonItem" id="nHL-b5-RFf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mRm-FU-AiF">
-                                <rect key="frame" x="288" y="4.6666666666666679" width="89" height="35"/>
+                                <rect key="frame" x="288" y="5" width="89" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
@@ -1107,7 +1107,7 @@
                                 <color key="backgroundColor" name="AppMenuBackground"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-Xn-JzK">
-                                <rect key="frame" x="20" y="110" width="353" height="708"/>
+                                <rect key="frame" x="20" y="110.00000000000001" width="353" height="708"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aC4-U4-hzm">
                                     <size key="itemSize" width="40" height="40"/>
@@ -1177,7 +1177,7 @@
                                 <color key="backgroundColor" name="AppMenuBackground"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ihS-zs-rBK">
-                                <rect key="frame" x="0.0" y="105" width="393" height="713"/>
+                                <rect key="frame" x="0.0" y="105.00000000000001" width="393" height="713"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pf9-fe-tLu">
@@ -1463,7 +1463,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3H-vm-ols">
-                                                            <rect key="frame" x="58" y="17" width="220" height="20.333333333333329"/>
+                                                            <rect key="frame" x="58" y="17" width="220" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1475,7 +1475,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-M9-0wv">
-                                                            <rect key="frame" x="68" y="37.333333333333336" width="267" height="14.333333333333336"/>
+                                                            <rect key="frame" x="68" y="37" width="267" height="14.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" name="CategoryPercent"/>
                                                             <nil key="highlightedColor"/>

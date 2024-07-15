@@ -35,7 +35,7 @@ class CategoryInfoCell: UICollectionViewCell {
         initialize()
         
         iconBackgroundView.backgroundColor = iconBackgroundColor
-        iconImageView.image = UIImage(systemName: icon)
+        iconImageView.image = IconManager.getIconImage(name: icon)
         categoryNameLabel.text = categoryName
         categoryAmountLabel.text = Appereances.moneyFormat(categoryAmount)
         categoryPercentLabel.text = "\(categoryPercent)%"
@@ -44,7 +44,7 @@ class CategoryInfoCell: UICollectionViewCell {
         initialize()
         
         iconBackgroundView.backgroundColor = UIColor( cgColor: Model.shared.stringToColor(data.category.color!))
-        iconImageView.image = UIImage(systemName: data.category.icon!)
+        iconImageView.image = IconManager.getIconImage(name: data.category.icon!)
         categoryNameLabel.text = data.category.name
         categoryAmountLabel.text = Appereances.moneyFormat(data.amount)
         categoryPercentLabel.text = "\(data.percent)%"

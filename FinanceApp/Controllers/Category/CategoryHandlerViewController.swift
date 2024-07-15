@@ -67,14 +67,14 @@ class CategoryHandlerViewController: UIViewController, MultiColorpickerParent, U
         switch indexPath.item{//свитч чтобы при необходимости взять нужную первую иконку и последнюю поменять
             case 0:
                 if let activeIcon{
-                    cell.setup(icon: UIImage(systemName: activeIcon)!, iconBackroundColor: activeColor!)
+                    cell.setup(icon: IconManager.getIconImage(name: activeIcon), iconBackroundColor: activeColor!)
                 }
                 else{ cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor!) } //default
                 selectCell(cell: cell)
             case 5:
                 cell.setup(icon: UIImage(systemName: "ellipsis.circle")!, iconBackroundColor: .clear, iconColor: activeColor!)
             default:
-                cell.setup(icon: UIImage(systemName: icons[indexPath.item])!, iconBackroundColor: activeColor!)
+                cell.setup(icon: IconManager.getIconImage(name: icons[indexPath.item]), iconBackroundColor: activeColor!)
         }
         return cell
     }

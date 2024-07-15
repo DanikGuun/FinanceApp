@@ -27,7 +27,7 @@ class OperationStoryCell: UICollectionViewCell {
         iconBackgroundView.layer.cornerRadius = 7
         
         iconImageView.tintColor = UIColor.white
-        iconImageView.image = UIImage(systemName: (category?.icon)!)
+        iconImageView.image = IconManager.getIconImage(name: (category?.icon)!)
         
         categoryNameLabel.text = category?.name
         amountLabel.text = Appereances.moneyFormat(operation.amount)

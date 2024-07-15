@@ -16,7 +16,7 @@ class MenuButtonCell: UICollectionViewCell{
     
     func setup(_ attributes: (name: String, systemName: String, segou: String), separatorNeed: Bool = false){
         nameLabel.text = attributes.name
-        iconImage.image = UIImage(systemName: attributes.systemName)
+        iconImage.image = IconManager.getIconImage(name: attributes.systemName)
         segouID = attributes.segou
         separator.isHidden = !separatorNeed
     }
