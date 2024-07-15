@@ -43,17 +43,35 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogw-ng-awv">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="148"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Счёт: 941" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQK-fr-ykM">
-                                        <rect key="frame" x="132.66666666666666" y="105" width="127.99999999999997" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Тут будут деньги" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tkx-HB-LzZ">
+                                        <rect key="frame" x="99" y="100" width="195" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="250" constant="151" id="hCg-c5-gny"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="go"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmY-xd-Hhh">
+                                        <rect key="frame" x="269" y="96.666666666666671" width="51" height="44.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BmY-xd-Hhh" secondAttribute="height" multiplier="39:34" id="tfK-K4-RCu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="oneEditBalancePressed" destination="TKD-BP-76y" eventType="touchUpInside" id="527-pz-Ilg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="AppMenuBackground"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="oQK-fr-ykM" secondAttribute="bottom" constant="10" id="5mT-fM-24o"/>
-                                    <constraint firstItem="oQK-fr-ykM" firstAttribute="centerX" secondItem="Ogw-ng-awv" secondAttribute="centerX" id="OG7-Nb-Y59"/>
+                                    <constraint firstItem="BmY-xd-Hhh" firstAttribute="leading" secondItem="Tkx-HB-LzZ" secondAttribute="trailing" constant="-25" id="2gc-99-otC"/>
+                                    <constraint firstItem="Tkx-HB-LzZ" firstAttribute="centerX" secondItem="Ogw-ng-awv" secondAttribute="centerX" id="bfx-oQ-O7o"/>
+                                    <constraint firstItem="BmY-xd-Hhh" firstAttribute="centerY" secondItem="Tkx-HB-LzZ" secondAttribute="centerY" id="vCP-9K-dew"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tkx-HB-LzZ" secondAttribute="bottom" constant="10" id="xQg-wd-ONv"/>
+                                    <constraint firstItem="BmY-xd-Hhh" firstAttribute="height" secondItem="Tkx-HB-LzZ" secondAttribute="height" multiplier="1.17241" id="yBR-rV-xwc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSP-fu-CI7">
@@ -201,7 +219,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-d7-WlT">
                                                             <rect key="frame" x="263" y="5" width="42" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="RHN-d7-WlT" secondAttribute="height" multiplier="21:20" priority="999" id="FeG-8W-sof"/>
+                                                                <constraint firstAttribute="width" secondItem="RHN-d7-WlT" secondAttribute="height" multiplier="21:20" priority="999" constant="6.2999999999999972" id="FeG-8W-sof"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" name="CategoryPercent"/>
@@ -282,16 +300,12 @@
                             <constraint firstItem="Ogw-ng-awv" firstAttribute="top" secondItem="Ie0-lD-WCh" secondAttribute="top" id="uJS-v2-8XP"/>
                             <constraint firstItem="Wpb-Wj-o4A" firstAttribute="trailing" secondItem="E9Q-gp-jlg" secondAttribute="trailing" id="zlv-Pi-g3Q"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="E9Q-gp-jlg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6K9-Mq-B1q">
                         <barButtonItem key="backBarButtonItem" title="назад" id="lay-Ka-aCE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="balanceTextField" destination="Tkx-HB-LzZ" id="7MR-3f-1bv"/>
                         <outlet property="calendarBackground" destination="E9Q-gp-jlg" id="nwd-hl-qxD"/>
                         <outlet property="categoryCollectionView" destination="KGx-lM-sAq" id="HIM-wM-1c5"/>
                         <outlet property="chartBackgroundView" destination="oSP-fu-CI7" id="CHY-EJ-iOz"/>
@@ -299,7 +313,6 @@
                         <outlet property="fullStoryOpenGesture" destination="LV2-jV-Plt" id="UyO-Wt-gDr"/>
                         <outlet property="menuBackgroundView" destination="Ogw-ng-awv" id="0Zd-Do-Nck"/>
                         <outlet property="minusDateButton" destination="lbT-MD-9E4" id="XJj-Jg-81w"/>
-                        <outlet property="moneyLabel" destination="oQK-fr-ykM" id="dld-so-KmS"/>
                         <outlet property="operationTypeSegmented" destination="rOe-Cg-rbF" id="ELJ-pf-PQe"/>
                         <outlet property="plusDateButton" destination="Xyq-BP-jKG" id="QTS-vQ-pzi"/>
                         <segue destination="e09-ut-gIA" kind="show" identifier="operationsStorySegue" id="oVA-rr-DEM"/>
@@ -327,7 +340,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="83" y="42"/>
+            <point key="canvasLocation" x="81.679389312977094" y="41.549295774647888"/>
         </scene>
         <!--Operation Handler View Controller-->
         <scene sceneID="tGp-Ol-pn2">
@@ -1553,7 +1566,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxW-lu-NaI"/>
+        <segue reference="cwL-Vi-hIl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UnderLine" width="153" height="2"/>
@@ -1564,6 +1577,7 @@
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="rublesign" catalog="system" width="115" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="121"/>
         <namedColor name="AppMenuBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -8,11 +8,11 @@ import Foundation
 import UIKit
 import PieChartUIKit
 
-class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate{
     
     @IBOutlet weak var menuBackgroundView: UIView!
     @IBOutlet weak var operationTypeSegmented: UISegmentedControl!
-    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var balanceTextField: UITextField!
     @IBOutlet weak var chartBackgroundView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var minusDateButton: UIButton!
@@ -26,9 +26,10 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     var todayBalance: UILabel!
     var currentCollectionViewData: [CategoryInfo] = []
     
+    var isBalanceEditing: Bool = false
     var activePeriod: Calendar.Component = .day
     var activeInterval: DateInterval = DateInterval(start: DateManager.startOfDay(Date()), end: DateManager.endOfDay(Date()))
-    var activeCalendar: IntervalCalendar!
+    var activeCalendar: IntervalCalendar?
     let standartComponentSet: Set<Calendar.Component> = [.year, .month, .day, .hour, .weekday] //Стандартный набор компонентов для работы с датами
     var activeOperationType: Model.OperationType {
         if operationTypeSegmented.selectedSegmentIndex == 0 {return .Expence}
@@ -51,6 +52,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        
+        balanceTextField.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         updateData()
@@ -58,8 +61,8 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     
     // MARK: Date Intervals Pickers
     @objc func dateLabelPressed(_ sender: UILabel){
-        let background = UIView()
-        view.addSubview(background)
+        
+        self.view.bringSubviewToFront(calendarBackground)
         
         var calendar: IntervalCalendar
         var insets: UIEdgeInsets
@@ -100,8 +103,15 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
     @IBAction func calendarHide(){
         UIView.animate(withDuration: 0.3, animations: {
             self.calendarBackground.alpha = 0
-            self.activeCalendar.removeCalendar()
         })
+        if self.activeCalendar != nil{
+            self.activeCalendar?.removeCalendar()
+            self.activeCalendar = nil
+        }
+        if isBalanceEditing{
+            balanceTextField.resignFirstResponder()
+            isBalanceEditing = false
+        }
     }
     
     // MARK: Dates
@@ -283,9 +293,51 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         let height = [collectionView.frame.height / 4.7, 60.0].max()!
         return CGSize(width: width, height: height)
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CategoryInfoCell
         performSegue(withIdentifier: "operationsStorySegue", sender: cell.category)
+    }
+    
+    // MARK: Balance
+    //обновляет баланс
+    func updateBalance(){
+        var total = 0.0
+        for operation in Model.shared.getAllOperations(){
+            if operation.type == .Expence {total -= operation.amount}
+            else {total += operation.amount}
+        }
+        total -= UserDefaults.standard.double(forKey: "Difference")
+        balanceTextField.text = "Счёт: \(Appereances.moneyFormat(total)) "
+    }
+    
+    
+    @IBAction func oneEditBalancePressed() {
+        balanceTextField.becomeFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.calendarBackground.alpha = 1
+        })
+        isBalanceEditing = true
+        self.view.bringSubviewToFront(menuBackgroundView)
+        balanceTextField.text = getDoubleStrFromStr(balanceTextField.text ?? "")
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isBalanceEditing = false
+        let balance = getDoubleFromStr(balanceTextField.text ?? "0.0")
+        balanceTextField.text = "Счёт: \(Appereances.moneyFormat(balance))"
+        
+        var totalBalance = 0.0
+        for operation in Model.shared.getAllOperations(){
+            if operation.type == .Income {totalBalance += operation.amount}
+            else{totalBalance -= operation.amount}
+        }
+        let difference = totalBalance - balance //считаем разницу между балансами
+        UserDefaults.standard.setValue(difference, forKey: "Difference")
+        updateBalance()
     }
     
     // MARK: Additions
@@ -317,18 +369,11 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         dateLabel.attributedText = attributedString
         dateLabel.adjustsFontSizeToFitWidth = true
     }
+    
     @IBAction func operationTypeChanged() {
         updateData()
     }
-    //обновляет баланс
-    func updateBalance(){
-        var total = 0.0
-        for operation in Model.shared.getAllOperations(){
-            if operation.type == .Expence {total -= operation.amount}
-            else {total += operation.amount}
-        }
-        moneyLabel.text = "Счёт: \(Appereances.moneyFormat(total))"
-    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let operationHandler = segue.destination as? OperationHandlerViewController{
             operationHandler.startOperationType = self.operationTypeSegmented.selectedSegmentIndex
@@ -342,6 +387,24 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
             operationsStoryController.operationsType = activeOperationType
             operationsStoryController.textInterval = dateLabel.attributedText?.string
         }
+    }
+    
+    ///Получает Double из строки со счетом
+    func getDoubleStrFromStr(_ str: String) -> String{
+        var numStr = ""
+        
+        for char in str{
+            if "0123456789,.".contains(char){
+                numStr.append(char)
+            }
+        }
+        return numStr
+    }
+    
+    func getDoubleFromStr(_ str: String) -> Double{
+        var numStr = getDoubleStrFromStr(str)
+        numStr.replace(",", with: ".")
+        return Double(numStr) ?? 0.0
     }
 }
 struct ChartSegment{
