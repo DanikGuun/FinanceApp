@@ -1,7 +1,8 @@
-Простое приложение для отслеживания своих дел. База для каждого разработчика. 
-Делал его просто чтобы пощупать iOS разработку и XCode. 
-Далеко не идеален в плане проектирования и качества кода, но работает как задумано, и это хорошо.
-<img width="148" alt="image" src="https://github.com/user-attachments/assets/bf4bb000-e3bc-4c3f-9bbd-4ef038cfb5a7">
-<img width="152" alt="image" src="https://github.com/user-attachments/assets/8fdae8e9-d6a0-4545-a15d-386c4f164318">
-<img width="150" alt="image" src="https://github.com/user-attachments/assets/b399480c-606c-4d3a-8e80-4c50fefe1af4">
-
+Finance App. 
+В этом приложении уже заметен прогресс. 
+Была выбрана архитектура MVC, учился пользоваться UIKit, CoreData. 
+Писал собственные вью для календарей. Результатом я доволен. Самое главное – видно рост.
+<img width="126" alt="image" src="https://github.com/user-attachments/assets/12893614-7e2e-43b1-993c-6efc33858b9c">
+<img width="124" alt="image" src="https://github.com/user-attachments/assets/b7e59508-0e92-4ea8-b9ff-d9f3cee57178">
+<img width="126" alt="image" src="https://github.com/user-attachments/assets/58826405-669c-409b-b2b5-7420e557cff0">
+<img width="124" alt="image" src="https://github.com/user-attachments/assets/0254e050-d15d-4562-ab58-95562bbdec32">
