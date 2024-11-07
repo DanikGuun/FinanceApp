@@ -123,6 +123,7 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         dateUpdate(newInterval: DateManager.getDateInterval(start: newStartDate, period: activePeriod))
         plusDateButton.isEnabled = true
     }
+    
     @IBAction func plusDate(_ sender: UIButton) {
         //считаем новый день, от которого почсчитается интервал
         let newStartDate = Calendar.current.date(byAdding: activePeriod, value: 1, to: activeInterval.start)!
@@ -310,7 +311,6 @@ class OperationsViewController: UIViewController, IntervalCalendarDelegate, UICo
         total -= UserDefaults.standard.double(forKey: "Difference")
         balanceTextField.text = "Счёт: \(Appereances.moneyFormat(total)) "
     }
-    
     
     @IBAction func oneEditBalancePressed() {
         balanceTextField.becomeFirstResponder()

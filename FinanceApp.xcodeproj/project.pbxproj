@@ -27,7 +27,6 @@
 		56806CF22C3498D6008DA848 /* YearCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56806CF12C3498D6008DA848 /* YearCalendarView.swift */; };
 		568DCE212C3B2BCD00F670B3 /* OperationsStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */; };
 		568DCE232C3BC41300F670B3 /* OperationStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568DCE222C3BC41300F670B3 /* OperationStoryCell.swift */; };
-		5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */; };
 		5691BC742C36CF8D00F4B328 /* PeriodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */; };
 		56A334A52C1F836200909B35 /* IconpickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A42C1F836200909B35 /* IconpickerViewController.swift */; };
 		56A334A72C1F973000909B35 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A334A62C1F973000909B35 /* SectionHeaderView.swift */; };
@@ -76,7 +75,6 @@
 		56806CF12C3498D6008DA848 /* YearCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCalendarView.swift; sourceTree = "<group>"; };
 		568DCE202C3B2BCD00F670B3 /* OperationsStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsStoryViewController.swift; sourceTree = "<group>"; };
 		568DCE222C3BC41300F670B3 /* OperationStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationStoryCell.swift; sourceTree = "<group>"; };
-		5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo_2024-07-03 22.20.24.jpeg"; sourceTree = "<group>"; };
 		5691BC732C36CF8D00F4B328 /* PeriodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodCalendarView.swift; sourceTree = "<group>"; };
 		56A334A42C1F836200909B35 /* IconpickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconpickerViewController.swift; sourceTree = "<group>"; };
 		56A334A62C1F973000909B35 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				56F50E4A2C11BC4F00A240D1 /* Appereances.swift */,
 				56F50E192C11AD8300A240D1 /* AppDelegate.swift */,
 				56F50E1B2C11AD8300A240D1 /* SceneDelegate.swift */,
-				5691BC712C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg */,
 				567CA9F22C18B36500C1E4FA /* Model */,
 				56F50E4C2C11C7D600A240D1 /* CustomViews */,
 				56F50E472C11BB7D00A240D1 /* Controllers */,
@@ -324,7 +321,6 @@
 			files = (
 				56F50E262C11AD8400A240D1 /* Assets.xcassets in Resources */,
 				56F50E292C11AD8400A240D1 /* Base in Resources */,
-				5691BC722C35DC0700F4B328 /* photo_2024-07-03 22.20.24.jpeg in Resources */,
 				56F50E442C11B20A00A240D1 /* SF-Pro-Text-Bold.otf in Resources */,
 				56F50E212C11AD8300A240D1 /* Base in Resources */,
 			);
@@ -526,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C8NSZM8WF9;
@@ -554,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C8NSZM8WF9;

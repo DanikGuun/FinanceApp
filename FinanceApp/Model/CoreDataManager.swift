@@ -32,6 +32,7 @@ class CoreDataManager{
     }()
     lazy var context: NSManagedObjectContext = {persistentContainer.viewContext} ()
     func saveContext () {
+        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
